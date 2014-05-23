@@ -25,10 +25,11 @@ public class Controller1 : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		//Player Inputs
-		moveH = Input.GetAxis ("P1_Horizontal");
-		moveV = Input.GetAxis ("P1_Vertical");
-		jump = Input.GetButton ("P1_Jump");
+		//Only allow jumping when player is on the ground
+		if (grounded && jump ) {
+			anim.SetBool ("Ground", false);
+			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+		}
 
 		if (enableControl) {
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
@@ -56,11 +57,11 @@ public class Controller1 : MonoBehaviour {
 
 	}
 	void Update () {
-		//Only allow jumping when player is on the ground
-		if (grounded && jump ) {
-			anim.SetBool ("Ground", false);
-			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-		}
+		//Player Inputs
+		moveH = Input.GetAxis ("P1_Horizontal");
+		moveV = Input.GetAxis ("P1_Vertical");
+		jump = Input.GetButton ("P1_Jump");
+
 	}
 
 
