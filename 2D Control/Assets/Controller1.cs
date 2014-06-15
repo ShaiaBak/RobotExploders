@@ -13,8 +13,9 @@ public class Controller1 : MonoBehaviour {
 	private Animator anim;
 	private float moveH = 0f;
 	private float moveV = 0f;
-	private bool grounded = false;
-	private bool jump;
+	public bool grounded = false;
+	public bool jump;
+	public bool doubleJump = true;
 	public Transform groundCheck;
 	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
@@ -26,10 +27,16 @@ public class Controller1 : MonoBehaviour {
 	
 	void FixedUpdate () {
 		//Only allow jumping when player is on the ground
+
+		}
+
 		if (grounded && jump ) {
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+			doubleJump = true;
+			jump = false;
 		}
+
 
 		if (enableControl) {
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
