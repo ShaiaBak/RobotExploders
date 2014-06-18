@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller1.cs">
     <Files>
-      <File FileName="Assets\Controller1.cs" Line="69" Column="30" />
-      <File FileName="Assets\Controller2.cs" Line="75" Column="1" />
+      <File FileName="Assets\Controller1.cs" Line="63" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
