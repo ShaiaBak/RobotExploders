@@ -3,6 +3,10 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour 
 {
+	//This script is added to a Camera
+	//The camera will follow whatever is chosen as "player"
+	//Smoothing = How fast the camera follows
+	//Margin = The amount the "player" can move before the camera reacts 
 	public Transform player;
 	public Vector2 margin, smoothing;
 	public BoxCollider2D bounds;
@@ -17,8 +21,11 @@ public class CameraController : MonoBehaviour
 	}
 	public void Update()
 	{
+		// x and y are the current cameras position
 		var x = transform.position.x;
 		var y = transform.position.y;
+
+		// If the camera is following the "player"
 
 		if (isFollowing)
 		{
@@ -29,6 +36,7 @@ public class CameraController : MonoBehaviour
 				y = Mathf.Lerp (y, player.position.y, smoothing.y * Time.deltaTime);
 		}
 
+		//If the camera hits the bounds of the stage
 		var cameraHalfWdith = camera.orthographicSize * ((float) Screen.width / Screen.height);
 
 		x = Mathf.Clamp(x, min.x + cameraHalfWdith/2, max.x - cameraHalfWdith/2);

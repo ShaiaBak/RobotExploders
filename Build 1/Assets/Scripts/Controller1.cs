@@ -8,18 +8,18 @@ public class Controller1 : MonoBehaviour {
 	private bool facingRight = true;
 
 
-	public float jumpForce = 50;	//Arbitrary jump value
+	public float jumpForce = 250;	//Arbitrary jump value
 	public bool enableControl = true;
 	//private Animator anim;
 	private float moveH = 0f;
 	private float moveV = 0f;
 	public bool grounded = false;
 	public bool jump;
-	public bool doubleJump = false;
+	public bool doubleJump = true;
 	public Transform groundCheck;
 	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
-
+	private int i;
 
 	void Start () {
 		//anim = GetComponent<Animator>();
@@ -28,13 +28,7 @@ public class Controller1 : MonoBehaviour {
 	void FixedUpdate () {
 		//Only allow jumping when player is on the ground
 
-		if ((grounded || !doubleJump) && jump ) {
-			//anim.SetBool ("Ground", false);
-			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-			if (!grounded && !doubleJump) {
-				doubleJump = true;
-			}
-		}
+
 
 		if (enableControl) {
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
@@ -42,11 +36,17 @@ public class Controller1 : MonoBehaviour {
 			//the unit will be considered on the ground, grounded = true
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 			//anim.SetBool ("Ground", grounded);
-
+			
 			if (grounded) {
+				doubleJump = true;
+				if (jump) {
+					rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+				}
+				
+			} else if (doubleJump && jump) {
 				doubleJump = false;
+				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 			}
-
 			//When the vertical speed is not zero, change to the jumping/falling animation
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
 
@@ -59,6 +59,7 @@ public class Controller1 : MonoBehaviour {
 			} else if (moveH < 0 && facingRight) {
 					Flip ();
 			}
+
 		} else {
 			moveH = 0f; 
 		}
@@ -69,9 +70,7 @@ public class Controller1 : MonoBehaviour {
 		//Player Inputs
 		moveH = Input.GetAxis ("P1_Horizontal");
 		moveV = Input.GetAxis ("P1_Vertical");
-		jump = Input.GetButton ("P1_Jump");
-
-
+		jump = Input.GetButtonDown ("P1_Jump");
 
 	}
 
