@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 	public void Update()
 	{
 		// x and y are the current cameras position
-		var x = transform.position.x;
+		var x  = transform.position.x;
 		var y = transform.position.y;
 
 		// If the camera is following the "player"
