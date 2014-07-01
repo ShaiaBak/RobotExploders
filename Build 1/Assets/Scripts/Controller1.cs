@@ -5,7 +5,7 @@ public class Controller1 : MonoBehaviour {
 
 
 	public float maxSpeed = 3f; 			//Arbitrary speed value
-	private bool facingRight = true;
+	public bool facingRight = true;
 
 
 	public float jumpForce = 250;			//Arbitrary jump value

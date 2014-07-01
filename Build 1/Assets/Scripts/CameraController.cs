@@ -17,6 +17,10 @@ public class CameraController : MonoBehaviour
 	private Vector3 min, max;
 	public bool isFollowing { get; set; } 
 
+	//Camera offset for facing directions
+	public float xOffset = 0.1f, yOffset = 0.1f;
+
+
 	public void Start()
 	{
 		min = bounds.bounds.min;
@@ -26,7 +30,10 @@ public class CameraController : MonoBehaviour
 	public void Update()
 	{
 		// x and y are the current cameras position
-		var x  = transform.position.x;
+//		if () {
+//			xOffset = -xOffset;
+//		}
+		var x = transform.position.x + xOffset;
 		var y = transform.position.y;
 
 		// If the camera is following the "player"
