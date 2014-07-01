@@ -337,7 +337,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 784835949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4102c165ef5264b43a49329ae2396c81, type: 3}
+  m_Script: {fileID: 11500000, guid: 38a0fbcbc9547954c8c4c2aa251b076d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1902758917}
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 896633220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4102c165ef5264b43a49329ae2396c81, type: 3}
+  m_Script: {fileID: 11500000, guid: 38a0fbcbc9547954c8c4c2aa251b076d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1880882804}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1880882803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65aacae6b2ea7e141a2bd3dc67fc42f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fce2f35f688ab043891af84653ebc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
@@ -1011,7 +1011,9 @@ MonoBehaviour:
   jump: 0
   doubleJump: 1
   groundCheck: {fileID: 1373911836}
-  whatIsGround: {}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &1880882809
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1137,7 +1139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902758911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e10f249b8eb8e74da78903341fb857d, type: 3}
+  m_Script: {fileID: 11500000, guid: c0946a81297398143acc095d0e88ead5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
@@ -1151,7 +1153,9 @@ MonoBehaviour:
   flyingModeTimer: 0
   flyingModeDuration: 2
   groundCheck: {fileID: 898094994}
-  whatIsGround: {}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &1902758916
 Rigidbody2D:
   m_ObjectHideFlags: 0
