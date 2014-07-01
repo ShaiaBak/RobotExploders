@@ -8,7 +8,11 @@ public class CameraController : MonoBehaviour
 	//Smoothing = How fast the camera follows
 	//Margin = The amount the "player" can move before the camera reacts 
 	public Transform player;
-	public Vector2 margin, smoothing;
+
+	//Margin and Smoothing values are arbitrary, they can be tweaked
+	public Vector2 margin = new Vector2(0.5f,0.5f);
+	public Vector2 smoothing = new Vector2(4.0f,4.0f);
+
 	public BoxCollider2D bounds;
 	private Vector3 min, max;
 	public bool isFollowing { get; set; } 

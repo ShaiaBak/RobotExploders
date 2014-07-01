@@ -34,15 +34,41 @@ public class Controller1 : MonoBehaviour {
 	
 	void FixedUpdate () {
 
+	}
+	void Update () {
+		//Player Inputs
+		moveH = Input.GetAxis ("P1_Horizontal");
+		moveV = Input.GetAxis ("P1_Vertical");
+		jumpPress = Input.GetButtonDown ("P1_Jump");
+		jumpRelease = Input.GetButtonUp ("P1_Jump");
+
+		if (jumpPress) {
+			Debug.Log("jump is pressed");
+		}
+
+		//When flying, reduce timer by the time it took to complete the last frame
+		if (flyingMode) {
+			flyingModeTimer -= Time.deltaTime;
+		}
+		//When timer is equal to or less than zero or when the jump button is released
+		//Disable flying mode and restore the gravity setting
+		if (flyingModeTimer <= 0 || jumpRelease) {
+			flyingMode = false;
+			rigidbody2D.gravityScale = 1;
+		}
+
+		//enableControl is only used for potential ideas later. If true you have normal movement
+		//if false, controls do nothing.
 		if (enableControl) {
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
 			//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
 			//the unit will be considered on the ground, grounded = true
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 			//anim.SetBool ("Ground", grounded);
-
+			
 			//When player is on the ground, second jump is available
 			if (grounded) {
+				Debug.Log("you are grounded");
 				doubleJump = true;
 				//When jump button is pressed, add a force upwards
 				if (jumpPress) {
@@ -58,11 +84,9 @@ public class Controller1 : MonoBehaviour {
 			}
 			//When the vertical speed is not zero, change to the jumping/falling animation
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
-
+			
 			//When the horizontal speed is not zero, change to the walking animation
 			//anim.SetFloat ("speedH", Mathf.Abs (moveH));
-
-
 
 			// If the player has activated "Flying Mode", the player can move freely in the X and Y
 			// If not, the player can only move in the X
@@ -73,34 +97,13 @@ public class Controller1 : MonoBehaviour {
 			}
 			// Flip the image if it is moving to left while facing right or moving right while facing left
 			if (moveH > 0 && !facingRight) {
-					Flip ();
+				Flip ();
 			} else if (moveH < 0 && facingRight) {
-					Flip ();
+				Flip ();
 			}
-
+			
 		} else {
 			moveH = 0f; 
-		}
-
-
-	}
-	void Update () {
-		//Player Inputs
-		moveH = Input.GetAxis ("P1_Horizontal");
-		moveV = Input.GetAxis ("P1_Vertical");
-		jumpPress = Input.GetButtonDown ("P1_Jump");
-		jumpRelease = Input.GetButtonUp ("P1_Jump");
-
-
-		//When flying, reduce timer by the time it took to complete the last frame
-		if (flyingMode) {
-			flyingModeTimer -= Time.deltaTime;
-		}
-		//When timer is equal to or less than zero or when the jump button is released
-		//Disable flying mode and restore the gravity setting
-		if (flyingModeTimer <= 0 || jumpRelease) {
-			flyingMode = false;
-			rigidbody2D.gravityScale = 1;
 		}
 	}
 
