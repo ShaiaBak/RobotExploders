@@ -553,6 +553,7 @@ GameObject:
   - 23: {fileID: 938188507}
   - 33: {fileID: 938188506}
   - 61: {fileID: 938188505}
+  - 114: {fileID: 938188510}
   m_Layer: 0
   m_Name: P1
   m_TagString: Player
@@ -658,6 +659,32 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &938188510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938188503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b233e7a50fc36f643a9978a7a2e88f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 3
+  facingRight: 1
+  jumpForce: 250
+  enableControl: 1
+  jumpPress: 0
+  jumpRelease: 0
+  grounded: 0
+  doubleJump: 1
+  flyingMode: 0
+  flyingModeTimer: 0
+  flyingModeDuration: 2
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &943463328
 GameObject:
   m_ObjectHideFlags: 0
