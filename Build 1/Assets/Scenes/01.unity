@@ -168,7 +168,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bee0d6fbc143c1e44b65966ab7a3dfa3, type: 2}
+  - {fileID: 2100000, guid: 3e6d425c4ff4ff640b31ed7ffd6ccca7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 288200597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d0022a2f08a2742b2cf4db924b446f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d245713357f62440a6548a0c73a088f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
@@ -194,10 +194,10 @@ MonoBehaviour:
   grounded: 0
   jump: 0
   doubleJump: 1
-  groundCheck: {fileID: 2052825904}
+  groundCheck: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!50 &288200603
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -425,15 +425,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 784835949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ff78184c99ed44a8a0fe03828febe3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c4fa523816271243a494283c1b2ce50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 938188504}
+  player: {fileID: 0}
   margin: {x: .5, y: .5}
   smoothing: {x: 4, y: 4}
-  bounds: {fileID: 1892572414}
-  xOffset: 0
-  yOffset: 0
+  bounds: {fileID: 0}
+  xOffset: .100000001
+  yOffset: .100000001
 --- !u!1 &896633220
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,15 +462,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 896633220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ff78184c99ed44a8a0fe03828febe3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c4fa523816271243a494283c1b2ce50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 288200598}
+  player: {fileID: 0}
   margin: {x: .5, y: .5}
   smoothing: {x: 4, y: 4}
-  bounds: {fileID: 1892572414}
-  xOffset: 0
-  yOffset: 0
+  bounds: {fileID: 0}
+  xOffset: .100000001
+  yOffset: .100000001
 --- !u!81 &896633222
 AudioListener:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 460e70918ac89504eb39050e439d276f, type: 2}
+  - {fileID: 2100000, guid: 4a8eea9ef90209e42b83d1af0df79698, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 938188503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bba2df0f2281644b2a6ade4a92d3ab, type: 3}
+  m_Script: {fileID: 11500000, guid: b233e7a50fc36f643a9978a7a2e88f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
@@ -638,10 +638,10 @@ MonoBehaviour:
   flyingMode: 0
   flyingModeTimer: 0
   flyingModeDuration: 2
-  groundCheck: {fileID: 1370765652}
+  groundCheck: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!50 &938188509
 Rigidbody2D:
   m_ObjectHideFlags: 0
