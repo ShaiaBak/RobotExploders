@@ -3,13 +3,13 @@ using System.Collections;
 
 // NOTE: Constructers shouldn't be used with Monobehaviours, so use SetParameters to set the initial values.
 public class Projectile : MonoBehaviour {
-
+	
 	private float timeSpentAlive = 0f;
-
 	private float moveSpeed = 0f;
 	private float timeUntilDeath = 1f;
 	private Vector2 direction;
 	private int directDamage = 1;
+
 	private int aoeDamage = 1;
 	private float explosionAoE = 0f;
 	private float knockback = 0f;
@@ -39,7 +39,9 @@ public class Projectile : MonoBehaviour {
 	/// <param name="aoeDmg">Damage done within the explosion blast radius.</param>
 	/// <param name="aoe">Explosion blast radius.</param>
 	/// <param name="knock">Knockback magnitude.</param>
-	public void SetParameters(float ms, float dur, Vector2 dir, int dmg, int aoeDmg, float aoe, float knock){
+	public void SetParameters(bool pierce, float ms, float dur, Vector2 dir, int dmg, int aoeDmg, float aoe, float knock){
+		// Allows the projectile to go through things if the collider is a trigger
+		collider2D.isTrigger = pierce;
 		moveSpeed = ms;
 		timeUntilDeath = dur;
 		direction = dir;
@@ -49,16 +51,26 @@ public class Projectile : MonoBehaviour {
 		knockback = knock;
 	}
 
+	// For non-piercing projectiles
 	void OnCollisionEnter2D(Collision2D col) {
 		// TODO: AoE? Knockback?
 		HealthSystem hs = col.gameObject.GetComponent<HealthSystem>();
 		if(hs != null){
 			hs.HurtHealth(directDamage, collider);
-			RemoveMe();
+		}
+		RemoveMe();
+	}
+
+	// For piercing projectiles
+	void OnTriggerEnter2D(Collider2D col){
+		// TODO: AoE? Knockback?
+		HealthSystem hs = col.gameObject.GetComponent<HealthSystem>();
+		if(hs != null){
+			hs.HurtHealth(directDamage, collider);
 		}
 	}
 
 	private void RemoveMe(){
-
+		Destroy(gameObject);
 	}
 }

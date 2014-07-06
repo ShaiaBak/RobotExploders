@@ -50,7 +50,9 @@
      <Compile Include="Assets\Scripts\Controller1.cs" />
      <Compile Include="Assets\Scripts\Controller2.cs" />
      <Compile Include="Assets\Scripts\HealthSystem.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealthSystem.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\TempShootingScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
