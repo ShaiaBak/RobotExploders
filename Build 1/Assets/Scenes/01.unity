@@ -194,10 +194,10 @@ MonoBehaviour:
   grounded: 0
   jump: 0
   doubleJump: 1
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1370765652}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!50 &288200603
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -428,10 +428,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4fa523816271243a494283c1b2ce50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 938188504}
   margin: {x: .5, y: .5}
   smoothing: {x: 4, y: 4}
-  bounds: {fileID: 0}
+  bounds: {fileID: 1892572414}
   xOffset: .100000001
   yOffset: .100000001
 --- !u!1 &896633220
@@ -465,10 +465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4fa523816271243a494283c1b2ce50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 938188504}
   margin: {x: .5, y: .5}
   smoothing: {x: 4, y: 4}
-  bounds: {fileID: 0}
+  bounds: {fileID: 1892572414}
   xOffset: .100000001
   yOffset: .100000001
 --- !u!81 &896633222
@@ -639,10 +639,10 @@ MonoBehaviour:
   flyingMode: 0
   flyingModeTimer: 0
   flyingModeDuration: 2
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1370765652}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!50 &938188509
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1127,7 +1127,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1809288843}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: a3e9bfc6aa9073f43b7ca40d53cc10b4, type: 3}
+  m_Texture: {fileID: 2800000, guid: 53b85b384b028ef48903dc9f4133e417, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -1434,7 +1434,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2082926338}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: a3e9bfc6aa9073f43b7ca40d53cc10b4, type: 3}
+  m_Texture: {fileID: 2800000, guid: 53b85b384b028ef48903dc9f4133e417, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
