@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 	public bool isFollowing { get; set; } 
 
 	//Camera offset for facing directions
-	public float xOffset = 0.1f, yOffset = 0.1f;
+	public float xOffset = 0.0f, yOffset = 0.0f;
 
 
 	public void Start()
