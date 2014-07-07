@@ -3,10 +3,12 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - 
+  - Golem
   - Terrain
   - 
   - Floor
+  - 
+  - Mech
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   User Layer 9: Ignore
   User Layer 10: P1_UI
   User Layer 11: P2_UI
-  User Layer 12: 
+  User Layer 12: Golems
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 
@@ -44,4 +46,8 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Golems
+    userID: 1
+    uniqueID: 646813565
     locked: 0
