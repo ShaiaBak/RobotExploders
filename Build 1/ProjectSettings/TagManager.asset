@@ -5,7 +5,7 @@ TagManager:
   tags:
   - Golem
   - Terrain
-  - 
+  - GolemEnterZone
   - Floor
   - 
   - Mech
@@ -23,7 +23,7 @@ TagManager:
   User Layer 10: P1_UI
   User Layer 11: P2_UI
   User Layer 12: Golems
-  User Layer 13: 
+  User Layer 13: Pilots
   User Layer 14: 
   User Layer 15: 
   User Layer 16: 
@@ -50,4 +50,8 @@ TagManager:
   - name: Golems
     userID: 1
     uniqueID: 646813565
+    locked: 0
+  - name: Pilots
+    userID: 2
+    uniqueID: 2691776803
     locked: 0

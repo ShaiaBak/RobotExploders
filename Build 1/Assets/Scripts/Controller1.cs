@@ -106,7 +106,11 @@ public class Controller1 : MonoBehaviour {
 			moveH = 0f; 
 		}
 	}
-
+	void OnTriggerStay2D(Collider2D other) {
+		if (other.tag == "GolemEnterZone") {
+			Debug.Log("In Golem");
+		}
+	}
 
 	void Flip () {
 		facingRight = !facingRight;
