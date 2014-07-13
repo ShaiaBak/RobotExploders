@@ -1375,6 +1375,8 @@ GameObject:
   - 114: {fileID: 1923815353}
   - 61: {fileID: 1923815352}
   - 212: {fileID: 1923815351}
+  - 114: {fileID: 1923815356}
+  - 114: {fileID: 1923815357}
   m_Layer: 13
   m_Name: P2
   m_TagString: Player
@@ -1469,6 +1471,35 @@ Transform:
   - {fileID: 331592557}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1923815356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: c83b37f63824c634e963e40dafa62212,
+    type: 2}
+  m_PrefabInternal: {fileID: 218189830}
+  m_GameObject: {fileID: 1923815350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc87f1ba54ce4046b39c10a66dbec51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
+  isP1: 0
+--- !u!114 &1923815357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: c83b37f63824c634e963e40dafa62212,
+    type: 2}
+  m_PrefabInternal: {fileID: 218189830}
+  m_GameObject: {fileID: 1923815350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4546d065c881a4ab08e92c73253a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHP: 1
+  maxHP: 5
+  damageSources: []
 --- !u!1 &2011476680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1582,8 @@ GameObject:
   - 61: {fileID: 2036110549}
   - 212: {fileID: 2036110548}
   - 114: {fileID: 2036110550}
+  - 114: {fileID: 2036110552}
+  - 114: {fileID: 2036110553}
   m_Layer: 13
   m_Name: P1
   m_TagString: Player
@@ -1651,6 +1684,35 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &2036110552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 60f7a27e5c3963345a7305fd0491d8d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 485683648}
+  m_GameObject: {fileID: 2036110546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc87f1ba54ce4046b39c10a66dbec51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
+  isP1: 1
+--- !u!114 &2036110553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 60f7a27e5c3963345a7305fd0491d8d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 485683648}
+  m_GameObject: {fileID: 2036110546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4546d065c881a4ab08e92c73253a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHP: 1
+  maxHP: 5
+  damageSources: []
 --- !u!1 &2082926338
 GameObject:
   m_ObjectHideFlags: 0

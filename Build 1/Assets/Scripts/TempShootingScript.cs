@@ -4,18 +4,36 @@ using System.Collections;
 public class TempShootingScript : MonoBehaviour {
 
 	public GameObject projectilePrefab;
+	public bool isP1 = true;
 	
 	// Update is called once per frame
 	void Update () {
-		// Non-piercing
-		if(Input.GetButtonDown("Fire1")){
+		// P1 Non-piercing
+		if(Input.GetButtonDown("Fire1a") && isP1){
 			Shoot(false);
 		}
-
-		// Piercing 
-		if(Input.GetButtonDown("Fire2")){
+		// P1 Piercing 
+		if(Input.GetButtonDown("Fire1b") && isP1){
 			Shoot(true);
 		}
+		// P1 Special 
+		if(Input.GetButtonDown("Fire1c") && isP1){
+			Debug.Log("P1 special ability");
+		}
+
+		// P2 Non-piercing
+		if(Input.GetButtonDown("Fire2a") && !isP1){
+			Shoot(false);
+		}
+		// P2 Piercing 
+		if(Input.GetButtonDown("Fire2b") && !isP1){
+			Shoot(true);
+		}
+		// P1 Piercing 
+		if(Input.GetButtonDown("Fire2c") && !isP1){
+			Debug.Log("P2 special ability");
+		}
+
 	}
 
 	private void Shoot(bool isPiercing){
