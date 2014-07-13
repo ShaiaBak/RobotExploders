@@ -10,6 +10,8 @@ public class Controller1 : MonoBehaviour {
 
 	public float jumpForce = 250;			//Arbitrary jump value
 	public bool enableControl = true;
+	private bool inGolem = false;
+	private GolemEntry golemEntry;
 	//private Animator anim;
 
 	//--------Input Variables--------//
@@ -17,6 +19,8 @@ public class Controller1 : MonoBehaviour {
 	private float moveV = 0f;
 	public bool jumpPress;					//When the Jump button is pressed
 	public bool jumpRelease;				//When the Jump button is released
+	public bool enterGolem;					//Input for enter or exiting the golem
+
 
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
@@ -27,39 +31,57 @@ public class Controller1 : MonoBehaviour {
 	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
 	private int i;
+	private SpriteRenderer spriteRenderer;
+	private BoxCollider2D boxCollider;
+	private Transform golemPosition;		//Used for following the golem position
+
+
 
 	void Start () {
 		//anim = GetComponent<Animator>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		boxCollider = GetComponent<BoxCollider2D>();
+
+		//Find the child, GroundCheck, of the object and assign it as the ground check
+		groundCheck = this.transform.FindChild("GroundCheck");
+
+		//used to check what value the environment layer is, which is 8
+		//layermasks is a bitwise operator 8 = 2^8 = 256
+		//Debug.Log(LayerMask.NameToLayer("Environment"));
+		whatIsGround.value = 256;
 	}
 	
 	void FixedUpdate () {
 
 	}
+	
 	void Update () {
 		//Player Inputs
 		moveH = Input.GetAxis ("P1_Horizontal");
 		moveV = Input.GetAxis ("P1_Vertical");
 		jumpPress = Input.GetButtonDown ("P1_Jump");
 		jumpRelease = Input.GetButtonUp ("P1_Jump");
+		enterGolem = Input.GetButtonDown ("P1_Enter");
 
 		if (jumpPress) {
 			Debug.Log("jump is pressed");
 		}
 
-		//When flying, reduce timer by the time it took to complete the last frame
-		if (flyingMode) {
-			flyingModeTimer -= Time.deltaTime;
-		}
-		//When timer is equal to or less than zero or when the jump button is released
-		//Disable flying mode and restore the gravity setting
-		if (flyingModeTimer <= 0 || jumpRelease) {
-			flyingMode = false;
-			rigidbody2D.gravityScale = 1;
-		}
-
 		//enableControl is only used for potential ideas later. If true you have normal movement
 		//if false, controls do nothing.
 		if (enableControl) {
+
+			//When flying, reduce timer by the time it took to complete the last frame
+			if (flyingMode) {
+				flyingModeTimer -= Time.deltaTime;
+			}
+			//When timer is equal to or less than zero or when the jump button is released
+			//Disable flying mode and restore the gravity setting
+			if (flyingModeTimer <= 0 || jumpRelease) {
+				flyingMode = false;
+				rigidbody2D.gravityScale = 1;
+			}
+
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
 			//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
 			//the unit will be considered on the ground, grounded = true
@@ -105,10 +127,36 @@ public class Controller1 : MonoBehaviour {
 		} else {
 			moveH = 0f; 
 		}
+
+		if(inGolem) {
+			//Follow the golem
+			transform.position = new Vector2(golemPosition.position.x, golemPosition.position.y);
+		}
 	}
+
+	//When the pilot enters the golems entry area
 	void OnTriggerStay2D(Collider2D other) {
 		if (other.tag == "GolemEnterZone") {
+
 			Debug.Log("In Golem");
+			if (enterGolem) {
+				//Disable player control and disable the image and collider
+				Debug.Log("Entering....");
+				enableControl = false;
+				moveH = 0f; 
+				moveV = 0f; 
+				rigidbody2D.gravityScale = 0;
+				spriteRenderer.enabled = false;
+				boxCollider.enabled = false;
+
+				//Finds the golems entry component and tags the pilot as inside the golem
+				//and then sets the pilot to be a child of the Golem
+				golemEntry = other.GetComponent<GolemEntry>();
+				golemEntry.pilotInGolem = true;
+				this.transform.parent = golemEntry.transform.parent;
+				golemPosition = transform.parent.Find ("Golem");
+				inGolem = true;
+			}
 		}
 	}
 
