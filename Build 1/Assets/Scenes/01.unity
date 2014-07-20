@@ -208,6 +208,10 @@ Prefab:
       propertyPath: m_RootMapOrder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: c83b37f63824c634e963e40dafa62212, type: 2}
+      propertyPath: maxHP
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c83b37f63824c634e963e40dafa62212, type: 2}
   m_RootGameObject: {fileID: 1923815350}
@@ -506,6 +510,7 @@ GameObject:
   - 92: {fileID: 784835952}
   - 81: {fileID: 784835951}
   - 114: {fileID: 784835955}
+  - 114: {fileID: 784835956}
   m_Layer: 0
   m_Name: P1_Camera
   m_TagString: Untagged
@@ -599,6 +604,19 @@ MonoBehaviour:
   bounds: {fileID: 1892572414}
   xOffset: 0
   yOffset: 0
+--- !u!114 &784835956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 784835949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60379c04697aaca46a6d4646b6b8a559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ph: {fileID: 0}
+  foo: 0
 --- !u!1 &878944944
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +719,7 @@ GameObject:
   - 92: {fileID: 896633223}
   - 81: {fileID: 896633222}
   - 114: {fileID: 896633221}
+  - 114: {fileID: 896633227}
   m_Layer: 0
   m_Name: P2_Camera
   m_TagString: Untagged
@@ -794,6 +813,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &896633227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 896633220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60379c04697aaca46a6d4646b6b8a559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ph: {fileID: 0}
+  foo: 0
 --- !u!1 &973018434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,7 +1994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHP: 1
-  maxHP: 5
+  maxHP: 8
   damageSources: []
 --- !u!1 &2011476680
 GameObject:

@@ -5,6 +5,8 @@ public class TempShootingScript : MonoBehaviour {
 
 	public GameObject projectilePrefab;
 	public bool isP1 = true;
+	private float cooldownTimer = 0f;
+	private float cooldownEnd = 1f;
 	
 	// Update is called once per frame
 	void Update () {
@@ -33,18 +35,23 @@ public class TempShootingScript : MonoBehaviour {
 		if(Input.GetButtonDown("Fire2c") && !isP1){
 			Debug.Log("P2 special ability");
 		}
-
+		cooldownTimer += Time.deltaTime;
 	}
 
 	private void Shoot(bool isPiercing){
-		// Set position for creating the projectile
-		Vector2 pos = new Vector2(transform.position.x+.4f, transform.position.y);
-		
-		GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
-		Projectile p = proj.GetComponent<Projectile>();
-		
-		// Make the projectile shoot to the right for 3s with a movespeed of 2, damage of 1
-		p.SetParameters(isPiercing, 2f, 3f, Vector2.right, 1, 0, 0, 0);
-		Physics2D.IgnoreCollision(collider2D, p.collider2D);
+		// Check cooldown period
+		if(cooldownTimer >= cooldownEnd){
+			cooldownTimer = 0;
+
+			// Set position for creating the projectile
+			Vector2 pos = new Vector2(transform.position.x+.4f, transform.position.y);
+			
+			GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
+			Projectile p = proj.GetComponent<Projectile>();
+			
+			// Make the projectile shoot to the right for 3s with a movespeed of 2, damage of 1
+			p.SetParameters(isPiercing, 2f, 3f, Vector2.right, 1, 0, 0, 0);
+			Physics2D.IgnoreCollision(collider2D, p.collider2D);
+		}
 	}
 }
