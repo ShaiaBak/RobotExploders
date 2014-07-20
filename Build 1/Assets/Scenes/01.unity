@@ -155,9 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSwitch_p1: 0
   inputSwitch_p2: 0
-  control1_p1: 1
-  control2_p1: 0
-  sc: {fileID: 0}
+  p1: {fileID: 0}
+  p2: {fileID: 0}
 --- !u!4 &182351942
 Transform:
   m_ObjectHideFlags: 0
@@ -2046,7 +2045,6 @@ GameObject:
   - 50: {fileID: 2036110551}
   - 61: {fileID: 2036110549}
   - 212: {fileID: 2036110548}
-  - 114: {fileID: 2036110550}
   - 114: {fileID: 2036110552}
   - 114: {fileID: 2036110553}
   - 114: {fileID: 2036110554}
@@ -2106,32 +2104,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .99000001, y: .99000001}
   m_Center: {x: 0, y: 0}
---- !u!114 &2036110550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 60f7a27e5c3963345a7305fd0491d8d2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2036110546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 3
-  facingRight: 1
-  jumpForce: 250
-  enableControl: 1
-  jumpPress: 0
-  jumpRelease: 0
-  enterGolem: 0
-  grounded: 0
-  doubleJump: 1
-  flyingMode: 0
-  flyingModeTimer: 0
-  flyingModeDuration: 2
-  groundCheck: {fileID: 0}
-  whatIsGround: {}
 --- !u!50 &2036110551
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2190,9 +2162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSwitch_p1: 0
   inputSwitch_p2: 0
-  control1_p1: 1
-  control2_p1: 0
-  sc: {fileID: 0}
+  p1: {fileID: 0}
+  p2: {fileID: 0}
 --- !u!1001 &2038954442
 Prefab:
   m_ObjectHideFlags: 0
