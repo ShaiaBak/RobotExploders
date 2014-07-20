@@ -16,7 +16,7 @@ public class GolemEntry : MonoBehaviour {
 		if (pilotInGolem) {
 			//Add a controller to the golem and destroy the entry point
 			Debug.Log("Pilot inside Golem");
-			golem.gameObject.AddComponent<Controller1>();
+			golem.gameObject.AddComponent<GolemController1>();
 			DestroyObject(this.gameObject);
 		}
 		//follow the golems position

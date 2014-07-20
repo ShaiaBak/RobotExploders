@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Controller2p1 : MonoBehaviour {
+public class GolemController1 : MonoBehaviour {
 	
 	
-	public float maxSpeed = 3f; 			//Arbitrary speed value
+	public float maxSpeed = 2f; 			//Arbitrary speed value
 	public bool facingRight = true;
 	
 	
-	public float jumpForce = 250;			//Arbitrary jump value
+	public float jumpForce = 150;			//Arbitrary jump value
 	public bool enableControl = true;
 	private bool inGolem = false;
 	private GolemEntry golemEntry;
