@@ -3,15 +3,15 @@ using System.Collections;
 
 public class Controller1 : MonoBehaviour {
 
-
 	public float maxSpeed = 3f; 			//Arbitrary speed value
 	public bool facingRight = true;
-
 
 	public float jumpForce = 250;			//Arbitrary jump value
 	public bool enableControl = true;
 	private bool inGolem = false;
 	private GolemEntry golemEntry;
+	public bool exitingTheGolem = false;
+
 	//private Animator anim;
 
 	//--------Input Variables--------//
@@ -131,6 +131,9 @@ public class Controller1 : MonoBehaviour {
 		if(inGolem) {
 			//Follow the golem
 			transform.position = new Vector2(golemPosition.position.x, golemPosition.position.y);
+			if(exitingTheGolem) {
+				pilotExit();
+			}
 		}
 	}
 
@@ -161,15 +164,17 @@ public class Controller1 : MonoBehaviour {
 	}
 
 	void pilotExit() {
-		Debug.Log("Entering....");
+		Debug.Log("Exiting....");
 		enableControl = true;
 		moveH = 0f; 
 		moveV = 0f; 
 		rigidbody2D.gravityScale = 1;
 		spriteRenderer.enabled = true;
 		boxCollider.enabled = true;
+		this.transform.parent = null;
+		inGolem = false;
+		exitingTheGolem = false;
 	}
-
 
 	void Flip () {
 		facingRight = !facingRight;

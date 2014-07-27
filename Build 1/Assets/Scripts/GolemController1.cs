@@ -9,9 +9,10 @@ public class GolemController1 : MonoBehaviour {
 	
 	
 	public float jumpForce = 150;			//Arbitrary jump value
-	public bool enableControl = true;
+	public bool enableControl = false;
 	private bool inGolem = false;
 	private GolemEntry golemEntry;
+	private Controller1 pilot;				//Change Controller1 when pilot script changes name
 	//private Animator anim;
 	
 	//--------Input Variables--------//
@@ -129,7 +130,14 @@ public class GolemController1 : MonoBehaviour {
 		}
 
 		if (enterGolem) {
-			
+			pilot = transform.parent.Find ("P1").GetComponent<Controller1>();
+			moveH = 0f;
+			moveV = 0f;
+			enableControl = false;
+			golemEntry = transform.parent.Find ("Golem_Entry").GetComponent<GolemEntry>();
+			golemEntry.pilotInGolem = false;
+			pilot.exitingTheGolem = true;
+
 		}
 	}
 	
