@@ -127,36 +127,9 @@ public class GolemController1 : MonoBehaviour {
 		} else {
 			moveH = 0f; 
 		}
-		
-		if(inGolem) {
-			//Follow the golem
-			transform.position = new Vector2(golemPosition.position.x, golemPosition.position.y);
-		}
-	}
-	
-	//When the pilot enters the golems entry area
-	void OnTriggerStay2D(Collider2D other) {
-		if (other.tag == "GolemEnterZone") {
+
+		if (enterGolem) {
 			
-			Debug.Log("In Golem");
-			if (enterGolem) {
-				//Disable player control and disable the image and collider
-				Debug.Log("Entering....");
-				enableControl = false;
-				moveH = 0f; 
-				moveV = 0f; 
-				rigidbody2D.gravityScale = 0;
-				spriteRenderer.enabled = false;
-				boxCollider.enabled = false;
-				
-				//Finds the golems entry component and tags the pilot as inside the golem
-				//and then sets the pilot to be a child of the Golem
-				golemEntry = other.GetComponent<GolemEntry>();
-				golemEntry.pilotInGolem = true;
-				this.transform.parent = golemEntry.transform.parent;
-				golemPosition = transform.parent.Find ("Golem");
-				inGolem = true;
-			}
 		}
 	}
 	

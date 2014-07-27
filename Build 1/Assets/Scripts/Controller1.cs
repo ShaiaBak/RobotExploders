@@ -160,6 +160,17 @@ public class Controller1 : MonoBehaviour {
 		}
 	}
 
+	void pilotExit() {
+		Debug.Log("Entering....");
+		enableControl = true;
+		moveH = 0f; 
+		moveV = 0f; 
+		rigidbody2D.gravityScale = 1;
+		spriteRenderer.enabled = true;
+		boxCollider.enabled = true;
+	}
+
+
 	void Flip () {
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
