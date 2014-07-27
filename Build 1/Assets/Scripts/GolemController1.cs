@@ -9,9 +9,10 @@ public class GolemController1 : MonoBehaviour {
 	
 	
 	public float jumpForce = 150;			//Arbitrary jump value
-	public bool enableControl = true;
+	public bool enableControl = false;
 	private bool inGolem = false;
 	private GolemEntry golemEntry;
+	private Controller1 pilot;				//Change Controller1 when pilot script changes name
 	//private Animator anim;
 	
 	//--------Input Variables--------//
@@ -127,36 +128,16 @@ public class GolemController1 : MonoBehaviour {
 		} else {
 			moveH = 0f; 
 		}
-		
-		if(inGolem) {
-			//Follow the golem
-			transform.position = new Vector2(golemPosition.position.x, golemPosition.position.y);
-		}
-	}
-	
-	//When the pilot enters the golems entry area
-	void OnTriggerStay2D(Collider2D other) {
-		if (other.tag == "GolemEnterZone") {
-			
-			Debug.Log("In Golem");
-			if (enterGolem) {
-				//Disable player control and disable the image and collider
-				Debug.Log("Entering....");
-				enableControl = false;
-				moveH = 0f; 
-				moveV = 0f; 
-				rigidbody2D.gravityScale = 0;
-				spriteRenderer.enabled = false;
-				boxCollider.enabled = false;
-				
-				//Finds the golems entry component and tags the pilot as inside the golem
-				//and then sets the pilot to be a child of the Golem
-				golemEntry = other.GetComponent<GolemEntry>();
-				golemEntry.pilotInGolem = true;
-				this.transform.parent = golemEntry.transform.parent;
-				golemPosition = transform.parent.Find ("Golem");
-				inGolem = true;
-			}
+
+		if (enterGolem) {
+			pilot = transform.parent.Find ("P1").GetComponent<Controller1>();
+			moveH = 0f;
+			moveV = 0f;
+			enableControl = false;
+			golemEntry = transform.parent.Find ("Golem_Entry").GetComponent<GolemEntry>();
+			golemEntry.pilotInGolem = false;
+			pilot.exitingTheGolem = true;
+
 		}
 	}
 	

@@ -296,6 +296,7 @@ GameObject:
   - 50: {fileID: 360765670}
   - 61: {fileID: 360765669}
   - 212: {fileID: 360765668}
+  - 114: {fileID: 360765667}
   m_Layer: 12
   m_Name: Golem
   m_TagString: Golem
@@ -317,6 +318,33 @@ Transform:
   - {fileID: 1047566652}
   m_Father: {fileID: 1300602920}
   m_RootOrder: 0
+--- !u!114 &360765667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360765665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc621f52dc855424f94b628fbc7b2821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 2
+  facingRight: 1
+  jumpForce: 150
+  enableControl: 0
+  jumpPress: 0
+  jumpRelease: 0
+  enterGolem: 0
+  grounded: 0
+  doubleJump: 1
+  flyingMode: 0
+  flyingModeTimer: 0
+  flyingModeDuration: 2
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &360765668
 SpriteRenderer:
   m_ObjectHideFlags: 0
