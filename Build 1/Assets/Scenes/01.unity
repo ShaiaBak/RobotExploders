@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSwitch_p1: 0
   inputSwitch_p2: 0
-  p1: {fileID: 0}
-  p2: {fileID: 0}
+  key1: {fileID: 0}
+  pad1: {fileID: 0}
 --- !u!4 &182351942
 Transform:
   m_ObjectHideFlags: 0
@@ -616,7 +616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ph: {fileID: 0}
-  foo: 0
 --- !u!1 &878944944
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +824,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ph: {fileID: 0}
-  foo: 0
 --- !u!1 &973018434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,8 +2192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSwitch_p1: 0
   inputSwitch_p2: 0
-  p1: {fileID: 0}
-  p2: {fileID: 0}
+  key1: {fileID: 0}
+  pad1: {fileID: 0}
 --- !u!1001 &2038954442
 Prefab:
   m_ObjectHideFlags: 0
