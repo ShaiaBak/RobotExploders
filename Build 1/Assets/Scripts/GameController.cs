@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
 	public void GameOver() {
 		gameOverText.text = "Game Over";		// @TODO: add WHO wins to this
 		gameOver = true;
-		restartText.text = "Press 'R' to restart game?";
+		restartText.text = "Press 'R' to restart game";
 		restart = true;
 	}
 
