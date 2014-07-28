@@ -56,6 +56,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 61: {fileID: 6100000}
   - 212: {fileID: 21200000}
+  - 114: {fileID: 11400002}
   m_Layer: 12
   m_Name: Golem
   m_TagString: Golem
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.241945937, y: 3.11982799, z: 0}
+  m_LocalPosition: {x: -.292881727, y: 1.28613317, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -192,7 +193,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f260df4ff4fad5d40b83df795445a3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golem: {fileID: 400006}
+  pilotInGolem: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc621f52dc855424f94b628fbc7b2821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 2
+  facingRight: 1
+  jumpForce: 150
+  enableControl: 0
+  jumpPress: 0
+  jumpRelease: 0
+  enterGolem: 0
+  grounded: 0
+  doubleJump: 1
+  flyingMode: 0
+  flyingModeTimer: 0
+  flyingModeDuration: 2
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
