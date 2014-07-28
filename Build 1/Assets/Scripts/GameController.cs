@@ -20,18 +20,17 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		// if you press 'R', restart game
+		if (Input.GetKeyDown (KeyCode.R) && gameOver) {
+			Application.LoadLevel (Application.loadedLevel);
+		}
 	}
 
 	public void GameOver() {
 		gameOverText.text = "Game Over";		// @TODO: add WHO wins to this
 		gameOver = true;
-		restartText.text = "Restart game?";
+		restartText.text = "Press 'R' to restart game?";
 		restart = true;
-
-		if (Input.GetKeyDown (KeyCode.R)) {
-			Application.LoadLevel (Application.loadedLevel);
-		}
 	}
 
 }

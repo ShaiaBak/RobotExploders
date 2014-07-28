@@ -166,50 +166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
---- !u!1 &182351940
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 182351942}
-  - 114: {fileID: 182351941}
-  m_Layer: 0
-  m_Name: Input_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &182351941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 182351940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f40e044d9118340b13984dfe7c9eab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSwitch_p1: 0
-  inputSwitch_p2: 0
-  key1: {fileID: 0}
-  pad1: {fileID: 0}
---- !u!4 &182351942
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 182351940}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1001 &218189830
 Prefab:
   m_ObjectHideFlags: 0
@@ -296,7 +253,6 @@ GameObject:
   - 50: {fileID: 360765670}
   - 61: {fileID: 360765669}
   - 212: {fileID: 360765668}
-  - 114: {fileID: 360765667}
   m_Layer: 12
   m_Name: Golem
   m_TagString: Golem
@@ -318,33 +274,6 @@ Transform:
   - {fileID: 1047566652}
   m_Father: {fileID: 1300602920}
   m_RootOrder: 0
---- !u!114 &360765667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 360765665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc621f52dc855424f94b628fbc7b2821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 2
-  facingRight: 1
-  jumpForce: 150
-  enableControl: 0
-  jumpPress: 0
-  jumpRelease: 0
-  enterGolem: 0
-  grounded: 0
-  doubleJump: 1
-  flyingMode: 0
-  flyingModeTimer: 0
-  flyingModeDuration: 2
-  groundCheck: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &360765668
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -472,7 +401,7 @@ Transform:
   - {fileID: 1066301885}
   - {fileID: 1961398071}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &596581861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2096,7 @@ GUIText:
   m_GameObject: {fileID: 1961398069}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Gaveover Text
+  m_Text: Gameover Text
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
