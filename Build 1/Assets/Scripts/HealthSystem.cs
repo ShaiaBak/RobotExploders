@@ -12,13 +12,9 @@ public abstract class HealthSystem : MonoBehaviour {
 	private int maxCheck = 3;	// Length of count until damage source clear
 	private int curCheck = 0;	// Current count until damage source clear
 
-	private GameController gameController;
-	
 	// Use this for initialization
 	void Start () {
 		curHP = maxHP;
-		gameController = GameObject.Find("GameController").GetComponent<GameController>();
-
 	}
 	
 	// FixedUpdate is called once per fixed framerate frame
@@ -82,7 +78,7 @@ public abstract class HealthSystem : MonoBehaviour {
 		if( curHP <= 0 ){
 			curHP = 0;
 			HandleDeath();
-			gameController.GameOver();
+
 		}
 	}
 	
