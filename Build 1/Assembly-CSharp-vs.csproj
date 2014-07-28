@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Controller2.cs" />
      <Compile Include="Assets\Scripts\DestructibleHealthSystem.cs" />
      <Compile Include="Assets\Scripts\GUIManager.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GolemController1.cs" />
      <Compile Include="Assets\Scripts\GolemEntry.cs" />
      <Compile Include="Assets\Scripts\HealthSystem.cs" />
