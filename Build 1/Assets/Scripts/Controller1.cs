@@ -15,8 +15,8 @@ public class Controller1 : MonoBehaviour {
 	//private Animator anim;
 
 	//--------Input Variables--------//
-	private float moveH = 0f;
-	private float moveV = 0f;
+	public float moveH = 0f;
+	public float moveV = 0f;
 	public bool jumpPress;					//When the Jump button is pressed
 	public bool jumpRelease;				//When the Jump button is released
 	public bool enterGolemPress;			//Input for enter or exiting the golem is pressed
@@ -39,7 +39,7 @@ public class Controller1 : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 	private BoxCollider2D boxCollider;
 	private Transform golemPosition;		//Used for following the golem position
-
+	private Transform direction;
 
 
 	void Start () {
@@ -54,6 +54,7 @@ public class Controller1 : MonoBehaviour {
 		//layermasks is a bitwise operator 8 = 2^8 = 256
 		//Debug.Log(LayerMask.NameToLayer("Environment"));
 		whatIsGround.value = 256;
+		direction = this.transform.FindChild("Direction");
 	}
 	
 	void FixedUpdate () {
@@ -125,12 +126,13 @@ public class Controller1 : MonoBehaviour {
 				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 			}
 			// Flip the image if it is moving to left while facing right or moving right while facing left
-			if (moveH > 0 && !facingRight) {
-				Flip ();
-			} else if (moveH < 0 && facingRight) {
-				Flip ();
-			}
+//			if (moveH > 0 && !facingRight) {
+//				Flip ();
+//			} else if (moveH < 0 && facingRight) {
+//				Flip ();
+//			}
 
+			directionCheck();
 
 			if (enteringTheGolem) {
 				enteringTimer -= Time.deltaTime;
@@ -154,6 +156,8 @@ public class Controller1 : MonoBehaviour {
 		if(exitingTheGolem) {
 			pilotExit();
 		}
+
+
 
 	}
 
@@ -190,6 +194,8 @@ public class Controller1 : MonoBehaviour {
 			enteringTheGolem = false;
 			enteringTimer = enteringDuration;
 		}
+
+
 	}
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.tag == "GolemEnterZone") {
@@ -218,4 +224,42 @@ public class Controller1 : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+	void directionCheck() {
+		
+		if (moveH >= 0 && moveV >= 0) {
+			direction.localPosition = new Vector2(1, 1);
+		} 
+
+		if (moveH <= 0 && moveV >= 0) {
+			direction.localPosition = new Vector2(-1, 1);
+		} 
+
+		if (moveH >= 0 && moveV <= 0) {
+			direction.localPosition = new Vector2(1, -1);
+		}
+
+		if (moveH <= 0 && moveV <= 0) {
+			direction.localPosition = new Vector2(-1, -1);
+		}
+		
+		if (moveH == 0 && moveV >= 0) { 
+			direction.localPosition = new Vector2(0, 1);
+		}		
+
+		if (moveH == 0 && moveV <= 0) { 
+			direction.localPosition = new Vector2(0, -1);
+		}		
+
+		if (moveH <= 0 && moveV == 0) {
+			direction.localPosition = new Vector2(-1, 0);
+		}
+
+		if (moveH >= 0 && moveV == 0) {
+			direction.localPosition = new Vector2(1, 0);
+		}
+
+
+
+	}
+
 }

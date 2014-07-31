@@ -42,7 +42,7 @@ public class GolemController1 : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 	private BoxCollider2D boxCollider;
 	private Transform golemPosition;		//Used for following the golem position
-	
+	private Transform direction;
 	
 	
 	void Start () {
@@ -57,6 +57,9 @@ public class GolemController1 : MonoBehaviour {
 		//layermasks is a bitwise operator 8 = 2^8 = 256
 		//Debug.Log(LayerMask.NameToLayer("Environment"));
 		whatIsGround.value = 256;
+
+		direction = this.transform.FindChild("Direction");
+
 	}
 	
 	void FixedUpdate () {
@@ -174,6 +177,9 @@ public class GolemController1 : MonoBehaviour {
 		if (!exitingTheGolem) {
 			exitingTimer = exitingDuration;
 		}
+
+
+
 	}
 
 	void Flip () {
@@ -182,4 +188,6 @@ public class GolemController1 : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+
 }
