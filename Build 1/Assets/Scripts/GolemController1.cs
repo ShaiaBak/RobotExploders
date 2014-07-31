@@ -20,14 +20,21 @@ public class GolemController1 : MonoBehaviour {
 	private float moveV = 0f;
 	public bool jumpPress;					//When the Jump button is pressed
 	public bool jumpRelease;				//When the Jump button is released
-	public bool enterGolem;					//Input for enter or exiting the golem
-	
+	public bool enterGolemPress;			//Input for enter or exiting the golem is pressed
+	public bool enterGolemRelease;			//Input for enter or exiting the golem is released
+
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
-	public bool flyingMode = false;			//True = Flying is active
-	public float flyingModeTimer = 0;		//The Timer for flying mode
-	public float flyingModeDuration = 2;	//Total Duration of the flight
+	private bool flyingMode = false;			//True = Flying is active
+	private float flyingModeTimer = 0;		//The Timer for flying mode
+	private float flyingModeDuration = 2;	//Total Duration of the flight
+
+	public bool exitingTheGolem = false;
+	public float exitingTimer = 0;
+	public float exitingDuration = 0.5f;
+
+
 	public Transform groundCheck;
 	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
@@ -62,8 +69,9 @@ public class GolemController1 : MonoBehaviour {
 		moveV = Input.GetAxis ("P1_Vertical");
 		jumpPress = Input.GetButtonDown ("P1_Jump");
 		jumpRelease = Input.GetButtonUp ("P1_Jump");
-		enterGolem = Input.GetButtonDown ("P1_Enter");
-		
+		enterGolemPress = Input.GetButtonDown ("P1_Enter");
+		enterGolemRelease = Input.GetButtonUp ("P1_Enter");
+
 		if (jumpPress) {
 			Debug.Log("jump is pressed");
 		}
@@ -124,23 +132,50 @@ public class GolemController1 : MonoBehaviour {
 			} else if (moveH < 0 && facingRight) {
 				Flip ();
 			}
+			// When the enter/exit golem button is pressed, start the timer
+			if (enterGolemPress) {
+				exitingTheGolem = true;
+				exitingTimer = exitingDuration;
+			}
+			// If enter/exit golem button cancel timer
+			if (enterGolemRelease) {
+				exitingTheGolem = false;
+			}
 			
+			if (exitingTheGolem) {
+				exitingTimer -= Time.deltaTime;
+			}
+
+			// when the timer reaches 0, remove the pilot 
+			if (exitingTimer <= 0 && exitingTheGolem) {
+	
+
+				//Search for the pilot sibling, uses Tag
+				foreach (Transform child in transform.parent) {
+					if (child.tag == "Player") {
+						pilot = child.GetComponent<Controller1>();
+					}
+				}
+				flyingMode = false;
+				rigidbody2D.gravityScale = 1;
+				enableControl = false;
+				exitingTheGolem = false;
+				golemEntry = transform.parent.Find ("Golem_Entry").GetComponent<GolemEntry>();
+				golemEntry.pilotInGolem = false;
+				pilot.exitingTheGolem = true;
+				moveH = 0f;
+				moveV = 0f;	
+			}
+
 		} else {
 			moveH = 0f; 
 		}
-
-		if (enterGolem) {
-			pilot = transform.parent.Find ("P1").GetComponent<Controller1>();
-			moveH = 0f;
-			moveV = 0f;
-			enableControl = false;
-			golemEntry = transform.parent.Find ("Golem_Entry").GetComponent<GolemEntry>();
-			golemEntry.pilotInGolem = false;
-			pilot.exitingTheGolem = true;
-
+		//Reset Exiting golem timer
+		if (!exitingTheGolem) {
+			exitingTimer = exitingDuration;
 		}
 	}
-	
+
 	void Flip () {
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;

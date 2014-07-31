@@ -19,14 +19,19 @@ public class Controller1 : MonoBehaviour {
 	private float moveV = 0f;
 	public bool jumpPress;					//When the Jump button is pressed
 	public bool jumpRelease;				//When the Jump button is released
-	public bool enterGolem;					//Input for enter or exiting the golem
-
+	public bool enterGolemPress;			//Input for enter or exiting the golem is pressed
+	public bool enterGolemRelease;			//Input for enter or exiting the golem is released
 
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
-	public bool flyingMode = false;			//True = Flying is active
-	public float flyingModeTimer = 0;		//The Timer for flying mode
-	public float flyingModeDuration = 2;	//Total Duration of the flight
+	private bool flyingMode = false;			//True = Flying is active
+	private float flyingModeTimer = 0;		//The Timer for flying mode
+	private float flyingModeDuration = 2;	//Total Duration of the flight
+
+	public bool enteringTheGolem = false;
+	public float enteringTimer = 0;
+	public float enteringDuration = 0.5f;
+
 	public Transform groundCheck;
 	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
@@ -61,7 +66,9 @@ public class Controller1 : MonoBehaviour {
 		moveV = Input.GetAxis ("P1_Vertical");
 		jumpPress = Input.GetButtonDown ("P1_Jump");
 		jumpRelease = Input.GetButtonUp ("P1_Jump");
-		enterGolem = Input.GetButtonDown ("P1_Enter");
+		enterGolemPress = Input.GetButtonDown ("P1_Enter");
+		enterGolemRelease = Input.GetButtonUp ("P1_Enter");
+
 
 		if (jumpPress) {
 			Debug.Log("jump is pressed");
@@ -123,7 +130,18 @@ public class Controller1 : MonoBehaviour {
 			} else if (moveH < 0 && facingRight) {
 				Flip ();
 			}
-			
+
+
+			if (enteringTheGolem) {
+				enteringTimer -= Time.deltaTime;
+			}
+
+			if (!enteringTheGolem) {
+				enteringTimer = enteringDuration;
+			}
+
+
+
 		} else {
 			moveH = 0f; 
 		}
@@ -131,18 +149,26 @@ public class Controller1 : MonoBehaviour {
 		if(inGolem) {
 			//Follow the golem
 			transform.position = new Vector2(golemPosition.position.x, golemPosition.position.y);
-			if(exitingTheGolem) {
-				pilotExit();
-			}
 		}
+
+		if(exitingTheGolem) {
+			pilotExit();
+		}
+
 	}
 
 	//When the pilot enters the golems entry area
 	void OnTriggerStay2D(Collider2D other) {
-		if (other.tag == "GolemEnterZone") {
+		if (other.tag == "GolemEnterZone" && enableControl) {
 
 			Debug.Log("In Golem");
-			if (enterGolem) {
+			if (enterGolemPress) {
+
+				enteringTheGolem = true;
+				enteringTimer = enteringDuration;
+			}
+
+			if (enteringTimer <= 0 && enteringTheGolem) {
 				//Disable player control and disable the image and collider
 				Debug.Log("Entering....");
 				enableControl = false;
@@ -151,7 +177,7 @@ public class Controller1 : MonoBehaviour {
 				rigidbody2D.gravityScale = 0;
 				spriteRenderer.enabled = false;
 				boxCollider.enabled = false;
-
+				flyingMode = false;
 				//Finds the golems entry component and tags the pilot as inside the golem
 				//and then sets the pilot to be a child of the Golem
 				golemEntry = other.GetComponent<GolemEntry>();
@@ -160,6 +186,15 @@ public class Controller1 : MonoBehaviour {
 				golemPosition = transform.parent.Find ("Golem");
 				inGolem = true;
 			}
+		} else {
+			enteringTheGolem = false;
+			enteringTimer = enteringDuration;
+		}
+	}
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag == "GolemEnterZone") {
+			enteringTheGolem = false;
+			enteringTimer = enteringDuration;
 		}
 	}
 
@@ -174,6 +209,7 @@ public class Controller1 : MonoBehaviour {
 		this.transform.parent = null;
 		inGolem = false;
 		exitingTheGolem = false;
+		enteringTheGolem = false;
 	}
 
 	void Flip () {
