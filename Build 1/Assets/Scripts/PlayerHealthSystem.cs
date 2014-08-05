@@ -12,5 +12,4 @@ public class PlayerHealthSystem : HealthSystem {
 		collider2D.enabled = false;
 		gameController.GameOver();
 	}
-
 }
