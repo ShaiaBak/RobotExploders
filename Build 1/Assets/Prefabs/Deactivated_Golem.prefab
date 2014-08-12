@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilotInGolem: 0
-  isP1entering: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,14 +205,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc621f52dc855424f94b628fbc7b2821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isP1: 1
   maxSpeed: 2
   facingRight: 1
   jumpForce: 150
   enableControl: 0
-  Golem_EntryPrefab: {fileID: 100000, guid: 9e69005464ef90f4786a092bd3cded1d, type: 2}
   jumpPress: 0
   jumpRelease: 0
+  enterGolemPress: 0
+  enterGolemRelease: 0
   grounded: 0
   doubleJump: 1
   exitingTheGolem: 0
