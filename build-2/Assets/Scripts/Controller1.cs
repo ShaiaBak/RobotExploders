@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Controller1 : MonoBehaviour {
 
+	public bool isP1 = true; 
 	public float maxSpeed = 3f; 			//Arbitrary speed value
 	public bool facingRight = true;
 
@@ -63,16 +64,22 @@ public class Controller1 : MonoBehaviour {
 	
 	void Update () {
 		//Player Inputs
-		moveH = Input.GetAxis ("P1_Horizontal");
-		moveV = Input.GetAxis ("P1_Vertical");
-		jumpPress = Input.GetButtonDown ("P1_Jump");
-		jumpRelease = Input.GetButtonUp ("P1_Jump");
-		enterGolemPress = Input.GetButtonDown ("P1_Enter");
-		enterGolemRelease = Input.GetButtonUp ("P1_Enter");
+		if (isP1) {
+			moveH = Input.GetAxis ("P1_Horizontal");
+			moveV = Input.GetAxis ("P1_Vertical");
+			jumpPress = Input.GetButtonDown ("P1_Jump");
+			jumpRelease = Input.GetButtonUp ("P1_Jump");
+			enterGolemPress = Input.GetButtonDown ("P1_Enter");
+			enterGolemRelease = Input.GetButtonUp ("P1_Enter");
+		}
 
-
-		if (jumpPress) {
-			Debug.Log("jump is pressed");
+		if (!isP1) {
+			moveH = Input.GetAxis ("P2_Horizontal");
+			moveV = Input.GetAxis ("P2_Vertical");
+			jumpPress = Input.GetButtonDown ("P2_Jump");
+			jumpRelease = Input.GetButtonUp ("P2_Jump");
+			enterGolemPress = Input.GetButtonDown ("P2_Enter");
+			enterGolemRelease = Input.GetButtonUp ("P2_Enter");
 		}
 
 		//enableControl is only used for potential ideas later. If true you have normal movement
@@ -126,18 +133,17 @@ public class Controller1 : MonoBehaviour {
 				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 			}
 			// Flip the image if it is moving to left while facing right or moving right while facing left
-//			if (moveH > 0 && !facingRight) {
-//				Flip ();
-//			} else if (moveH < 0 && facingRight) {
-//				Flip ();
-//			}
+			if (moveH > 0 && !facingRight) {
+				Flip ();
+			} else if (moveH < 0 && facingRight) {
+				Flip ();
+			}
 
 			directionCheck();
 
 			if (enteringTheGolem) {
 				enteringTimer -= Time.deltaTime;
 			}
-
 			if (!enteringTheGolem) {
 				enteringTimer = enteringDuration;
 			}
@@ -171,7 +177,10 @@ public class Controller1 : MonoBehaviour {
 				enteringTheGolem = true;
 				enteringTimer = enteringDuration;
 			}
-
+			if (enterGolemRelease) {
+				enteringTheGolem = false;
+			}	
+				
 			if (enteringTimer <= 0 && enteringTheGolem) {
 				//Disable player control and disable the image and collider
 				Debug.Log("Entering....");
@@ -186,16 +195,22 @@ public class Controller1 : MonoBehaviour {
 				//and then sets the pilot to be a child of the Golem
 				golemEntry = other.GetComponent<GolemEntry>();
 				golemEntry.pilotInGolem = true;
+
+				//If P1, set golems controls to Player 1
+				if (isP1) {
+					golemEntry.isP1entering = true;
+				}
+				if (!isP1) {
+					golemEntry.isP1entering = false;
+				}
+				
+				//Pilot object becomes a child of the golem and follows the golem object
+
 				this.transform.parent = golemEntry.transform.parent;
 				golemPosition = transform.parent.Find ("Golem");
 				inGolem = true;
 			}
-		} else {
-			enteringTheGolem = false;
-			enteringTimer = enteringDuration;
 		}
-
-
 	}
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.tag == "GolemEnterZone") {
@@ -226,40 +241,30 @@ public class Controller1 : MonoBehaviour {
 	}
 	void directionCheck() {
 		
-		if (moveH >= 0 && moveV >= 0) {
+		//Top Right/Left
+		if ((moveH >= 0 && moveV >= 0) || (moveH <= 0 && moveV >= 0)) {
 			direction.localPosition = new Vector2(1, 1);
-		} 
+		}
 
-		if (moveH <= 0 && moveV >= 0) {
-			direction.localPosition = new Vector2(-1, 1);
-		} 
-
-		if (moveH >= 0 && moveV <= 0) {
+		//Bottom Right/Left
+		if ((moveH >= 0 && moveV <= 0) || (moveH <= 0 && moveV <= 0)) {
 			direction.localPosition = new Vector2(1, -1);
 		}
 
-		if (moveH <= 0 && moveV <= 0) {
-			direction.localPosition = new Vector2(-1, -1);
-		}
-		
+		//Top
 		if (moveH == 0 && moveV >= 0) { 
 			direction.localPosition = new Vector2(0, 1);
 		}		
-
+		
+		//Bottom
 		if (moveH == 0 && moveV <= 0) { 
 			direction.localPosition = new Vector2(0, -1);
-		}		
+		}	
 
-		if (moveH <= 0 && moveV == 0) {
-			direction.localPosition = new Vector2(-1, 0);
-		}
-
-		if (moveH >= 0 && moveV == 0) {
+		//Straight Right/Left
+		if ((moveH >= 0 && moveV == 0) || (moveH <= 0 && moveV == 0)) {
 			direction.localPosition = new Vector2(1, 0);
 		}
-
-
-
 	}
 
 }

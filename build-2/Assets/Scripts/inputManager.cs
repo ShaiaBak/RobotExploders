@@ -27,6 +27,9 @@ public class inputManager : MonoBehaviour {
 			Destroy(pad1);
 			// add p1 control scheme
 			key1 = gameObject.AddComponent("Controller1") as Controller1;
+			if (gameObject.name == "P2") {
+				key1.isP1 = false;
+			}
 			script.enabled = false;
 		}
 		if (inputSwitch_p2) {

@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 50: {fileID: 5000000}
-  - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400000}
   m_Layer: 13
   m_Name: P2
   m_TagString: Player
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.96906853, y: 1.36059701, z: 0}
+  m_LocalPosition: {x: 2.39236093, y: 1.9944011, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -123,19 +123,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d245713357f62440a6548a0c73a088f, type: 3}
+  m_Script: {fileID: 11500000, guid: 75f40e044d9118340b13984dfe7c9eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
-  jumpForce: 250
-  enableControl: 1
-  grounded: 0
-  jump: 0
-  doubleJump: 1
-  groundCheck: {fileID: 400002}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
+  inputSwitch_p1: 0
+  inputSwitch_p2: 0
+  key1: {fileID: 0}
+  pad1: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHP: 1
-  maxHP: 5
+  maxHP: 8
   damageSources: []
 --- !u!212 &21200000
 SpriteRenderer:
