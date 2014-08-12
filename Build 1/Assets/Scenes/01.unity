@@ -237,7 +237,8 @@ Prefab:
       propertyPath: maxHP
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: c83b37f63824c634e963e40dafa62212, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c83b37f63824c634e963e40dafa62212, type: 2}
   m_RootGameObject: {fileID: 1923815350}
   m_IsPrefabParent: 0
@@ -299,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilotInGolem: 0
+  isP1entering: 1
 --- !u!61 &479657288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1116,14 +1118,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc621f52dc855424f94b628fbc7b2821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isP1: 1
   maxSpeed: 2
   facingRight: 1
   jumpForce: 150
   enableControl: 0
+  Golem_EntryPrefab: {fileID: 100000, guid: 9e69005464ef90f4786a092bd3cded1d, type: 2}
   jumpPress: 0
   jumpRelease: 0
-  enterGolemPress: 0
-  enterGolemRelease: 0
   grounded: 0
   doubleJump: 1
   exitingTheGolem: 0
@@ -1649,6 +1651,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: bf39d134e8cd4304dacb4b489a695da1, type: 2}
+      propertyPath: Golem_Entry
+      value: 
+      objectReference: {fileID: 100000, guid: 9e69005464ef90f4786a092bd3cded1d, type: 2}
+    - target: {fileID: 11400002, guid: bf39d134e8cd4304dacb4b489a695da1, type: 2}
+      propertyPath: Golem_EntryPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 9e69005464ef90f4786a092bd3cded1d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf39d134e8cd4304dacb4b489a695da1, type: 2}
   m_RootGameObject: {fileID: 749033153}
@@ -1974,11 +1984,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 1923815355}
   - 50: {fileID: 1923815354}
-  - 114: {fileID: 1923815353}
   - 61: {fileID: 1923815352}
   - 212: {fileID: 1923815351}
   - 114: {fileID: 1923815356}
   - 114: {fileID: 1923815357}
+  - 114: {fileID: 1923815353}
   m_Layer: 13
   m_Name: P2
   m_TagString: Player
@@ -2024,25 +2034,18 @@ BoxCollider2D:
 --- !u!114 &1923815353
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: c83b37f63824c634e963e40dafa62212,
-    type: 2}
-  m_PrefabInternal: {fileID: 218189830}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1923815350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d245713357f62440a6548a0c73a088f, type: 3}
+  m_Script: {fileID: 11500000, guid: 75f40e044d9118340b13984dfe7c9eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
-  jumpForce: 250
-  enableControl: 1
-  grounded: 0
-  jump: 0
-  doubleJump: 1
-  groundCheck: {fileID: 973018435}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
+  inputSwitch_p1: 0
+  inputSwitch_p2: 0
+  key1: {fileID: 0}
+  pad1: {fileID: 0}
 --- !u!50 &1923815354
 Rigidbody2D:
   m_ObjectHideFlags: 0

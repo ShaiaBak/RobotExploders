@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GolemController1 : MonoBehaviour {
 	
-	
+	public bool isP1 = true; 
 	public float maxSpeed = 2f; 			//Arbitrary speed value
 	public bool facingRight = true;
 	
@@ -11,7 +11,8 @@ public class GolemController1 : MonoBehaviour {
 	public float jumpForce = 150;			//Arbitrary jump value
 	public bool enableControl = false;
 	private bool inGolem = false;
-	private GolemEntry golemEntry;
+	public GameObject Golem_EntryPrefab;
+	private GolemEntry golemEntryScript;
 	private Controller1 pilot;				//Change Controller1 when pilot script changes name
 	//private Animator anim;
 	
@@ -20,13 +21,13 @@ public class GolemController1 : MonoBehaviour {
 	private float moveV = 0f;
 	public bool jumpPress;					//When the Jump button is pressed
 	public bool jumpRelease;				//When the Jump button is released
-	public bool enterGolemPress;			//Input for enter or exiting the golem is pressed
-	public bool enterGolemRelease;			//Input for enter or exiting the golem is released
+	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
+	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
 
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
-	private bool flyingMode = false;			//True = Flying is active
+	private bool flyingMode = false;		//True = Flying is active
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 
@@ -59,7 +60,6 @@ public class GolemController1 : MonoBehaviour {
 		whatIsGround.value = 256;
 
 		direction = this.transform.FindChild("Direction");
-
 	}
 	
 	void FixedUpdate () {
@@ -68,15 +68,21 @@ public class GolemController1 : MonoBehaviour {
 	
 	void Update () {
 		//Player Inputs
-		moveH = Input.GetAxis ("P1_Horizontal");
-		moveV = Input.GetAxis ("P1_Vertical");
-		jumpPress = Input.GetButtonDown ("P1_Jump");
-		jumpRelease = Input.GetButtonUp ("P1_Jump");
-		enterGolemPress = Input.GetButtonDown ("P1_Enter");
-		enterGolemRelease = Input.GetButtonUp ("P1_Enter");
-
-		if (jumpPress) {
-			Debug.Log("jump is pressed");
+		if (isP1) {
+			moveH = Input.GetAxis ("P1_Horizontal");
+			moveV = Input.GetAxis ("P1_Vertical");
+			jumpPress = Input.GetButtonDown ("P1_Jump");
+			jumpRelease = Input.GetButtonUp ("P1_Jump");
+			enterGolemPress = Input.GetButtonDown ("P1_Enter");
+			enterGolemRelease = Input.GetButtonUp ("P1_Enter");
+		}
+		if (!isP1) {
+			moveH = Input.GetAxis ("P2_Horizontal");
+			moveV = Input.GetAxis ("P2_Vertical");
+			jumpPress = Input.GetButtonDown ("P2_Jump");
+			jumpRelease = Input.GetButtonUp ("P2_Jump");
+			enterGolemPress = Input.GetButtonDown ("P2_Enter");
+			enterGolemRelease = Input.GetButtonUp ("P2_Enter");
 		}
 		
 		//enableControl is only used for potential ideas later. If true you have normal movement
@@ -163,11 +169,14 @@ public class GolemController1 : MonoBehaviour {
 				rigidbody2D.gravityScale = 1;
 				enableControl = false;
 				exitingTheGolem = false;
-				golemEntry = transform.parent.Find ("Golem_Entry").GetComponent<GolemEntry>();
-				golemEntry.pilotInGolem = false;
+				//golemEntryScript = transform.parent.Find ("Golem_Entry").GetComponent<GolemEntry>();
+				//golemEntryScript.pilotInGolem = false;
 				pilot.exitingTheGolem = true;
 				moveH = 0f;
-				moveV = 0f;	
+				moveV = 0f;
+
+			 	GameObject newGolem_Entry = Instantiate(Golem_EntryPrefab) as GameObject;
+				newGolem_Entry.transform.parent = this.transform.parent;
 			}
 
 		} else {
