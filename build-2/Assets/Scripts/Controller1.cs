@@ -132,6 +132,7 @@ public class Controller1 : MonoBehaviour {
 			} else {
 				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 			}
+
 			// Flip the image if it is moving to left while facing right or moving right while facing left
 			if (moveH > 0 && !facingRight) {
 				Flip ();
@@ -141,14 +142,17 @@ public class Controller1 : MonoBehaviour {
 
 			directionCheck();
 
+
+			// Entering golem timers
 			if (enteringTheGolem) {
 				enteringTimer -= Time.deltaTime;
 			}
 			if (!enteringTheGolem) {
 				enteringTimer = enteringDuration;
 			}
-
-
+			if (enteringTimer < -0.1) {
+				enteringTheGolem = false;
+			} 
 
 		} else {
 			moveH = 0f; 
@@ -162,13 +166,12 @@ public class Controller1 : MonoBehaviour {
 		if(exitingTheGolem) {
 			pilotExit();
 		}
-
-
-
 	}
 
 	//When the pilot enters the golems entry area
 	void OnTriggerStay2D(Collider2D other) {
+
+
 		if (other.tag == "GolemEnterZone" && enableControl) {
 
 			Debug.Log("In Golem");
@@ -209,8 +212,6 @@ public class Controller1 : MonoBehaviour {
 				golemPosition = transform.parent.Find ("Golem");
 				inGolem = true;
 			} 
-		} else {
-			enteringTheGolem = false;
 		}
 	}
 	void OnTriggerExit2D(Collider2D other) {
