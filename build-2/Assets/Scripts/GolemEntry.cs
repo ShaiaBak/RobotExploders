@@ -29,3 +29,5 @@ public class GolemEntry : MonoBehaviour {
 		transform.position = new Vector2(golem.position.x, golem.position.y);
 	}
 }
+
+	
