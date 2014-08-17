@@ -25,7 +25,7 @@ public class Controller1 : MonoBehaviour {
 
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
-	private bool flyingMode = false;			//True = Flying is active
+	private bool flyingMode = false;		//True = Flying is active
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 
@@ -173,7 +173,6 @@ public class Controller1 : MonoBehaviour {
 
 			Debug.Log("In Golem");
 			if (enterGolemPress) {
-
 				enteringTheGolem = true;
 				enteringTimer = enteringDuration;
 			}
@@ -209,7 +208,9 @@ public class Controller1 : MonoBehaviour {
 				this.transform.parent = golemEntry.transform.parent;
 				golemPosition = transform.parent.Find ("Golem");
 				inGolem = true;
-			}
+			} 
+		} else {
+			enteringTheGolem = false;
 		}
 	}
 	void OnTriggerExit2D(Collider2D other) {
