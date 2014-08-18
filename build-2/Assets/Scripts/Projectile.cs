@@ -26,7 +26,6 @@ public class Projectile : MonoBehaviour {
 		if(timeSpentAlive > timeUntilDeath){
 			RemoveMe();
 		}
-
 	}
 
 	/// <summary>
