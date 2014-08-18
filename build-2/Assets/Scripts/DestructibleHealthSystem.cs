@@ -24,5 +24,4 @@ public class DestructibleHealthSystem : HealthSystem {
 			Destroy(gameObject);
 		}
 	}
-	
 }

@@ -9,7 +9,8 @@ public class PlayerHealthSystem : HealthSystem {
 		gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
 		renderer.material.color = Color.gray;
-		collider2D.enabled = false;
 		gameController.GameOver();
+		//@todo: take out
+		collider2D.enabled = false;
 	}
 }
