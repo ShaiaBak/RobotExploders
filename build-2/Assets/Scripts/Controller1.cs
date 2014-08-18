@@ -63,7 +63,11 @@ public class Controller1 : MonoBehaviour {
 	}
 	
 	void Update () {
-		//Player Inputs
+
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		//Player Inputs	START
+		//////////////////////////////////////////////////////////////////////////////////////////////
+
 		if (isP1) {
 			moveH = Input.GetAxis ("P1_Horizontal");
 			moveV = Input.GetAxis ("P1_Vertical");
@@ -81,6 +85,10 @@ public class Controller1 : MonoBehaviour {
 			enterGolemPress = Input.GetButtonDown ("P2_Enter");
 			enterGolemRelease = Input.GetButtonUp ("P2_Enter");
 		}
+
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		//Player Inputs	END
+		//////////////////////////////////////////////////////////////////////////////////////////////
 
 		//enableControl is only used for potential ideas later. If true you have normal movement
 		//if false, controls do nothing.
@@ -105,7 +113,7 @@ public class Controller1 : MonoBehaviour {
 			
 			//When player is on the ground, second jump is available
 			if (grounded) {
-				Debug.Log("you are grounded");
+				//Debug.Log("you are grounded");
 				doubleJump = true;
 				//When jump button is pressed, add a force upwards
 				if (jumpPress) {
@@ -142,8 +150,10 @@ public class Controller1 : MonoBehaviour {
 
 			directionCheck();
 
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			// Entering golem timers START
+			//////////////////////////////////////////////////////////////////////////////////////////////
 
-			// Entering golem timers
 			if (enteringTheGolem) {
 				enteringTimer -= Time.deltaTime;
 			}
@@ -153,6 +163,10 @@ public class Controller1 : MonoBehaviour {
 			if (enteringTimer < -0.1) {
 				enteringTheGolem = false;
 			} 
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			// Entering golem timers END
+			//////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		} else {
 			moveH = 0f; 
@@ -174,7 +188,7 @@ public class Controller1 : MonoBehaviour {
 
 		if (other.tag == "GolemEnterZone" && enableControl) {
 
-			Debug.Log("In Golem");
+			//Debug.Log("In Golem");
 			if (enterGolemPress) {
 				enteringTheGolem = true;
 				enteringTimer = enteringDuration;
