@@ -10,7 +10,9 @@ public class PlayerHealthSystem : HealthSystem {
 
 		renderer.material.color = Color.gray;
 		gameController.GameOver();
-		//@todo: take out
+		//@todo: take out for more elegant solution
 		collider2D.enabled = false;
+
+		tag = "Dead";
 	}
 }

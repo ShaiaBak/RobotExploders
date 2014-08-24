@@ -15,38 +15,28 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// if you press 'R', restart game
-		if (Input.GetKeyDown (KeyCode.R) && gameOver) {
-			Application.LoadLevel ("01");
-		}
 		GameOver ();
 	}
 
 	public void GameOver() {
-		// @TODO: change game over screen to scenes and not just plain text
-
-		// @TODO: add WHO wins to this
-
 		p1 = GameObject.Find("P1").GetComponent<Component>();
 		p2 = GameObject.Find("P2").GetComponent<Component>();
-
-		// if player 1 wins
-		if (p1.collider2D.enabled == true && p2.collider2D.enabled == false) {
+		
+		// player 1 wins
+		if (p1.tag == "Player" && p2.tag == "Dead") {
 			Application.LoadLevel ("player1wins");
 			gameOver = true;
 		}
-		// if player 2 wins
-		else if (p2.collider2D.enabled == true && p1.collider2D.enabled == false) {
+		// player 2 wins
+		if (p2.tag == "Player" && p1.tag == "Dead") {
 			Application.LoadLevel ("player2wins");
 			gameOver = true;
 		}
-		// if both players die
-		else if (p2.collider2D.enabled == false && p1.collider2D.enabled == false) {
+		// no 1 wins. game broke		
+		if (p1.tag == "Dead" && p2.tag == "Dead") {
 			Application.LoadLevel ("no1wins");
 			gameOver = true;
 		}
-
-
 	}
 }
 
