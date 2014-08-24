@@ -71,7 +71,7 @@ MonoBehaviour:
   hitRadius: .5
   speedH: 2.5
   speedV: 1.75
-  isShoo: 1
+  isShoo: 0
   scaresBirds:
     serializedVersion: 2
     m_Bits: 0
