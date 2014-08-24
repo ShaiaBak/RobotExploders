@@ -109,7 +109,7 @@ public class GolemController1 : MonoBehaviour {
 			
 			//When player is on the ground, second jump is available
 			if (grounded) {
-				Debug.Log("you are grounded");
+//				Debug.Log("you are grounded");
 				doubleJump = true;
 				//When jump button is pressed, add a force upwards
 				if (jumpPress) {

@@ -18,7 +18,8 @@ public class BirdReaction : MonoBehaviour {
 		//Debug.Log(LayerMask.NameToLayer("Pilots"));
 		//Debug.Log(LayerMask.NameToLayer("Golems"));
 		scaresBirds.value = (int)(Mathf.Pow(2f,(float)LayerMask.NameToLayer("Pilots")) + Mathf.Pow(2f,(float)LayerMask.NameToLayer("Golems")));
-		Debug.Log (scaresBirds.value);
+//		Debug.Log (scaresBirds.value);
+//		Debug.Log (1 << LayerMask.NameToLayer("Pilots") | 1 << LayerMask.NameToLayer("Golems"));
 	}
 	
 	// Update is called once per frame
