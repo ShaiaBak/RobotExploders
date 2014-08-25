@@ -9,7 +9,7 @@ public class KeyboardScheme : ControlScheme {
 			case 1:
 				// P1 keyboard controls
 				horizontal = "P1_Horizontal";
-				vertical = "P1_Horizontal";
+				vertical = "P1_Vertical";
 				fireA = "Fire1a";
 				fireB = "Fire1b";
 				fireC = "Fire1c";
@@ -20,7 +20,7 @@ public class KeyboardScheme : ControlScheme {
 			case 2:
 				// P2 keyboard controls
 				horizontal = "P2_Horizontal";
-				vertical = "P2_Horizontal";
+				vertical = "P2_Vertical";
 				fireA = "Fire2a";
 				fireB = "Fire2b";
 				fireC = "Fire2c";

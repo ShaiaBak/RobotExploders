@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Pilot : MonoBehaviour {
 
-	private ControlScheme controls;
+	public ControlScheme controls;
 
 	public bool isP1 = true; 
 	public float maxSpeed = 3f; 			//Arbitrary speed value
@@ -44,18 +44,222 @@ public class Pilot : MonoBehaviour {
 	private BoxCollider2D boxCollider;
 	private Transform golemPosition;		//Used for following the golem position
 	private Transform direction;
-
-	// Use this for initialization
-	void Start () {
 	
+	void Start () {
+		//anim = GetComponent<Animator>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		boxCollider = GetComponent<BoxCollider2D>();
+		
+		//Find the child, GroundCheck, of the object and assign it as the ground check
+		groundCheck = this.transform.FindChild("GroundCheck");
+		
+		//used to check what value the environment layer is, which is 8;
+		whatIsGround.value = 1 << LayerMask.NameToLayer("Environment");
+
+		direction = this.transform.FindChild("Direction");
 	}
 	
 	void Update(){
-		moveH = Input.GetAxis (controls.horizontal);
-		moveV = Input.GetAxis (controls.vertical);
-		jumpPress = Input.GetButtonDown (controls.jump);
-		jumpRelease = Input.GetButtonUp (controls.jump);
-		enterGolemPress = Input.GetButtonDown (controls.enter);
-		enterGolemRelease = Input.GetButtonUp (controls.enter);
+		if(controls != null){
+			moveH = Input.GetAxis (controls.horizontal);
+			moveV = Input.GetAxis (controls.vertical);
+			jumpPress = Input.GetButtonDown (controls.jump);
+			jumpRelease = Input.GetButtonUp (controls.jump);
+			enterGolemPress = Input.GetButtonDown (controls.enter);
+			enterGolemRelease = Input.GetButtonUp (controls.enter);
+		}
+
+		//enableControl is only used for potential ideas later. If true you have normal movement
+		//if false, controls do nothing.
+		if (enableControl) {
+			
+			//When flying, reduce timer by the time it took to complete the last frame
+			if (flyingMode) {
+				flyingModeTimer -= Time.deltaTime;
+			}
+			//When timer is equal to or less than zero or when the jump button is released
+			//Disable flying mode and restore the gravity setting
+			if (flyingModeTimer <= 0 || jumpRelease) {
+				flyingMode = false;
+				rigidbody2D.gravityScale = 1;
+			}
+			
+			//This checks the object "groundCheck", gives it a radius of "groundRadius"
+			//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
+			//the unit will be considered on the ground, grounded = true
+			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+			//anim.SetBool ("Ground", grounded);
+			
+			//When player is on the ground, second jump is available
+			if (grounded) {
+				//Debug.Log("you are grounded");
+				doubleJump = true;
+				//When jump button is pressed, add a force upwards
+				if (jumpPress) {
+					rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+				}
+				//if second jump is available and the jump button is pressed
+				//enter flying mode, turn off gravity and reset the timer
+			} else if (doubleJump && jumpPress) {
+				doubleJump = false;
+				flyingMode = true;
+				rigidbody2D.gravityScale = 0;
+				flyingModeTimer = flyingModeDuration;
+			}
+			//When the vertical speed is not zero, change to the jumping/falling animation
+			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
+			
+			//When the horizontal speed is not zero, change to the walking animation
+			//anim.SetFloat ("speedH", Mathf.Abs (moveH));
+			
+			// If the player has activated "Flying Mode", the player can move freely in the X and Y
+			// If not, the player can only move in the X
+			if (flyingMode){
+				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, moveV * maxSpeed);
+			} else {
+				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
+			}
+			
+			// Flip the image if it is moving to left while facing right or moving right while facing left
+			if (moveH > 0 && !facingRight) {
+				Flip ();
+			} else if (moveH < 0 && facingRight) {
+				Flip ();
+			}
+			
+			directionCheck();
+			
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			// Entering golem timers START
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			
+			if (enteringTheGolem) {
+				enteringTimer -= Time.deltaTime;
+			}
+			if (!enteringTheGolem) {
+				enteringTimer = enteringDuration;
+			}
+			if (enteringTimer < -0.1) {
+				enteringTheGolem = false;
+			} 
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			// Entering golem timers END
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			
+			
+		} else {
+			moveH = 0f; 
+		}
+		
+		if(inGolem) {
+			//Follow the golem
+			transform.position = new Vector2(golemPosition.position.x, golemPosition.position.y);
+		}
+		
+		if(exitingTheGolem) {
+			pilotExit();
+		}
+	}
+
+	//When the pilot enters the golems entry area
+	void OnTriggerStay2D(Collider2D other) {
+		
+		
+		if (other.tag == "GolemEnterZone" && enableControl) {
+			
+			//Debug.Log("In Golem");
+			if (enterGolemPress) {
+				enteringTheGolem = true;
+				enteringTimer = enteringDuration;
+			}
+			if (enterGolemRelease) {
+				enteringTheGolem = false;
+			}	
+			
+			if (enteringTimer <= 0 && enteringTheGolem) {
+				//Disable player control and disable the image and collider
+				Debug.Log("Entering....");
+				enableControl = false;
+				moveH = 0f; 
+				moveV = 0f; 
+				rigidbody2D.gravityScale = 0;
+				spriteRenderer.enabled = false;
+				boxCollider.enabled = false;
+				flyingMode = false;
+				//Finds the golems entry component and tags the pilot as inside the golem
+				//and then sets the pilot to be a child of the Golem
+				golemEntry = other.GetComponent<GolemEntry>();
+				golemEntry.pilotInGolem = true;
+				
+				//If P1, set golems controls to Player 1
+				if (isP1) {
+					golemEntry.isP1entering = true;
+				}
+				if (!isP1) {
+					golemEntry.isP1entering = false;
+				}
+				
+				//Pilot object becomes a child of the golem and follows the golem object
+				
+				this.transform.parent = golemEntry.transform.parent;
+				golemPosition = transform.parent.Find ("Golem");
+				inGolem = true;
+				golem = golemPosition.gameObject;
+			} 
+		}
+	}
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag == "GolemEnterZone") {
+			enteringTheGolem = false;
+			enteringTimer = enteringDuration;
+		}
+	}
+	
+	void pilotExit() {
+		Debug.Log("Exiting....");
+		enableControl = true;
+		moveH = 0f; 
+		moveV = 0f; 
+		rigidbody2D.gravityScale = 1;
+		spriteRenderer.enabled = true;
+		boxCollider.enabled = true;
+		this.transform.parent = null;
+		inGolem = false;
+		exitingTheGolem = false;
+		enteringTheGolem = false;
+	}
+	
+	void Flip () {
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
+	void directionCheck() {
+		
+		//Top Right/Left
+		if ((moveH >= 0 && moveV >= 0) || (moveH <= 0 && moveV >= 0)) {
+			direction.localPosition = new Vector2(1, 1);
+		}
+		
+		//Bottom Right/Left
+		if ((moveH >= 0 && moveV <= 0) || (moveH <= 0 && moveV <= 0)) {
+			direction.localPosition = new Vector2(1, -1);
+		}
+		
+		//Top
+		if (moveH == 0 && moveV >= 0) { 
+			direction.localPosition = new Vector2(0, 1);
+		}		
+		
+		//Bottom
+		if (moveH == 0 && moveV <= 0) { 
+			direction.localPosition = new Vector2(0, -1);
+		}	
+		
+		//Straight Right/Left
+		if ((moveH >= 0 && moveV == 0) || (moveH <= 0 && moveV == 0)) {
+			direction.localPosition = new Vector2(1, 0);
+		}
 	}
 }

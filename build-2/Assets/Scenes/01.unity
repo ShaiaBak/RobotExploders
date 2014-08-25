@@ -2431,7 +2431,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.41000009
+      value: -2.39847469
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2461,7 +2461,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400000, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
   m_RootGameObject: {fileID: 2036110546}
   m_IsPrefabParent: 0
@@ -3184,7 +3189,6 @@ MonoBehaviour:
   inputSwitch_p2: 0
   key1: {fileID: 0}
   pad1: {fileID: 0}
-  script: {fileID: 0}
 --- !u!50 &1923815354
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3428,6 +3432,7 @@ GameObject:
   - 212: {fileID: 2036110548}
   - 114: {fileID: 2036110552}
   - 114: {fileID: 2036110553}
+  - 114: {fileID: 2036110550}
   - 114: {fileID: 2036110554}
   m_Layer: 13
   m_Name: P1
@@ -3443,7 +3448,7 @@ Transform:
   m_PrefabInternal: {fileID: 1501764914}
   m_GameObject: {fileID: 2036110546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.41000009, y: 1.15395749, z: 0}
+  m_LocalPosition: {x: -2.39847469, y: 1.15395749, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 2119854752}
@@ -3485,6 +3490,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .99000001, y: .99000001}
   m_Center: {x: 0, y: 0}
+--- !u!114 &2036110550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2036110546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2efbe08c380f9a40b22b04b066eeb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentControls: {fileID: 0}
 --- !u!50 &2036110551
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3533,20 +3550,38 @@ MonoBehaviour:
 --- !u!114 &2036110554
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 60f7a27e5c3963345a7305fd0491d8d2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1501764914}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2036110546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f40e044d9118340b13984dfe7c9eab, type: 3}
+  m_Script: {fileID: 11500000, guid: 34c29321c6ac4994792c8a8ab4b5a460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSwitch_p1: 0
-  inputSwitch_p2: 0
-  key1: {fileID: 0}
-  pad1: {fileID: 0}
-  script: {fileID: 0}
+  controls: {fileID: 0}
+  isP1: 1
+  maxSpeed: 3
+  facingRight: 1
+  jumpForce: 250
+  enableControl: 1
+  inGolem: 0
+  exitingTheGolem: 0
+  golem: {fileID: 0}
+  moveH: 0
+  moveV: 0
+  jumpPress: 0
+  jumpRelease: 0
+  enterGolemPress: 0
+  enterGolemRelease: 0
+  grounded: 0
+  doubleJump: 1
+  enteringTheGolem: 0
+  enteringTimer: 0
+  enteringDuration: .5
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &2038954442
 Prefab:
   m_ObjectHideFlags: 0

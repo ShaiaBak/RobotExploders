@@ -12,10 +12,6 @@ public abstract class ControlScheme : MonoBehaviour {
 	public string enter;
 	public int playerNumberControlScheme = 0;
 
-	void Update(){
-
-	}
-
 	public abstract void SetPlayerNumberControlScheme(int num);
 
 }
