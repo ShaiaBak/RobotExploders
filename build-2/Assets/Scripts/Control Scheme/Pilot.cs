@@ -60,6 +60,7 @@ public class Pilot : MonoBehaviour {
 	}
 	
 	void Update(){
+		// Gets dynamic control scheme
 		if(controls != null){
 			moveH = Input.GetAxis (controls.horizontal);
 			moveV = Input.GetAxis (controls.vertical);
@@ -72,62 +73,22 @@ public class Pilot : MonoBehaviour {
 		//enableControl is only used for potential ideas later. If true you have normal movement
 		//if false, controls do nothing.
 		if (enableControl) {
-			
-			//When flying, reduce timer by the time it took to complete the last frame
-			if (flyingMode) {
-				flyingModeTimer -= Time.deltaTime;
-			}
-			//When timer is equal to or less than zero or when the jump button is released
-			//Disable flying mode and restore the gravity setting
-			if (flyingModeTimer <= 0 || jumpRelease) {
-				flyingMode = false;
-				rigidbody2D.gravityScale = 1;
-			}
-			
+
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
 			//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
 			//the unit will be considered on the ground, grounded = true
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 			//anim.SetBool ("Ground", grounded);
-			
-			//When player is on the ground, second jump is available
-			if (grounded) {
-				//Debug.Log("you are grounded");
-				doubleJump = true;
-				//When jump button is pressed, add a force upwards
-				if (jumpPress) {
-					rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-				}
-				//if second jump is available and the jump button is pressed
-				//enter flying mode, turn off gravity and reset the timer
-			} else if (doubleJump && jumpPress) {
-				doubleJump = false;
-				flyingMode = true;
-				rigidbody2D.gravityScale = 0;
-				flyingModeTimer = flyingModeDuration;
-			}
+
 			//When the vertical speed is not zero, change to the jumping/falling animation
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
 			
 			//When the horizontal speed is not zero, change to the walking animation
 			//anim.SetFloat ("speedH", Mathf.Abs (moveH));
-			
-			// If the player has activated "Flying Mode", the player can move freely in the X and Y
-			// If not, the player can only move in the X
-			if (flyingMode){
-				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, moveV * maxSpeed);
-			} else {
-				rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
-			}
-			
-			// Flip the image if it is moving to left while facing right or moving right while facing left
-			if (moveH > 0 && !facingRight) {
-				Flip ();
-			} else if (moveH < 0 && facingRight) {
-				Flip ();
-			}
-			
-			directionCheck();
+
+			CheckJumping();
+			CheckFlying();
+			DirectionCheck();
 			
 			//////////////////////////////////////////////////////////////////////////////////////////////
 			// Entering golem timers START
@@ -158,6 +119,44 @@ public class Pilot : MonoBehaviour {
 		
 		if(exitingTheGolem) {
 			pilotExit();
+		}
+	}
+
+	private void CheckJumping(){
+		//When player is on the ground, second jump is available
+		if (grounded) {
+			doubleJump = true;
+			//When jump button is pressed, add a force upwards
+			if (jumpPress) {
+				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+			}
+		//if second jump is available and the jump button is pressed
+		//enter flying mode, turn off gravity and reset the timer
+		} else if (doubleJump && jumpPress) {
+			doubleJump = false;
+			flyingMode = true;
+			rigidbody2D.gravityScale = 0;
+			flyingModeTimer = flyingModeDuration;
+		}
+	}
+
+	private void CheckFlying(){
+		//When flying, reduce timer by the time it took to complete the last frame
+		if (flyingMode) {
+			flyingModeTimer -= Time.deltaTime;
+		}
+		//When timer is equal to or less than zero or when the jump button is released
+		//Disable flying mode and restore the gravity setting
+		if (flyingModeTimer <= 0 || jumpRelease) {
+			flyingMode = false;
+			rigidbody2D.gravityScale = 1;
+		}
+		// If the player has activated "Flying Mode", the player can move freely in the X and Y
+		// If not, the player can only move in the X
+		if (flyingMode){
+			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, moveV * maxSpeed);
+		} else {
+			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		}
 	}
 
@@ -215,7 +214,7 @@ public class Pilot : MonoBehaviour {
 		}
 	}
 	
-	void pilotExit() {
+	private void pilotExit() {
 		Debug.Log("Exiting....");
 		enableControl = true;
 		moveH = 0f; 
@@ -229,14 +228,21 @@ public class Pilot : MonoBehaviour {
 		enteringTheGolem = false;
 	}
 	
-	void Flip () {
+	private void Flip () {
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-	void directionCheck() {
-		
+
+	private void DirectionCheck() {
+		// Flip the image if it is moving to left while facing right or moving right while facing left
+		if (moveH > 0 && !facingRight) {
+			Flip ();
+		} else if (moveH < 0 && facingRight) {
+			Flip ();
+		}
+
 		//Top Right/Left
 		if ((moveH >= 0 && moveV >= 0) || (moveH <= 0 && moveV >= 0)) {
 			direction.localPosition = new Vector2(1, 1);
