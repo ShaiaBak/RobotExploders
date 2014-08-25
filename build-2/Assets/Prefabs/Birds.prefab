@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.66803503, y: 1.24530709, z: 0}
+  m_LocalPosition: {x: 5.41070747, y: 1.52349651, z: 0}
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,10 +52,10 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: 3.25
+  m_Radius: 2.04999995
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -72,9 +72,11 @@ MonoBehaviour:
   speedH: 2.5
   speedV: 1.75
   isShoo: 0
-  scaresBirds:
-    serializedVersion: 2
-    m_Bits: 0
+  isFlying: 0
+  flyingTimer: 1
+  atPeak: 0
+  hoverScale: 1
+  difference: {x: 0, y: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
