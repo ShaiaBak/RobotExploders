@@ -940,6 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ph: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!1001 &823486343
 Prefab:
   m_ObjectHideFlags: 0
@@ -1196,6 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ph: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!1 &907915405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,6 +1873,7 @@ GameObject:
   - 61: {fileID: 1181860931}
   - 212: {fileID: 1181860930}
   - 114: {fileID: 1181860929}
+  - 114: {fileID: 1181860933}
   m_Layer: 12
   m_Name: Golem
   m_TagString: Golem
@@ -1972,6 +1975,20 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &1181860933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181860927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0540bc9458d864641bf032f6fa3a0262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHP: 20
+  maxHP: 20
+  damageSources: []
 --- !u!1001 &1188179210
 Prefab:
   m_ObjectHideFlags: 0
@@ -3167,6 +3184,7 @@ MonoBehaviour:
   inputSwitch_p2: 0
   key1: {fileID: 0}
   pad1: {fileID: 0}
+  script: {fileID: 0}
 --- !u!50 &1923815354
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3528,6 +3546,7 @@ MonoBehaviour:
   inputSwitch_p2: 0
   key1: {fileID: 0}
   pad1: {fileID: 0}
+  script: {fileID: 0}
 --- !u!1001 &2038954442
 Prefab:
   m_ObjectHideFlags: 0

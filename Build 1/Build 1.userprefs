@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\GGJ14\Game\Assets\Scripts\CharacterClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\build-2\Assets\Scripts\PlayerHealthSystem.cs">
     <Files>
-      <File FileName="..\..\GGJ14\Game\Assets\Scripts\CardActorClass.cs" Line="23" Column="54" />
-      <File FileName="..\..\GGJ14\Game\Assets\Scripts\GameboardController.cs" Line="26" Column="14" />
-      <File FileName="..\..\GGJ14\Game\Assets\Scripts\MainGameController.cs" Line="149" Column="23" />
-      <File FileName="..\..\GGJ14\Game\Assets\Scripts\CharacterClass.cs" Line="103" Column="4" />
+      <File FileName="..\build-2\Assets\Scripts\GolemEntry.cs" Line="24" Column="57" />
+      <File FileName="..\build-2\Assets\Scripts\Controller1.cs" Line="287" Column="1" />
+      <File FileName="..\build-2\Assets\Scripts\PlayerHealthSystem.cs" Line="1" Column="1" />
+      <File FileName="..\build-2\Assets\Scripts\HealthSystem.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

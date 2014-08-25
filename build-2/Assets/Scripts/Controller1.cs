@@ -9,9 +9,10 @@ public class Controller1 : MonoBehaviour {
 
 	public float jumpForce = 250;			//Arbitrary jump value
 	public bool enableControl = true;
-	private bool inGolem = false;
+	public bool inGolem = false;
 	private GolemEntry golemEntry;
 	public bool exitingTheGolem = false;
+	public GameObject golem;
 
 	//private Animator anim;
 
@@ -225,6 +226,7 @@ public class Controller1 : MonoBehaviour {
 				this.transform.parent = golemEntry.transform.parent;
 				golemPosition = transform.parent.Find ("Golem");
 				inGolem = true;
+				golem = golemPosition.gameObject;
 			} 
 		}
 	}
