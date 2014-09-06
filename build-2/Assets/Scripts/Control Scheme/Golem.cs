@@ -4,11 +4,10 @@ using System.Collections;
 public class Golem : MonoBehaviour {
 	
 	public ControlScheme controls;
-	
-	public bool isP1 = true; 
-	public float maxSpeed = 3f; 			//Arbitrary speed value
+
+	public float maxSpeed = 2f; 			//Arbitrary speed value
 	public bool facingRight = true;
-	public float jumpForce = 250;			//Arbitrary jump value
+	public float jumpForce = 150;			//Arbitrary jump value
 	public bool enableControl = true;
 	public GameObject currentPilot;
 	
@@ -37,7 +36,7 @@ public class Golem : MonoBehaviour {
 	
 	void Start () {
 		//anim = GetComponent<Animator>();
-		
+
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
 		direction = this.transform.FindChild("Direction");
@@ -147,6 +146,7 @@ public class Golem : MonoBehaviour {
 		ps.enableControl = true;
 		ps.currentGolem = null;
 		ps.facingRight = facingRight;
+		currentPilot.collider2D.enabled = true;
 		currentPilot.rigidbody2D.isKinematic = false;
 		currentPilot.transform.parent = null;
 

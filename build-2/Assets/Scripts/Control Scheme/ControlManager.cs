@@ -2,6 +2,7 @@
 using System.Collections;
 
 // TODO: Recode this completely when we have a controls selection screen
+// Change a player's control scheme by adding the corresponding component
 public class ControlManager : MonoBehaviour {
 	
 	public ControlScheme P1Controls;
@@ -26,8 +27,17 @@ public class ControlManager : MonoBehaviour {
 			P1Controls = ks1;
 			P2Controls = ks2;
 			// Set the reference for pilot
-			P1.GetComponent<Pilot>().controls = ks1;
-			P2.GetComponent<Pilot>().controls = ks2;
+			Pilot ps1 = P1.GetComponent<Pilot>();
+			ps1.controls = ks1;
+			Pilot ps2 = P2.GetComponent<Pilot>();
+			ps2.controls = ks2;
+			// Set the reference for golem
+			if(ps1.currentGolem != null){
+				ps1.currentGolem.GetComponent<Golem>().controls = ks1;
+			}
+			if(ps2.currentGolem != null){
+				ps2.currentGolem.GetComponent<Golem>().controls = ks2;
+			}
 		}
 		// Give Player1 P2 keyboard controls & vice versa
 		else if(Input.GetButtonDown("p1_control2")){
@@ -43,8 +53,17 @@ public class ControlManager : MonoBehaviour {
 			P1Controls = ks1;
 			P2Controls = ks2;
 			// Set the reference for pilot
-			P1.GetComponent<Pilot>().controls = ks1;
-			P2.GetComponent<Pilot>().controls = ks2;
+			Pilot ps1 = P1.GetComponent<Pilot>();
+			ps1.controls = ks1;
+			Pilot ps2 = P2.GetComponent<Pilot>();
+			ps2.controls = ks2;
+			// Set the reference for golem
+			if(ps1.currentGolem != null){
+				ps1.currentGolem.GetComponent<Golem>().controls = ks1;
+			}
+			if(ps2.currentGolem != null){
+				ps2.currentGolem.GetComponent<Golem>().controls = ks2;
+			}
 		}
 	}
 }

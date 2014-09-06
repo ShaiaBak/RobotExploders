@@ -140,10 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
-  isP1: 1
-  maxSpeed: 3
+  maxSpeed: 2
   facingRight: 1
-  jumpForce: 250
+  jumpForce: 150
   enableControl: 1
   currentPilot: {fileID: 0}
   grounded: 0

@@ -159,7 +159,7 @@ public class Pilot : MonoBehaviour {
 		moveV = 0f; 
 		rigidbody2D.isKinematic = true;
 		flyingMode = false;
-
+		collider2D.enabled = false;
 	}
 	
 	private void Flip () {
