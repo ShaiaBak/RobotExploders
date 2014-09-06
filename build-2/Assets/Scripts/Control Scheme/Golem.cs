@@ -28,7 +28,8 @@ public class Golem : MonoBehaviour {
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 	
-	public float enterTimer = 0;
+	private float exitTimer = -1;
+	public float timeToExit = .5f;
 	
 	public Transform groundCheck;
 	private int i;
@@ -126,26 +127,31 @@ public class Golem : MonoBehaviour {
 		//Find a nearby golem
 		if(enterGolemPress){
 			//Check if button is held long enough
-			enterTimer = enterTimer + Time.deltaTime;
-			if(enterTimer >= .5f){
+			exitTimer = exitTimer + Time.deltaTime;
+			if(exitTimer >= timeToExit){
 				print ("exit");
-				enterTimer = 0;
+				exitTimer = 0;
 				ExitGolem();
 			}
 			
 		}else{
-			enterTimer = 0;
+			exitTimer = 0;
 		}
 	}
 	
 	private void ExitGolem(){
+		// Reset pilot variables
 		Pilot ps = currentPilot.GetComponent<Pilot>();
 		ps.controls = controls;
 		ps.enabled = true;
 		ps.enableControl = true;
+		ps.currentGolem = null;
+		ps.facingRight = facingRight;
 		currentPilot.rigidbody2D.isKinematic = false;
+		currentPilot.transform.parent = null;
 
-		//Remove this script
+		// Reset golem variables
+		gameObject.AddComponent<Golem>();
 		Destroy(this);
 	}
 	

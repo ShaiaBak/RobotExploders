@@ -28,8 +28,9 @@ public class Pilot : MonoBehaviour {
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 
-	public float enterTimer = 0;
-	
+	private float enterTimer = 0;
+	public float timeToEnter = .5f;
+
 	public Transform groundCheck;
 	private int i;
 	private Transform direction;
@@ -129,7 +130,7 @@ public class Pilot : MonoBehaviour {
 			if(nearbyGolem != null){
 				//Check if button is held long enough
 				enterTimer = enterTimer + Time.deltaTime;
-				if(enterTimer >= .5f){
+				if(enterTimer >= timeToEnter){
 					print ("enter");
 					enterTimer = 0;
 					EnterGolem(nearbyGolem.gameObject);
@@ -139,16 +140,19 @@ public class Pilot : MonoBehaviour {
 			enterTimer = 0;
 		}
 	}
-
+	
+	// Enters the golem and transfers control scheme to it
 	private void EnterGolem(GameObject golem){
 		currentGolem = golem;
-		Golem gs = golem.AddComponent<Golem>();
+		// Sets golem variables to match pilot
+		Golem gs = golem.GetComponent<Golem>();
 		gs.controls = controls;
 		gs.currentPilot = gameObject;
+		gs.facingRight = facingRight;
 		transform.position = golem.transform.position;
 		transform.parent = golem.transform;
 
-		//Disable this script
+		//Disable the pilot
 		enabled = false;
 		enableControl = false;
 		moveH = 0f; 

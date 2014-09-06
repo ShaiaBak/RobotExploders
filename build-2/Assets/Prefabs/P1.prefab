@@ -11,7 +11,7 @@ GameObject:
   m_Layer: 13
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.41000009, y: 1.15395749, z: 0}
+  m_LocalPosition: {x: -2, y: 1, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -123,13 +123,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f40e044d9118340b13984dfe7c9eab, type: 3}
+  m_Script: {fileID: 11500000, guid: 34c29321c6ac4994792c8a8ab4b5a460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSwitch_p1: 0
-  inputSwitch_p2: 0
-  key1: {fileID: 0}
-  pad1: {fileID: 0}
+  controls: {fileID: 0}
+  isP1: 1
+  maxSpeed: 3
+  facingRight: 1
+  jumpForce: 250
+  enableControl: 1
+  currentGolem: {fileID: 0}
+  grounded: 0
+  doubleJump: 1
+  timeToEnter: .5
+  groundCheck: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
