@@ -12,7 +12,7 @@ public class Controller2 : MonoBehaviour {
 	public bool enableControl = true;
 	//private Animator anim;
 	private float moveH = 0f;
-	private float moveV = 0f;
+//	private float moveV = 0f;
 	public bool grounded = false;
 	public bool jump;
 	public bool doubleJump = true;
@@ -67,7 +67,7 @@ public class Controller2 : MonoBehaviour {
 	void Update () {
 		//Player Inputs
 		moveH = Input.GetAxis ("P2_Horizontal");
-		moveV = Input.GetAxis ("P2_Vertical");
+//		moveV = Input.GetAxis ("P2_Vertical");
 		jump = Input.GetButtonDown ("P2_Jump");
 
 

@@ -10,7 +10,7 @@ public class ControlManager : MonoBehaviour {
 	public GameObject P2;
 
 
-	// Update is called once per frame
+	// Smelly spaghetti code done by a cowboy! Pew pew! (Helper methods pls)
 	void Update () {
 		// Give Player1 P1 keyboard controls & vice versa
 		if(Input.GetButtonDown("p1_control1")){

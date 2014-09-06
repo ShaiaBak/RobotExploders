@@ -10,7 +10,7 @@ public class GolemController1 : MonoBehaviour {
 	
 	public float jumpForce = 150;			//Arbitrary jump value
 	public bool enableControl = false;
-	private bool inGolem = false;
+//	private bool inGolem = false;
 	public GameObject Golem_EntryPrefab;
 	private GolemEntry golemEntryScript;
 	private Controller1 pilot;				//Change Controller1 when pilot script changes name
@@ -40,16 +40,16 @@ public class GolemController1 : MonoBehaviour {
 	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
 	private int i;
-	private SpriteRenderer spriteRenderer;
-	private BoxCollider2D boxCollider;
+//	private SpriteRenderer spriteRenderer;
+//	private BoxCollider2D boxCollider;
 	private Transform golemPosition;		//Used for following the golem position
 	private Transform direction;
 	
 	
 	void Start () {
 		//anim = GetComponent<Animator>();
-		spriteRenderer = GetComponent<SpriteRenderer>();
-		boxCollider = GetComponent<BoxCollider2D>();
+//		spriteRenderer = GetComponent<SpriteRenderer>();
+//		boxCollider = GetComponent<BoxCollider2D>();
 		
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
