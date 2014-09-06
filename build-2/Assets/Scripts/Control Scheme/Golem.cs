@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pilot : MonoBehaviour {
-
+public class Golem : MonoBehaviour {
+	
 	public ControlScheme controls;
-
+	
 	public bool isP1 = true; 
 	public float maxSpeed = 3f; 			//Arbitrary speed value
 	public bool facingRight = true;
 	public float jumpForce = 250;			//Arbitrary jump value
 	public bool enableControl = true;
-	public GameObject currentGolem;
+	public GameObject currentPilot;
 	
 	//private Animator anim;
 	
@@ -27,7 +27,7 @@ public class Pilot : MonoBehaviour {
 	private bool flyingMode = false;		//True = Flying is active
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
-
+	
 	public float enterTimer = 0;
 	
 	public Transform groundCheck;
@@ -36,7 +36,7 @@ public class Pilot : MonoBehaviour {
 	
 	void Start () {
 		//anim = GetComponent<Animator>();
-
+		
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
 		direction = this.transform.FindChild("Direction");
@@ -52,37 +52,37 @@ public class Pilot : MonoBehaviour {
 			jumpRelease = Input.GetButtonUp (controls.jump);
 			enterGolemPress = Input.GetButton (controls.enter);
 		}
-
+		
 		//enableControl is only used for potential ideas later. If true you have normal movement
 		//if false, controls do nothing.
 		if (enableControl) {
-
+			
 			//This checks the object "groundCheck", gives it a radius of "groundRadius"
 			//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
 			//the unit will be considered on the ground, grounded = true
 			LayerMask whatIsGround = 1 << LayerMask.NameToLayer("Environment");
 			float groundRadius = 0.1f;
-
+			
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 			//anim.SetBool ("Ground", grounded);
-
+			
 			//When the vertical speed is not zero, change to the jumping/falling animation
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
 			
 			//When the horizontal speed is not zero, change to the walking animation
 			//anim.SetFloat ("speedH", Mathf.Abs (moveH));
-
+			
 			CheckJumping();
 			CheckFlying();
-			CheckEntering();
+			CheckExiting();
 			DirectionCheck();
 			
 		} else {
 			moveH = 0f; 
 		}
-
+		
 	}
-
+	
 	private void CheckJumping(){
 		//When player is on the ground, second jump is available
 		if (grounded) {
@@ -91,8 +91,8 @@ public class Pilot : MonoBehaviour {
 			if (jumpPress) {
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 			}
-		//if second jump is available and the jump button is pressed
-		//enter flying mode, turn off gravity and reset the timer
+			//if second jump is available and the jump button is pressed
+			//enter flying mode, turn off gravity and reset the timer
 		} else if (doubleJump && jumpPress) {
 			doubleJump = false;
 			flyingMode = true;
@@ -100,7 +100,7 @@ public class Pilot : MonoBehaviour {
 			flyingModeTimer = flyingModeDuration;
 		}
 	}
-
+	
 	private void CheckFlying(){
 		//When flying, reduce timer by the time it took to complete the last frame
 		if (flyingMode) {
@@ -120,42 +120,33 @@ public class Pilot : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		}
 	}
-
-	//Checks whether the pilot is entering a golem and enter it if the button is held for .5 seconds
-	private void CheckEntering(){
+	
+	//Exits the golem when held for .5 seconds
+	private void CheckExiting(){
 		//Find a nearby golem
 		if(enterGolemPress){
-			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << 12); //Layer 12 is Golems
-			if(nearbyGolem != null){
-				//Check if button is held long enough
-				enterTimer = enterTimer + Time.deltaTime;
-				if(enterTimer >= .5f){
-					print ("enter");
-					enterTimer = 0;
-					EnterGolem(nearbyGolem.gameObject);
-				}
+			//Check if button is held long enough
+			enterTimer = enterTimer + Time.deltaTime;
+			if(enterTimer >= .5f){
+				print ("exit");
+				enterTimer = 0;
+				ExitGolem();
 			}
+			
 		}else{
 			enterTimer = 0;
 		}
 	}
+	
+	private void ExitGolem(){
+		Pilot ps = currentPilot.GetComponent<Pilot>();
+		ps.controls = controls;
+		ps.enabled = true;
+		ps.enableControl = true;
+		currentPilot.rigidbody2D.isKinematic = false;
 
-	private void EnterGolem(GameObject golem){
-		currentGolem = golem;
-		Golem gs = golem.AddComponent<Golem>();
-		gs.controls = controls;
-		gs.currentPilot = gameObject;
-		transform.position = golem.transform.position;
-		transform.parent = golem.transform;
-
-		//Disable this script
-		enabled = false;
-		enableControl = false;
-		moveH = 0f; 
-		moveV = 0f; 
-		rigidbody2D.isKinematic = true;
-		flyingMode = false;
-
+		//Remove this script
+		Destroy(this);
 	}
 	
 	private void Flip () {
@@ -164,7 +155,7 @@ public class Pilot : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-
+	
 	private void DirectionCheck() {
 		// Flip the image if it is moving to left while facing right or moving right while facing left
 		if (moveH > 0 && !facingRight) {
@@ -172,7 +163,7 @@ public class Pilot : MonoBehaviour {
 		} else if (moveH < 0 && facingRight) {
 			Flip ();
 		}
-
+		
 		//Top Right/Left
 		if ((moveH >= 0 && moveV >= 0) || (moveH <= 0 && moveV >= 0)) {
 			direction.localPosition = new Vector2(1, 1);

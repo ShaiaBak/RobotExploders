@@ -9,6 +9,7 @@ public class ControlManager : MonoBehaviour {
 	void Update () {
 		// Give Player1 P1 keyboard controls
 		if(Input.GetButtonDown("p1_control1")){
+			print ("Player1 now has P1 controls");
 			Destroy(GetComponent<ControlScheme>());
 			// Set the controls
 			KeyboardScheme ks = gameObject.AddComponent<KeyboardScheme>();
@@ -19,6 +20,7 @@ public class ControlManager : MonoBehaviour {
 		}
 		// Give Player1 P2 keyboard controls
 		else if(Input.GetButtonDown("p1_control2")){
+			print ("Player1 now has P2 controls");
 			Destroy(GetComponent<ControlScheme>());
 			// Set the controls
 			KeyboardScheme ks = gameObject.AddComponent<KeyboardScheme>();
