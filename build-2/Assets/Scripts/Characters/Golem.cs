@@ -76,13 +76,13 @@ public class Golem : MonoBehaviour {
 
 			CheckJumping();
 			CheckFlying();
-			CheckExiting();
+
 			DirectionCheck();
 			
 		} else {
 			moveH = 0f; 
 		}
-		
+		CheckExiting();
 	}
 
 	protected virtual void HandleAttack(){
