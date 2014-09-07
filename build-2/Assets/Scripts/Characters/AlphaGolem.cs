@@ -8,7 +8,7 @@ public class AlphaGolem : Golem {
 	private float cooldownEnd = .5f;
 
 	void Awake(){
-		projectilePrefab = null;
+		projectilePrefab = Resources.projectilePrefab;
 	}
 
 	protected override void HandleAttack(){
@@ -24,7 +24,7 @@ public class AlphaGolem : Golem {
 		if(Input.GetButton(controls.fireC) && CheckAnimationCooldown()){
 			StartCoroutine(Melee ());
 		}
-
+		cooldownTimer += Time.deltaTime;
 	}
 
 	// Short cooldown in between attacks/different attacks

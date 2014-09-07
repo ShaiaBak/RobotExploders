@@ -6,6 +6,6 @@ MonoImporter:
   - player1: {instanceID: 0}
   - player2: {instanceID: 0}
   - projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
-  executionOrder: 0
+  executionOrder: -300
   icon: {instanceID: 0}
   userData: 
