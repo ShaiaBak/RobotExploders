@@ -127,7 +127,7 @@ public class Pilot : MonoBehaviour {
 		//Find a nearby golem
 		if(enterGolemPress){
 			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << 12); //Layer 12 is Golems
-			if(nearbyGolem != null){
+			if(nearbyGolem != null && nearbyGolem.GetComponent<Golem>().currentPilot == null){
 				//Check if button is held long enough
 				enterTimer = enterTimer + Time.deltaTime;
 				if(enterTimer >= timeToEnter){
