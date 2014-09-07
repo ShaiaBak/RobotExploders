@@ -126,7 +126,7 @@ public class Pilot : MonoBehaviour {
 	private void CheckEntering(){
 		//Find a nearby golem
 		if(enterGolemPress){
-			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << 12); //Layer 12 is Golems
+			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
 			if(nearbyGolem != null && nearbyGolem.GetComponent<Golem>().currentPilot == null){
 				//Check if button is held long enough
 				enterTimer = enterTimer + Time.deltaTime;
@@ -144,6 +144,7 @@ public class Pilot : MonoBehaviour {
 	// Enters the golem and transfers control scheme to it
 	private void EnterGolem(GameObject golem){
 		currentGolem = golem;
+		golem.layer = LayerMask.NameToLayer("Golems");
 		// Sets golem variables to match pilot
 		Golem gs = golem.GetComponent<Golem>();
 		gs.controls = controls;
@@ -151,6 +152,7 @@ public class Pilot : MonoBehaviour {
 		gs.facingRight = facingRight;
 		transform.position = golem.transform.position;
 		transform.parent = golem.transform;
+//		currentGolem.rigidbody2D.isKinematic = false;
 
 		//Disable the pilot
 		enabled = false;

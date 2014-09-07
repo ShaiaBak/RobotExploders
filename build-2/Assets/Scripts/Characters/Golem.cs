@@ -158,7 +158,9 @@ public class Golem : MonoBehaviour {
 		currentPilot.GetComponent<TempShootingScript>().enabled = true;
 
 		// Reset golem variables
+		gameObject.layer = LayerMask.NameToLayer("Deactivated");
 		gameObject.AddComponent<Golem>();
+//		rigidbody2D.isKinematic = true;
 		Destroy(this);
 	}
 	

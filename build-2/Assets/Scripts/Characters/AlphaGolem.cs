@@ -8,7 +8,7 @@ public class AlphaGolem : Golem {
 	private float cooldownEnd = .5f;
 
 	void Awake(){
-		projectilePrefab = Resources.projectilePrefab;
+		projectilePrefab = Resources.golemProjectile;
 	}
 
 	protected override void HandleAttack(){
@@ -54,7 +54,7 @@ public class AlphaGolem : Golem {
 	private IEnumerator Melee(){
 		//(time*deltatime)*speed=dist
 		//(time*deltatime)=dist/speed
-		float duration = .06f;
+		float duration = .1f;
 		
 		Vector2 direction = new Vector2(1,1);
 		Shoot(true,10,duration,direction,1);

@@ -113,6 +113,10 @@ Prefab:
       propertyPath: m_RootMapOrder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
   m_RootGameObject: {fileID: 1586825316}
@@ -226,6 +230,7 @@ MonoBehaviour:
   player1: {fileID: 1586825316}
   player2: {fileID: 1923815350}
   projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
+  golemProjectile: {fileID: 100000, guid: 45c8b91a0c25f5346b681e43f8e1daab, type: 2}
 --- !u!114 &168744125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +321,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -363,7 +369,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 331592557}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
@@ -391,11 +397,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 3.85442376
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 1.27095151
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_LocalPosition.z
@@ -906,6 +912,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -958,7 +965,7 @@ GameObject:
   - 61: {fileID: 761421080}
   - 114: {fileID: 761421079}
   - 114: {fileID: 761421084}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Golem
   m_TagString: Golem
   m_Icon: {fileID: 0}
@@ -1551,6 +1558,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -1654,6 +1662,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -1749,7 +1758,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 973018435}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2016,6 +2025,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -2068,7 +2078,7 @@ GameObject:
   - 61: {fileID: 1133893448}
   - 114: {fileID: 1133893447}
   - 114: {fileID: 1133893446}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Golem
   m_TagString: Golem
   m_Icon: {fileID: 0}
@@ -2171,7 +2181,7 @@ Transform:
   m_PrefabInternal: {fileID: 515072749}
   m_GameObject: {fileID: 1133893445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 4, z: 0}
+  m_LocalPosition: {x: 3.85442376, y: 1.27095151, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1622327566}
@@ -2242,6 +2252,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -2464,7 +2475,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1350709022}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
@@ -2636,6 +2647,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -2875,7 +2887,7 @@ GameObject:
   - 114: {fileID: 1586825320}
   - 114: {fileID: 1586825319}
   - 114: {fileID: 1586825318}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: P1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3158,6 +3170,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -3252,7 +3265,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1845107829}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3549,7 +3562,7 @@ GameObject:
   - 114: {fileID: 1923815356}
   - 114: {fileID: 1923815357}
   - 114: {fileID: 1923815353}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: P2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3737,6 +3750,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}

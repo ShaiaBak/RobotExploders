@@ -37,7 +37,7 @@ public class BirdReaction : MonoBehaviour {
 		}
 
 		if (atPeak) {
-			Debug.Log(atPeakX);
+//			Debug.Log(atPeakX);
 			transform.position = new Vector2 ( atPeakX + Mathf.Sin(Time.time) , transform.position.y + Mathf.Sin(Time.time)*hoverScale );
 			//rigidbody2D.velocity = new Vector2 (0f, Mathf.Sin(Time.time)*hoverScale);
 			//transform.localPosition.x += 1f;
