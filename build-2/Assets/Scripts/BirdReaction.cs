@@ -8,7 +8,7 @@ public class BirdReaction : MonoBehaviour {
 	public float speedV = 1.75f;
 	public bool isShoo = false;
 	public bool isFlying = false;
-	public float flyingTimer = 2f;
+	private float flyingTimer = 2f;
 	public bool atPeak = false;
 	public float hoverScale = 1f;
 	//public LayerMask scaresBirds;
@@ -35,8 +35,8 @@ public class BirdReaction : MonoBehaviour {
 		}
 
 		if (atPeak) {
-			//Debug.Log(Mathf.Sin(Time.time));
-			transform.position = new Vector2 ( atPeakX + Mathf.PingPong(Time.time,3) , transform.position.y + Mathf.Sin(Time.time)*hoverScale );
+			Debug.Log(atPeakX);
+			//transform.position = new Vector2 ( atPeakX + Mathf.PingPong(Time.time,1) , transform.position.y + Mathf.Sin(Time.time)*hoverScale );
 			//rigidbody2D.velocity = new Vector2 (0f, Mathf.Sin(Time.time)*hoverScale);
 			//transform.localPosition.x += 1f;
 		}
