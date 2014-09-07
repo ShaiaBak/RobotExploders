@@ -5,4 +5,5 @@ public class ResourcesManager : MonoBehaviour {
 
 	public GameObject player1;
 	public GameObject player2;
+	public GameObject projectilePrefab;
 }

@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1586825316}
   player2: {fileID: 1923815350}
+  projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
 --- !u!114 &168744125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,7 +2073,7 @@ Transform:
   - {fileID: 1622327566}
   - {fileID: 2088119444}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1159760648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,7 +2787,7 @@ Transform:
   - {fileID: 1845107829}
   - {fileID: 1350709022}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1586825318
 MonoBehaviour:
   m_ObjectHideFlags: 0
