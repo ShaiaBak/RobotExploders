@@ -10,9 +10,9 @@ public class Projectile : MonoBehaviour {
 	private Vector2 direction;
 	private int directDamage = 1;
 
-	private int aoeDamage = 1;
-	private float explosionAoE = 0f;
-	private float knockback = 0f;
+//	private int aoeDamage = 1;
+//	private float explosionAoE = 0f;
+//	private float knockback = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -45,9 +45,9 @@ public class Projectile : MonoBehaviour {
 		timeUntilDeath = dur;
 		direction = dir;
 		directDamage = dmg;
-		aoeDamage = aoeDmg;
-		explosionAoE = aoe;
-		knockback = knock;
+//		aoeDamage = aoeDmg;
+//		explosionAoE = aoe;
+//		knockback = knock;
 	}
 
 	// For non-piercing projectiles

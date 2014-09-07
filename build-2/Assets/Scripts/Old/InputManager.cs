@@ -1,20 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class inputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour {
 
 	//temp variables
 	public bool inputSwitch_p1;				// when input switch for player 1 is pressed
 	public bool inputSwitch_p2;				// when input switch for player 2 is pressed
 	public Controller1 key1;
 	public GolemController1 pad1;
-	private inputManager script;
 
-	// Use this for initialization
-	void Start () {
-		script = GetComponent<inputManager>();
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		// when inputSwitch keys are pressed, switch the control scheme
@@ -30,7 +24,7 @@ public class inputManager : MonoBehaviour {
 			if (gameObject.name == "P2") {
 				key1.isP1 = false;
 			}
-			script.enabled = false;
+			enabled = false;
 		}
 		if (inputSwitch_p2) {
 			// when one control scheme is on, turn other off
@@ -38,7 +32,7 @@ public class inputManager : MonoBehaviour {
 			Destroy(pad1);
 			// add p2 control scheme
 			pad1 = gameObject.AddComponent("GolemController1") as GolemController1;
-			script.enabled = false;
+			enabled = false;
 		}
 	}
 }
