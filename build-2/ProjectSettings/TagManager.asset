@@ -5,14 +5,14 @@ TagManager:
   tags:
   - Golem
   - Terrain
-  - GolemEnterZone
-  - Floor
   - Dead
-  - Mech
+  - Floor
   - p1
   - p2
-  - CloudLeft
-  - CloudRight
+  - 
+  - 
+  - 
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
