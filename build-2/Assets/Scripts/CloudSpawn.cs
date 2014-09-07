@@ -4,12 +4,12 @@ using System.Collections;
 public class CloudSpawn : MonoBehaviour {
 	public GameObject Cloud;
 	public Vector2 spawnValues;
-	public int cloudCount = 10;
+	public int cloudCount = 100;
 	public bool right;
 	public bool left;
 
 	void Start()
-	{
+	{ 
 		cloudSpawnLeft ();
 		cloudSpawnRight ();
 	}
