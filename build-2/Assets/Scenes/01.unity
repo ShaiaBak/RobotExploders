@@ -606,8 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bee05813b64b964b8b8074016ded587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cloud: {fileID: 0}
-  spawnValues: {x: 0, y: 0}
+  Cloud: {fileID: 100000, guid: 31eebd0de03e7c94b8e06fe940bf47a3, type: 2}
+  spawnValues: {x: 5, y: 5}
   cloudCount: 10
   right: 0
   left: 0
