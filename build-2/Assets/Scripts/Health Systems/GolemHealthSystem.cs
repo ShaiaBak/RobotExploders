@@ -28,7 +28,7 @@ public class GolemHealthSystem : HealthSystem {
 		// Kill pilot if still inside the golem
 		if (gs.currentPilot != null) {
 			Debug.Log("pilot die");
-			gs.currentPilot.GetComponent<PlayerHealthSystem>().SetHealth(1);
+			gs.currentPilot.GetComponent<PlayerHealthSystem>().SetHealth(0);
 		}
 	}
 }
