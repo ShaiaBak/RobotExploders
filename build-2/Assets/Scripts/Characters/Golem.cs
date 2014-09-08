@@ -10,7 +10,11 @@ public class Golem : MonoBehaviour {
 	public float jumpForce = 150;			//Arbitrary jump value
 	public bool enableControl = true;
 	public GameObject currentPilot;
-	
+
+	//Directions
+	[SerializeField]
+	private Vector2 facingDirection;
+
 	//private Animator anim;
 	
 	//--------Input Variables--------//
@@ -181,29 +185,50 @@ public class Golem : MonoBehaviour {
 			Flip ();
 		}
 		
-		//Top Right/Left
+		//Top Right/Left, NE/NW
 		if ((moveH >= 0 && moveV >= 0) || (moveH <= 0 && moveV >= 0)) {
 			direction.localPosition = new Vector2(1, 1);
+			if(facingRight){
+				facingDirection = new Vector2(1,1);	//NE
+			}else{
+				facingDirection = new Vector2(-1,1);	//NW
+			}
 		}
 		
 		//Bottom Right/Left
 		if ((moveH >= 0 && moveV <= 0) || (moveH <= 0 && moveV <= 0)) {
 			direction.localPosition = new Vector2(1, -1);
+			if(facingRight){
+				facingDirection = new Vector2(1,-1); //SE
+			}else{
+				facingDirection = new Vector2(-1,-1); //SW
+			}
 		}
 		
 		//Top
 		if (moveH == 0 && moveV >= 0) { 
 			direction.localPosition = new Vector2(0, 1);
+			facingDirection = new Vector2(0,1); //N
 		}		
 		
 		//Bottom
 		if (moveH == 0 && moveV <= 0) { 
 			direction.localPosition = new Vector2(0, -1);
+			facingDirection = new Vector2(0,-1); //S
 		}	
 		
 		//Straight Right/Left
 		if ((moveH >= 0 && moveV == 0) || (moveH <= 0 && moveV == 0)) {
 			direction.localPosition = new Vector2(1, 0);
+			if(facingRight){
+				facingDirection = new Vector2(1,0); //E
+			}else{
+				facingDirection = new Vector2(-1,0); //W
+			}
 		}
+	}
+
+	public Vector2 GetFacingDirection(){
+		return facingDirection;
 	}
 }

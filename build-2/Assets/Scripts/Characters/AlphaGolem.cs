@@ -14,11 +14,11 @@ public class AlphaGolem : Golem {
 	protected override void HandleAttack(){
 		// Non-piercing
 		if(Input.GetButton(controls.fireA) && CheckAnimationCooldown()){
-			Shoot(false,3,2,Vector2.right,1);
+			Shoot(false,3,2,GetFacingDirection(),1);
 		}
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown()){
-			Shoot(true,3,2,Vector2.right,1);
+			Shoot(true,3,2,GetFacingDirection(),1);
 		}
 		// Special 
 		if(Input.GetButton(controls.fireC) && CheckAnimationCooldown()){
