@@ -155,11 +155,13 @@ public class Golem : MonoBehaviour {
 		currentPilot.collider2D.enabled = true;
 		currentPilot.rigidbody2D.isKinematic = false;
 		currentPilot.transform.parent = null;
-		currentPilot.GetComponent<TempShootingScript>().enabled = true;
+//		currentPilot.GetComponent<TempShootingScript>().enabled = true;
 
 		// Reset golem variables
 		gameObject.layer = LayerMask.NameToLayer("Deactivated");
-		gameObject.AddComponent<Golem>();
+		currentPilot = null;
+		// Add back what the original golem type it was
+		gameObject.AddComponent(this.GetType().ToString());
 //		rigidbody2D.isKinematic = true;
 		Destroy(this);
 	}

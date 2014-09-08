@@ -987,6 +987,7 @@ MonoBehaviour:
   curHP: 20
   maxHP: 20
   damageSources: []
+  escapeTime: 2
 --- !u!61 &761421080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2123,6 +2124,7 @@ MonoBehaviour:
   curHP: 20
   maxHP: 20
   damageSources: []
+  escapeTime: 2
 --- !u!61 &1133893448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2884,7 +2886,6 @@ GameObject:
   - 50: {fileID: 1586825323}
   - 61: {fileID: 1586825322}
   - 212: {fileID: 1586825321}
-  - 114: {fileID: 1586825320}
   - 114: {fileID: 1586825319}
   - 114: {fileID: 1586825318}
   m_Layer: 14
@@ -2946,20 +2947,6 @@ MonoBehaviour:
   curHP: 1
   maxHP: 5
   damageSources: []
---- !u!114 &1586825320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 60f7a27e5c3963345a7305fd0491d8d2,
-    type: 2}
-  m_PrefabInternal: {fileID: 83811178}
-  m_GameObject: {fileID: 1586825316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc87f1ba54ce4046b39c10a66dbec51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
-  isP1: 1
 --- !u!212 &1586825321
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3559,7 +3546,6 @@ GameObject:
   - 50: {fileID: 1923815354}
   - 61: {fileID: 1923815352}
   - 212: {fileID: 1923815351}
-  - 114: {fileID: 1923815356}
   - 114: {fileID: 1923815357}
   - 114: {fileID: 1923815353}
   m_Layer: 14
@@ -3657,20 +3643,6 @@ Transform:
   - {fileID: 331592557}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1923815356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: c83b37f63824c634e963e40dafa62212,
-    type: 2}
-  m_PrefabInternal: {fileID: 903110001}
-  m_GameObject: {fileID: 1923815350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc87f1ba54ce4046b39c10a66dbec51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
-  isP1: 0
 --- !u!114 &1923815357
 MonoBehaviour:
   m_ObjectHideFlags: 0

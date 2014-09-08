@@ -162,7 +162,7 @@ public class Pilot : MonoBehaviour {
 		rigidbody2D.isKinematic = true;
 		flyingMode = false;
 		collider2D.enabled = false;
-		GetComponent<TempShootingScript>().enabled = false;
+//		GetComponent<TempShootingScript>().enabled = false;
 	}
 	
 	private void Flip () {
