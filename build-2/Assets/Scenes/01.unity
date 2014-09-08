@@ -316,6 +316,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -509,6 +510,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!1 &567452152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 567452156}
+  - 114: {fileID: 567452157}
+  - 61: {fileID: 567452153}
+  m_Layer: 0
+  m_Name: Boundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &567452153
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567452152}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
+--- !u!4 &567452156
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567452152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.06304932, y: 1.46472394, z: 0}
+  m_LocalScale: {x: 45, y: 20, z: 5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+--- !u!114 &567452157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567452152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec5f916042116b4592e2ed094b7fe70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &596581861
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +663,7 @@ MonoBehaviour:
   cloudCount: 10
   right: 0
   left: 0
+  cloudWait: 15
 --- !u!4 &614296163
 Transform:
   m_ObjectHideFlags: 0
@@ -906,6 +959,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -1551,6 +1605,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -1654,6 +1709,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -2016,6 +2072,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -2242,6 +2299,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -2636,6 +2694,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -3158,6 +3217,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}
@@ -3737,6 +3797,7 @@ MonoBehaviour:
   speedV: 1.75
   isShoo: 0
   isFlying: 0
+  flyingTimerDuration: 2
   atPeak: 0
   hoverScale: 1
   difference: {x: 0, y: 0}

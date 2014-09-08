@@ -7,7 +7,7 @@ public class CloudController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.Translate(Vector3.forward * Input.GetAxis("Horizontal") * Time.deltaTime);
+			transform.Translate(Vector3.forward * Input.GetAxis("Horizontal") * Time.deltaTime);
 	}
 	
 	// Update is called once per frame
