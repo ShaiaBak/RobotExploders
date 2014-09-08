@@ -7,10 +7,14 @@ public class GolemHealthSystem : HealthSystem {
 	public int escapeTime = 2;
 
 	protected override void HandleDeath(){
-		GetComponent<Golem>().enableControl = false;
+
+
 		StartCoroutine(Wait());
+
 	}
 	IEnumerator Wait() {
+		Golem gs = GetComponent<Golem>();
+		gs.enableControl = false;
 		yield return new WaitForSeconds(escapeTime);
 
 		gameController = GameObject.Find("GameController").GetComponent<GameController>();
@@ -20,5 +24,11 @@ public class GolemHealthSystem : HealthSystem {
 		collider2D.enabled = false;
 		
 		tag = "Dead";
+
+		// Kill pilot if still inside the golem
+		if (gs.currentPilot != null) {
+			Debug.Log("pilot die");
+			gs.currentPilot.GetComponent<PlayerHealthSystem>().SetHealth(1);
+		}
 	}
 }
