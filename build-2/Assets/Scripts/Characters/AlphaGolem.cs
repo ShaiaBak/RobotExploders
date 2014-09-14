@@ -8,17 +8,17 @@ public class AlphaGolem : Golem {
 	private float cooldownEnd = .5f;
 
 	void Awake(){
-		projectilePrefab = Resources.projectilePrefab;
+		projectilePrefab = Resources.golemProjectile;
 	}
 
 	protected override void HandleAttack(){
 		// Non-piercing
 		if(Input.GetButton(controls.fireA) && CheckAnimationCooldown()){
-			Shoot(false,3,2,Vector2.right,1);
+			Shoot(false,3,2,GetFacingDirection(),1);
 		}
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown()){
-			Shoot(true,3,2,Vector2.right,1);
+			Shoot(true,3,2,GetFacingDirection(),1);
 		}
 		// Special 
 		if(Input.GetButton(controls.fireC) && CheckAnimationCooldown()){
@@ -54,7 +54,7 @@ public class AlphaGolem : Golem {
 	private IEnumerator Melee(){
 		//(time*deltatime)*speed=dist
 		//(time*deltatime)=dist/speed
-		float duration = .06f;
+		float duration = .1f;
 		
 		Vector2 direction = new Vector2(1,1);
 		Shoot(true,10,duration,direction,1);

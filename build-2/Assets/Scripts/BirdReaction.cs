@@ -11,6 +11,7 @@ public class BirdReaction : MonoBehaviour {
 	public float flyingTimerDuration = 2f;
 	private float flyingTimer = 0f;
 	public bool atPeak = false;
+	private float counter = 0f;
 	public float hoverScale = 1f;
 	//public LayerMask scaresBirds;
 	public Vector2 difference;
@@ -37,8 +38,9 @@ public class BirdReaction : MonoBehaviour {
 		}
 
 		if (atPeak) {
-			Debug.Log(atPeakX);
-			transform.position = new Vector2 ( atPeakX + Mathf.Sin(Time.time) , transform.position.y + Mathf.Sin(Time.time)*hoverScale );
+			counter += Time.deltaTime/2;
+//			Debug.Log(atPeakX);
+			transform.position = new Vector2 ( atPeakX + Mathf.Sin(counter)*10f , transform.position.y + Mathf.Sin(counter)*hoverScale );
 			//rigidbody2D.velocity = new Vector2 (0f, Mathf.Sin(Time.time)*hoverScale);
 			//transform.localPosition.x += 1f;
 		}

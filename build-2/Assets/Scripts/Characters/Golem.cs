@@ -10,7 +10,11 @@ public class Golem : MonoBehaviour {
 	public float jumpForce = 150;			//Arbitrary jump value
 	public bool enableControl = true;
 	public GameObject currentPilot;
-	
+
+	//Directions
+	[SerializeField]
+	private Vector2 facingDirection;
+
 	//private Animator anim;
 	
 	//--------Input Variables--------//
@@ -76,13 +80,13 @@ public class Golem : MonoBehaviour {
 
 			CheckJumping();
 			CheckFlying();
-			CheckExiting();
+
 			DirectionCheck();
 			
 		} else {
 			moveH = 0f; 
 		}
-		
+		CheckExiting();
 	}
 
 	protected virtual void HandleAttack(){
@@ -155,10 +159,14 @@ public class Golem : MonoBehaviour {
 		currentPilot.collider2D.enabled = true;
 		currentPilot.rigidbody2D.isKinematic = false;
 		currentPilot.transform.parent = null;
-		currentPilot.GetComponent<TempShootingScript>().enabled = true;
+//		currentPilot.GetComponent<TempShootingScript>().enabled = true;
 
 		// Reset golem variables
-		gameObject.AddComponent<Golem>();
+		gameObject.layer = LayerMask.NameToLayer("Deactivated");
+		currentPilot = null;
+		// Add back what the original golem type it was
+		gameObject.AddComponent(this.GetType().ToString());
+//		rigidbody2D.isKinematic = true;
 		Destroy(this);
 	}
 	
@@ -177,29 +185,50 @@ public class Golem : MonoBehaviour {
 			Flip ();
 		}
 		
-		//Top Right/Left
+		//Top Right/Left, NE/NW
 		if ((moveH >= 0 && moveV >= 0) || (moveH <= 0 && moveV >= 0)) {
 			direction.localPosition = new Vector2(1, 1);
+			if(facingRight){
+				facingDirection = new Vector2(1,1);	//NE
+			}else{
+				facingDirection = new Vector2(-1,1);	//NW
+			}
 		}
 		
 		//Bottom Right/Left
 		if ((moveH >= 0 && moveV <= 0) || (moveH <= 0 && moveV <= 0)) {
 			direction.localPosition = new Vector2(1, -1);
+			if(facingRight){
+				facingDirection = new Vector2(1,-1); //SE
+			}else{
+				facingDirection = new Vector2(-1,-1); //SW
+			}
 		}
 		
 		//Top
 		if (moveH == 0 && moveV >= 0) { 
 			direction.localPosition = new Vector2(0, 1);
+			facingDirection = new Vector2(0,1); //N
 		}		
 		
 		//Bottom
 		if (moveH == 0 && moveV <= 0) { 
 			direction.localPosition = new Vector2(0, -1);
+			facingDirection = new Vector2(0,-1); //S
 		}	
 		
 		//Straight Right/Left
 		if ((moveH >= 0 && moveV == 0) || (moveH <= 0 && moveV == 0)) {
 			direction.localPosition = new Vector2(1, 0);
+			if(facingRight){
+				facingDirection = new Vector2(1,0); //E
+			}else{
+				facingDirection = new Vector2(-1,0); //W
+			}
 		}
+	}
+
+	public Vector2 GetFacingDirection(){
+		return facingDirection;
 	}
 }

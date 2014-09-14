@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Golem
   m_TagString: Golem
   m_Icon: {fileID: 0}
