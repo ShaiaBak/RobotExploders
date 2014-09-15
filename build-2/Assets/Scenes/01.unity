@@ -551,7 +551,7 @@ Transform:
   m_GameObject: {fileID: 567452152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.06304932, y: 1.46472394, z: 0}
-  m_LocalScale: {x: 45, y: 20, z: 5}
+  m_LocalScale: {x: 35, y: 20, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 22
@@ -664,11 +664,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cloud: {fileID: 100000, guid: 31eebd0de03e7c94b8e06fe940bf47a3, type: 2}
-  spawnValues: {x: 5, y: 5}
+  spawnValues: {x: 7, y: 5}
   cloudCount: 10
-  right: 0
-  left: 0
-  cloudWait: 15
+  cloudWait: 7
+  spawnValuesBegin: {x: 20, y: 10}
+  cloudCountBegin: 50
 --- !u!4 &614296163
 Transform:
   m_ObjectHideFlags: 0
@@ -676,7 +676,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 614296161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .913503945, y: 2.31578231, z: 0}
+  m_LocalPosition: {x: 27.3299999, y: 1.926651, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1123,6 +1123,7 @@ MonoBehaviour:
   jumpForce: 150
   enableControl: 1
   currentPilot: {fileID: 0}
+  facingDirection: {x: 0, y: 0}
   grounded: 0
   doubleJump: 1
   timeToExit: .5
@@ -2156,6 +2157,7 @@ MonoBehaviour:
   jumpForce: 150
   enableControl: 1
   currentPilot: {fileID: 0}
+  facingDirection: {x: 0, y: 0}
   grounded: 0
   doubleJump: 1
   timeToExit: .5
