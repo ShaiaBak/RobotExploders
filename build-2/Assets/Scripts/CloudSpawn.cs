@@ -24,13 +24,13 @@ public class CloudSpawn : MonoBehaviour {
 				GameObject CloudLeft = (GameObject) Instantiate (Cloud, spawnPosition, transform.rotation);
 			}
 			yield return new WaitForSeconds(cloudWait);
-		StartCoroutine ("cloudSpawnLeft");
+			StartCoroutine ("cloudSpawnLeft");
 	}
 	IEnumerator cloudSpawnBegin(){
 		for(int i = 0; i < cloudCountBegin; i++){
-			Vector2 spawnPosition = new Vector2 (Random.Range(-spawnValuesBegin.x, spawnValuesBegin.x), Random.Range (-spawnValuesBegin.y, spawnValuesBegin.y));
+			Vector2 spawnPosition = new Vector2 (Random.Range(-spawnValuesBegin.x, spawnValuesBegin.x) + transform.position.x - 20, Random.Range (-spawnValuesBegin.y, spawnValuesBegin.y));
 			GameObject CloudBegin = (GameObject) Instantiate (Cloud, spawnPosition, transform.rotation);
 		}
-		yield return new WaitForSeconds(cloudWait);
+		return null;
 	}
 }
