@@ -18,6 +18,7 @@ public class CloudSpawn : MonoBehaviour {
 		//cloudSpawnLeft ();
 		//cloudSpawnRight ();
 	}
+
 	IEnumerator cloudSpawnLeft(){
 			for(int i = 0; i < cloudCount; i++){
 				Vector2 spawnPosition = new Vector2 (Random.Range(-spawnValues.x, spawnValues.x) + transform.position.x, Random.Range (-spawnValues.y, spawnValues.y) + transform.position.y);
