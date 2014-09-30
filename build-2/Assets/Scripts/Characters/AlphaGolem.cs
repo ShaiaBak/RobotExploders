@@ -22,7 +22,7 @@ public class AlphaGolem : Golem {
 		}
 		// Special 
 		if(Input.GetButton(controls.fireC) && CheckAnimationCooldown()){
-			StartCoroutine(Melee ());
+			StartCoroutine(Melee(GetFacingDirection()));
 		}
 		cooldownTimer += Time.deltaTime;
 	}
@@ -50,21 +50,25 @@ public class AlphaGolem : Golem {
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);
 	}
 	
-	// Fires 3 projectiles NE, E, SE in quick succession to imitate a downward slash
-	private IEnumerator Melee(){
+	// Fires 3 projectiles NE, E, SE in quick succession to imitate a downward slash (if facing right)
+	private IEnumerator Melee(Vector2 dir){
 		//(time*deltatime)*speed=dist
 		//(time*deltatime)=dist/speed
 		float duration = .1f;
-		
-		Vector2 direction = new Vector2(1,1);
+
+		// Shoot at dir - 45 degrees
+		Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.forward);
+		Vector2 direction = rotation*dir;
 		Shoot(true,10,duration,direction,1);
 		yield return new WaitForSeconds(.05f);
 		
-		direction = new Vector2(1,0);
-		Shoot(true,10,duration,direction,1);
+		// Shoot at dir
+		Shoot(true,10,duration,dir,1);
 		yield return new WaitForSeconds(.05f);
-		
-		direction = new Vector2(1,-1);
+
+		// Shoot at dir + 45 degrees
+		rotation = Quaternion.AngleAxis(45, Vector3.forward);
+		direction = rotation*dir;
 		Shoot(true,10,duration,direction,1);
 	}
 
