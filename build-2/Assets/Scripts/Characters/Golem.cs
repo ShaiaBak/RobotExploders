@@ -31,7 +31,7 @@ public class Golem : MonoBehaviour {
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 	
-	private float exitTimer = -1;
+	private float exitTimer = 0;
 	public float timeToExit = .5f;
 	
 	public Transform groundCheck;
@@ -57,6 +57,12 @@ public class Golem : MonoBehaviour {
 			enterGolemPress = Input.GetButton (controls.enter);
 			// Handles special attacks
 			HandleAttack();
+		}else{
+			moveH = 0;
+			moveV = 0;
+			jumpPress = false;
+			jumpRelease = false;
+			enterGolemPress = false;
 		}
 		
 		//enableControl is only used for potential ideas later. If true you have normal movement
@@ -155,7 +161,7 @@ public class Golem : MonoBehaviour {
 		ps.enabled = true;
 		ps.enableControl = true;
 		ps.currentGolem = null;
-		ps.facingRight = facingRight;
+//		ps.facingRight = facingRight;
 		currentPilot.collider2D.enabled = true;
 		currentPilot.rigidbody2D.isKinematic = false;
 		currentPilot.transform.parent = null;
@@ -164,10 +170,7 @@ public class Golem : MonoBehaviour {
 		// Reset golem variables
 		gameObject.layer = LayerMask.NameToLayer("Deactivated");
 		currentPilot = null;
-		// Add back what the original golem type it was
-		gameObject.AddComponent(this.GetType().ToString());
-//		rigidbody2D.isKinematic = true;
-		Destroy(this);
+		controls = null;
 	}
 	
 	private void Flip () {

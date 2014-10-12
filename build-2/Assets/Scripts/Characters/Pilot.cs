@@ -149,10 +149,14 @@ public class Pilot : MonoBehaviour {
 		Golem gs = golem.GetComponent<Golem>();
 		gs.controls = controls;
 		gs.currentPilot = gameObject;
-		gs.facingRight = facingRight;
 		transform.position = golem.transform.position;
 		transform.parent = golem.transform;
 //		currentGolem.rigidbody2D.isKinematic = false;
+		// Sets pilot facing to golem's facing
+		if(facingRight != gs.facingRight){
+			Flip();
+
+		}
 
 		//Disable the pilot
 		enabled = false;
@@ -166,10 +170,10 @@ public class Pilot : MonoBehaviour {
 	}
 	
 	private void Flip () {
-		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+
 	}
 
 	private void DirectionCheck() {
@@ -178,6 +182,11 @@ public class Pilot : MonoBehaviour {
 			Flip ();
 		} else if (moveH < 0 && facingRight) {
 			Flip ();
+		}
+		if(transform.localScale.x > 0){
+			facingRight = true;
+		}else{
+			facingRight = false;
 		}
 
 		//Top Right/Left
