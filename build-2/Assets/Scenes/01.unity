@@ -459,7 +459,7 @@ Prefab:
         type: 3}
     - target: {fileID: 400000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.89999998
+      value: -1.89999998
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_LocalScale.y
@@ -1279,6 +1279,9 @@ MonoBehaviour:
   bounds: {fileID: 1892572414}
   xOffset: 0
   yOffset: 0
+  smooth: 4
+  zoomIn: 3
+  zoomOut: 2.25
 --- !u!114 &784835956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1466,6 +1469,9 @@ MonoBehaviour:
   bounds: {fileID: 1892572414}
   xOffset: 0
   yOffset: 0
+  smooth: 5
+  zoomIn: 3
+  zoomOut: 2.25
 --- !u!81 &896633222
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2282,7 +2288,7 @@ Transform:
   m_GameObject: {fileID: 1133893445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.85442376, y: 1.70000005, z: 0}
-  m_LocalScale: {x: 1.89999998, y: 1.89999998, z: 1}
+  m_LocalScale: {x: -1.89999998, y: 1.89999998, z: 1}
   m_Children:
   - {fileID: 1622327566}
   - {fileID: 2088119444}
@@ -3450,7 +3456,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_Center: {x: 0, y: 0}
 --- !u!4 &1892572415
 Transform:
@@ -3460,7 +3466,7 @@ Transform:
   m_GameObject: {fileID: 1892572413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.06304932, y: 1.46472442, z: 6.05877304}
-  m_LocalScale: {x: 30, y: 5, z: 1}
+  m_LocalScale: {x: 30, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8

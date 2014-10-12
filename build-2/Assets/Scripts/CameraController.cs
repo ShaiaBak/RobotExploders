@@ -20,6 +20,10 @@ public class CameraController : MonoBehaviour
 	//Camera offset for facing directions
 	public float xOffset = 0.0f, yOffset = 0.0f;
 
+	// camera zoom variables
+	public float smooth = 10;
+	public float zoomIn = 5;
+	public float zoomOut = 2.25f;
 
 	public void Start()
 	{
@@ -37,7 +41,6 @@ public class CameraController : MonoBehaviour
 		var y = transform.position.y;
 
 		// If the camera is following the "player"
-
 		if (isFollowing)
 		{
 			if (Mathf.Abs( x - player.position.x ) > margin.x)
@@ -54,5 +57,10 @@ public class CameraController : MonoBehaviour
 		y = Mathf.Clamp(y, min.y + camera.orthographicSize, max.y - camera.orthographicSize);
 		transform.position = new Vector3(x, y, transform.position.z);
 
+		if (player.GetComponent<Pilot>().currentGolem != null) {
+			camera.orthographicSize = Mathf.Lerp (camera.orthographicSize, zoomIn, Time.deltaTime*smooth);
+		} else {
+			camera.orthographicSize = Mathf.Lerp (camera.orthographicSize, zoomOut, Time.deltaTime*smooth);
+		}
 	}
 }
