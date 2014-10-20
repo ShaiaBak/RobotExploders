@@ -347,6 +347,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &265278918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1028,6 +1030,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &739060097
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1695,6 +1699,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &907915409
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1795,6 +1801,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &918191392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2154,6 +2162,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &1076832392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2379,6 +2389,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &1159760652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2770,6 +2782,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &1395291501
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3274,6 +3288,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &1723355194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3835,6 +3851,8 @@ MonoBehaviour:
   isShoo: 0
   isFlying: 0
   flyingTimerDuration: 2
+  hoverScaleY: 1
+  hoverScaleX: 1
 --- !u!212 &2000134749
 SpriteRenderer:
   m_ObjectHideFlags: 0

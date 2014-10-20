@@ -334,6 +334,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 540180146}
+  - 95: {fileID: 540180147}
   m_Layer: 0
   m_Name: Alpha
   m_TagString: Untagged
@@ -360,6 +361,20 @@ Transform:
   - {fileID: 725104772}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!95 &540180147
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540180145}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48fcc35c0b6f9df4582d7b85bbca09ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!1 &581802582
 GameObject:
   m_ObjectHideFlags: 0
