@@ -11,6 +11,7 @@ public class Pilot : MonoBehaviour {
 	public float jumpForce = 250;			//Arbitrary jump value
 	public bool enableControl = true;
 	public GameObject currentGolem;
+	public CameraController cameraScript;	// The CameraControl script attached to the camera that's following the pilot. It's set in CameraController
 	
 	//private Animator anim;
 	
@@ -37,7 +38,6 @@ public class Pilot : MonoBehaviour {
 	
 	void Start () {
 		//anim = GetComponent<Animator>();
-
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
 		direction = this.transform.FindChild("Direction");

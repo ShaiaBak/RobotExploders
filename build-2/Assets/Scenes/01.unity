@@ -487,6 +487,10 @@ Prefab:
       value: 
       objectReference: {fileID: 266726316, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: facingRight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_RootGameObject: {fileID: 1133893445}
@@ -2253,7 +2257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
   maxSpeed: 2
-  facingRight: 1
+  facingRight: 0
   jumpForce: 150
   enableControl: 1
   currentPilot: {fileID: 0}
@@ -3084,6 +3088,7 @@ MonoBehaviour:
   jumpForce: 250
   enableControl: 1
   currentGolem: {fileID: 0}
+  cameraScript: {fileID: 0}
   grounded: 0
   doubleJump: 1
   timeToEnter: .5
@@ -3766,6 +3771,7 @@ MonoBehaviour:
   jumpForce: 250
   enableControl: 1
   currentGolem: {fileID: 0}
+  cameraScript: {fileID: 0}
   grounded: 0
   doubleJump: 1
   timeToEnter: .5

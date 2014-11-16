@@ -49,6 +49,12 @@ public abstract class HealthSystem : MonoBehaviour {
 	public void HurtHealth(int amount, Collider source){
 		if( amount > 0 && !CheckDuplicateDamageSource(source) ){
 			SetHealth(curHP-amount);
+			// Shake camera if possible
+			if(GetComponent<Pilot>() != null){
+				GetComponent<Pilot>().cameraScript.ShakeCamera(.1f,.25f);
+			}else if(GetComponent<Golem>() != null){
+				GetComponent<Golem>().currentPilot.GetComponent<Pilot>().cameraScript.ShakeCamera(.1f,.25f); // :D
+			}
 		}
 	}
 	

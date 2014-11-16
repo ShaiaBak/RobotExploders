@@ -25,11 +25,16 @@ public class CameraController : MonoBehaviour
 	public float zoomIn = 5;
 	public float zoomOut = 2.25f;
 
+	// Camera shake variables
+	private float cameraShakeMagnitude = 0;
+
 	public void Start()
 	{
 		min = bounds.bounds.min;
 		max = bounds.bounds.max;
 		isFollowing = true;
+		// Attach the camera to the pilot
+		player.GetComponent<Pilot>().cameraScript = this;
 	}
 	public void Update()
 	{
@@ -62,5 +67,24 @@ public class CameraController : MonoBehaviour
 		} else {
 			camera.orthographicSize = Mathf.Lerp (camera.orthographicSize, zoomOut, Time.deltaTime*smooth);
 		}
+		if(cameraShakeMagnitude > 0){
+			HandleCameraShake(x,y);
+		}
+	}
+
+	private void HandleCameraShake(float x, float y){
+		float xShake = Random.Range(-cameraShakeMagnitude,cameraShakeMagnitude);
+		float yShake = Random.Range(-cameraShakeMagnitude,cameraShakeMagnitude);
+		transform.position = new Vector3(x+xShake, y+yShake, transform.position.z);
+	}
+
+	public void ShakeCamera(float magnitude, float length){
+		CancelInvoke("StopCameraShake");
+		Invoke ("StopCameraShake", length);
+		cameraShakeMagnitude = magnitude;
+	}
+
+	public void StopCameraShake(){
+		cameraShakeMagnitude = 0;
 	}
 }
