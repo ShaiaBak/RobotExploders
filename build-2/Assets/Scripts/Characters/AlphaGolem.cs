@@ -6,6 +6,12 @@ public class AlphaGolem : Golem {
 	public GameObject projectilePrefab;
 	private float cooldownTimer = 0f;
 	private float cooldownEnd = .5f;
+	private bool diveEnabled = false;
+	private float counter = 0f;
+	public float diveScaleX = 0.1f;
+	public float diveScaleY = 0.3f;
+	public float diveDistanceScale = 10;
+
 
 	void Awake(){
 		projectilePrefab = Resources.golemProjectile;
@@ -14,7 +20,10 @@ public class AlphaGolem : Golem {
 	protected override void HandleAttack(){
 		// Non-piercing
 		if(Input.GetButton(controls.fireA) && CheckAnimationCooldown()){
-			Shoot(false,3,2,GetFacingDirection(),1);
+			//Shoot(false,3,2,GetFacingDirection(),1);
+
+			diveEnabled = true;
+
 		}
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown()){
@@ -72,4 +81,41 @@ public class AlphaGolem : Golem {
 		Shoot(true,10,duration,direction,1);
 	}
 
+
+	private IEnumerator DiveLost(){
+
+		//Pushes the golem straight down
+		rigidbody2D.AddForce(new Vector2 (0,-10),ForceMode2D.Impulse);
+		//Shoots projectile to simulate melee attack
+		Shoot(false,10,1f,new Vector2 (0,-1),1);
+
+		yield return new WaitForSeconds(0.05f);
+
+	}
+
+	private void diveJump() {
+		// TODO: Add in direction of Golem for the dive
+		// TODO: golem needs to move straight down while in air: check the grounded variable of the golem similar to the jump function
+		// TODO: needs to bounce off the object that it collides with, do something similar to diveJump
+		//
+
+		if (diveEnabled){
+			//Quaternion rotation = Quaternion.AngleAxis(180, Vector3.forward);
+
+
+
+
+			counter += Time.deltaTime/3f;
+			transform.position = new Vector2 (transform.position.x+diveScaleX, transform.position.y + Mathf.Cos(counter*diveDistanceScale)*diveScaleY);
+		}
+		if (counter >= Mathf.PI/(2*diveDistanceScale)) {
+			diveEnabled = false;
+			counter = 0;
+			StartCoroutine(DiveLost());
+		}
+	}
+
+	void FixedUpdate(){
+		diveJump();
+	}
 }
