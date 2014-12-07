@@ -142,6 +142,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60f7a27e5c3963345a7305fd0491d8d2, type: 2}
   m_RootGameObject: {fileID: 1586825316}
@@ -240,7 +244,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 20
 --- !u!114 &168744124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +495,18 @@ Prefab:
       propertyPath: facingRight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: jumpForce
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_Mass
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_RootGameObject: {fileID: 1133893445}
@@ -570,7 +586,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &567452152
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +676,7 @@ Transform:
   - {fileID: 878944949}
   - {fileID: 1919698020}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!23 &596581863
 Renderer:
   m_ObjectHideFlags: 0
@@ -878,7 +894,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 21200000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_Sprite
@@ -900,6 +916,18 @@ Prefab:
     - target: {fileID: 100004, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: jumpForce
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_Mass
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
@@ -1081,7 +1109,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &761421078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1165,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 683069804}
   m_GameObject: {fileID: 761421078}
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 1.5
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -1182,7 +1210,7 @@ Transform:
   - {fileID: 705272944}
   - {fileID: 1284721751}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 3
 --- !u!114 &761421084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,9 +1224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
-  maxSpeed: 2
+  maxSpeed: 4
   facingRight: 0
-  jumpForce: 150
+  jumpForce: 600
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
@@ -1207,6 +1235,9 @@ MonoBehaviour:
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  diveScaleX: .100000001
+  diveScaleY: .300000012
+  diveDistanceScale: 10
 --- !u!1 &784835949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,7 +1270,7 @@ Transform:
   m_LocalScale: {x: -7.98000002, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!81 &784835951
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1315,7 +1346,7 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   smooth: 4
-  zoomIn: 3
+  zoomIn: 5
   zoomOut: 2.25
 --- !u!114 &784835956
 MonoBehaviour:
@@ -1504,8 +1535,8 @@ MonoBehaviour:
   bounds: {fileID: 1892572414}
   xOffset: 0
   yOffset: 0
-  smooth: 5
-  zoomIn: 3
+  smooth: 4
+  zoomIn: 5
   zoomOut: 2.25
 --- !u!81 &896633222
 AudioListener:
@@ -1575,7 +1606,7 @@ Transform:
   m_LocalScale: {x: -7.98000002, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &896633227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,6 +1674,10 @@ Prefab:
     - target: {fileID: 100004, guid: c83b37f63824c634e963e40dafa62212, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c83b37f63824c634e963e40dafa62212, type: 2}
+      propertyPath: maxSpeed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c83b37f63824c634e963e40dafa62212, type: 2}
@@ -1753,7 +1788,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &918191388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,9 +2291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
-  maxSpeed: 2
+  maxSpeed: 4
   facingRight: 0
-  jumpForce: 150
+  jumpForce: 600
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
@@ -2267,6 +2302,9 @@ MonoBehaviour:
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  diveScaleX: .100000001
+  diveScaleY: .300000012
+  diveDistanceScale: 10
 --- !u!114 &1133893447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,7 +2340,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 515072749}
   m_GameObject: {fileID: 1133893445}
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 1.5
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -2452,7 +2490,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1001 &1188179210
 Prefab:
   m_ObjectHideFlags: 0
@@ -3034,7 +3072,7 @@ Transform:
   - {fileID: 2082926340}
   - {fileID: 1809288844}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1586825316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,7 +3121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
   isP1: 1
-  maxSpeed: 3
+  maxSpeed: 4
   facingRight: 1
   jumpForce: 250
   enableControl: 1
@@ -3539,7 +3577,7 @@ Transform:
   m_LocalScale: {x: 30, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &1903659871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,7 +3804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
   isP1: 0
-  maxSpeed: 3
+  maxSpeed: 4
   facingRight: 1
   jumpForce: 250
   enableControl: 1
@@ -3925,7 +3963,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &2011476680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,7 +4033,7 @@ Transform:
   m_LocalScale: {x: 30, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1001 &2038954442
 Prefab:
   m_ObjectHideFlags: 0
