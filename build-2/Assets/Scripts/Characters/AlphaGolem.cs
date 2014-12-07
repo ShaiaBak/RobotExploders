@@ -28,10 +28,12 @@ public class AlphaGolem : Golem {
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown()){
 			Shoot(true,3,2,GetFacingDirection(),1);
+			SoundNotificationController.CreateSound(transform.position,0,1);
 		}
 		// Special 
 		if(Input.GetButton(controls.fireC) && CheckAnimationCooldown()){
 			StartCoroutine(Melee(GetFacingDirection()));
+			SoundNotificationController.CreateSound(transform.position,0,1);
 		}
 		cooldownTimer += Time.deltaTime;
 	}
