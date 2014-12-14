@@ -11,8 +11,8 @@ public class AlphaGolem : Golem {
 	public float diveScaleX = 0.1f;
 	public float diveScaleY = 0.3f;
 	public float diveDistanceScale = 10;
-
-
+	private bool startFromGround = false;
+	public bool divingCrash = false;
 	void Awake(){
 		projectilePrefab = Resources.golemProjectile;
 	}
@@ -21,9 +21,9 @@ public class AlphaGolem : Golem {
 		// Non-piercing
 		if(Input.GetButton(controls.fireA) && CheckAnimationCooldown()){
 			//Shoot(false,3,2,GetFacingDirection(),1);
-
+			startFromGround = grounded;
 			diveEnabled = true;
-
+			enableControl= false;
 		}
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown()){
@@ -84,7 +84,7 @@ public class AlphaGolem : Golem {
 	}
 
 
-	private IEnumerator DiveLost(){
+	private IEnumerator DiveLostProj(){
 
 		//Pushes the golem straight down
 		rigidbody2D.AddForce(new Vector2 (0,-10),ForceMode2D.Impulse);
@@ -95,29 +95,56 @@ public class AlphaGolem : Golem {
 
 	}
 
-	private void diveJump() {
+	private void diveJump(Vector2 dir, bool onGround) {
 		// TODO: Add in direction of Golem for the dive
 		// TODO: golem needs to move straight down while in air: check the grounded variable of the golem similar to the jump function
 		// TODO: needs to bounce off the object that it collides with, do something similar to diveJump
-		//
 
-		if (diveEnabled){
+		//Jump in an arc first if the dive started from the ground
+		if (diveEnabled && onGround){
 			//Quaternion rotation = Quaternion.AngleAxis(180, Vector3.forward);
-
-
-
-
+			enableControl= false;
 			counter += Time.deltaTime/3f;
-			transform.position = new Vector2 (transform.position.x+diveScaleX, transform.position.y + Mathf.Cos(counter*diveDistanceScale)*diveScaleY);
+		
+			if (dir.x>=0f){
+				transform.position = new Vector2 (transform.position.x+diveScaleX, transform.position.y + Mathf.Cos(counter*diveDistanceScale)*diveScaleY);
+			} else {
+				transform.position = new Vector2 (transform.position.x-diveScaleX, transform.position.y + Mathf.Cos(counter*diveDistanceScale)*diveScaleY);
+			}
+
 		}
-		if (counter >= Mathf.PI/(2*diveDistanceScale)) {
-			diveEnabled = false;
+
+		//After dive arc, go down
+		if (counter >= Mathf.PI/(2*diveDistanceScale) && onGround) {
 			counter = 0;
-			StartCoroutine(DiveLost());
+			divingCrash = true;
+			StartCoroutine(DiveLostProj());
+			rigidbody2D.AddForce( new Vector2 (0f,-2500f));
+			enableControl = true;
+			diveEnabled = false;
+
+		}
+		//without dive arc
+		if (diveEnabled && !onGround) {
+			divingCrash = true;
+			StartCoroutine(DiveLostProj());
+			rigidbody2D.AddForce( new Vector2 (0f,-2500f));
+			diveEnabled = false;
+		}
+
+		if (grounded && divingCrash && !onGround) {
+			divingCrash = false;
+			Debug.Log ("dive landing");
+			flyingMode = false;
+			jumpRelease = true;
+			jumpPress = false;
+			enableControl = true;
+
+
 		}
 	}
 
 	void FixedUpdate(){
-		diveJump();
+		diveJump(GetFacingDirection(), startFromGround);
 	}
 }

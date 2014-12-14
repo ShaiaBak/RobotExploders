@@ -20,14 +20,14 @@ public class Golem : MonoBehaviour {
 	//--------Input Variables--------//
 	private float moveH = 0f;
 	private float moveV = 0f;
-	private bool jumpPress;					//When the Jump button is pressed
-	private bool jumpRelease;				//When the Jump button is released
+	public bool jumpPress;					//When the Jump button is pressed
+	public bool jumpRelease;				//When the Jump button is released
 	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
 	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
-	private bool flyingMode = false;		//True = Flying is active
+	public bool flyingMode = false;		//True = Flying is active
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 	
@@ -67,16 +67,21 @@ public class Golem : MonoBehaviour {
 		
 		//enableControl is only used for potential ideas later. If true you have normal movement
 		//if false, controls do nothing.
+					
+		//This checks the object "groundCheck", gives it a radius of "groundRadius"
+		//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
+		//the unit will be considered on the ground, grounded = true
+		LayerMask whatIsGround = 1 << LayerMask.NameToLayer("Environment");
+		float groundRadius = 0.1f;
+			
+		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+		//anim.SetBool ("Ground", grounded);
+
+
+
 		if (enableControl) {
 			
-			//This checks the object "groundCheck", gives it a radius of "groundRadius"
-			//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
-			//the unit will be considered on the ground, grounded = true
-			LayerMask whatIsGround = 1 << LayerMask.NameToLayer("Environment");
-			float groundRadius = 0.1f;
-			
-			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
-			//anim.SetBool ("Ground", grounded);
+
 			
 			//When the vertical speed is not zero, change to the jumping/falling animation
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
