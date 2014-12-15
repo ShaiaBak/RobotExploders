@@ -50,13 +50,14 @@ public class WalkingSoundNotification : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		// Rotate sound notification
+		// Show and rotate sound notifications if they're far away enough from the player and if they're moving in a golem
 		if(otherPlayer.GetComponent<Pilot>().currentGolem != null){
 			otherGolemVelocity = otherPlayer.GetComponent<Pilot>().currentGolem.rigidbody2D.velocity;
 		}else{
 			otherGolemVelocity = Vector2.zero;
 		}
-		if(otherGolemVelocity != Vector2.zero){
+		if(Vector2.Distance(transform.position,otherPlayer.position) > camera.orthographicSize+.75f && 
+												 otherGolemVelocity != Vector2.zero){
 			RotateSoundNotification(pivot,otherPlayer.position,icons[0]);
 		}
 	}

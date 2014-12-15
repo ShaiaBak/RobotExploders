@@ -37,6 +37,7 @@ public class SoundNotificationController : MonoBehaviour {
 	}
 
 	void Update(){
+		// Remove expired sounds
 		timer += Time.deltaTime;
 		for(int i=0; i<sounds.Count; i++){
 			if(Time.time >= sounds[i].duration){
@@ -46,9 +47,11 @@ public class SoundNotificationController : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		// Rotate sound notification
+		// Show and rotate sound notifications far away enough from the player
 		for(int i=0; i<sounds.Count; i++){
-			RotateSoundNotification(pivot,sounds[i].position,icons[3]);
+			if(Vector2.Distance(transform.position,sounds[i].position) > camera.orthographicSize+.75f){
+				RotateSoundNotification(pivot,sounds[i].position,icons[3]);
+			}
 		}
 	}
 
