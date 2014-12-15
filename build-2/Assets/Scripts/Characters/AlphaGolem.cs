@@ -59,6 +59,7 @@ public class AlphaGolem : Golem {
 		// Make the projectile shoot to the direction of DIR for DUR sec with a movespeed of MS, damage of DMG
 		p.SetParameters(isPiercing, ms, dur, dir, dmg, 0, 0, 0);
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);
+
 	}
 	
 	// Fires 3 projectiles NE, E, SE in quick succession to imitate a downward slash (if facing right)
@@ -85,12 +86,16 @@ public class AlphaGolem : Golem {
 
 
 	private IEnumerator DiveLostProj(){
-
+		//Vector2 pos = transform.position;
+		//pos.y -= 0.5f;
 		//Pushes the golem straight down
-		rigidbody2D.AddForce(new Vector2 (0,-10),ForceMode2D.Impulse);
+		rigidbody2D.AddForce(new Vector2 (0,-25f),ForceMode2D.Impulse);
 		//Shoots projectile to simulate melee attack
-		Shoot(false,10,1f,new Vector2 (0,-1),1);
-
+		Shoot(false,25,1f,new Vector2 (0,-1),1);
+		//GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
+		///Projectile p = proj.GetComponent<Projectile>();
+		///p.SetParameters(false,0, 1f, new Vector2 (0,-1), 1, 0, 0, 0);
+		//Physics2D.IgnoreCollision(collider2D, p.collider2D);
 		yield return new WaitForSeconds(0.05f);
 
 	}
@@ -119,7 +124,7 @@ public class AlphaGolem : Golem {
 			counter = 0;
 			divingCrash = true;
 			StartCoroutine(DiveLostProj());
-			rigidbody2D.AddForce( new Vector2 (0f,-2500f));
+			//rigidbody2D.AddForce( new Vector2 (0f,-2500f));
 			enableControl = true;
 			diveEnabled = false;
 
@@ -128,7 +133,7 @@ public class AlphaGolem : Golem {
 		if (diveEnabled && !onGround) {
 			divingCrash = true;
 			StartCoroutine(DiveLostProj());
-			rigidbody2D.AddForce( new Vector2 (0f,-2500f));
+			//rigidbody2D.AddForce( new Vector2 (0f,-2500f));
 			diveEnabled = false;
 		}
 
