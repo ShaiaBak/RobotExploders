@@ -11,6 +11,7 @@ public class WalkingSoundNotification : MonoBehaviour {
 	private static List<Sound> sounds;
 	// Test:
 	private Transform otherPlayer;
+	private Vector2 otherGolemVelocity;
 	private float timer = 0;
 	private Vector2 pivot;
 
@@ -46,17 +47,18 @@ public class WalkingSoundNotification : MonoBehaviour {
 				sounds.RemoveAt(i);
 			}
 		}
-
 	}
 
 	void OnGUI(){
 		// Rotate sound notification
-//		RotateSoundNotification(pivot,otherPlayer.position,icons[0]);
-		for(int i=0; i<sounds.Count; i++){
-//		if(sounds.Count > 0){
-//			RotateSoundNotification(pivot,sounds[i].position,icons[3]);
+		if(otherPlayer.GetComponent<Pilot>().currentGolem != null){
+			otherGolemVelocity = otherPlayer.GetComponent<Pilot>().currentGolem.rigidbody2D.velocity;
+		}else{
+			otherGolemVelocity = Vector2.zero;
 		}
-		RotateSoundNotification(pivot,otherPlayer.position,icons[0]);
+		if(otherGolemVelocity != Vector2.zero){
+			RotateSoundNotification(pivot,otherPlayer.position,icons[0]);
+		}
 	}
 
 	/// <summary>

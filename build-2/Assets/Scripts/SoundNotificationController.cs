@@ -10,7 +10,6 @@ public class SoundNotificationController : MonoBehaviour {
 	public Texture2D[] icons;
 	private static List<Sound> sounds;
 	// Test:
-	private Transform otherPlayer;
 	private float timer = 0;
 	private Vector2 pivot;
 
@@ -31,10 +30,8 @@ public class SoundNotificationController : MonoBehaviour {
 		ps = GetComponent<CameraController>().player.GetComponent<Pilot>();
 		sounds = new List<Sound>();
 		if(ps.isP1){
-			otherPlayer = Resources.player2.transform;
 			pivot = new Vector2(Screen.width/4,Screen.height/2);
 		}else{
-			otherPlayer = Resources.player1.transform;
 			pivot = new Vector2(Screen.width-(Screen.width/4),Screen.height/2);
 		}
 	}
@@ -52,9 +49,6 @@ public class SoundNotificationController : MonoBehaviour {
 		// Rotate sound notification
 		for(int i=0; i<sounds.Count; i++){
 			RotateSoundNotification(pivot,sounds[i].position,icons[3]);
-		}
-		for(int i=0; i<10; i++){
-			GUI.Label(new Rect(0,i*10,100,100), i.ToString());
 		}
 	}
 

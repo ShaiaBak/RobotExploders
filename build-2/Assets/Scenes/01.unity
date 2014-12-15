@@ -897,7 +897,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: facingRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_IsActive
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
   maxSpeed: 2
-  facingRight: 0
+  facingRight: 1
   jumpForce: 150
   enableControl: 1
   currentPilot: {fileID: 0}
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 784835949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 600b7e926e16f31489b2215e67cd9a58, type: 3}
   m_Name: 
