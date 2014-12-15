@@ -584,7 +584,7 @@ GameObject:
   - 114: {fileID: 567452157}
   - 61: {fileID: 567452153}
   m_Layer: 0
-  m_Name: Boundary
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,6 +1231,7 @@ GameObject:
   - 114: {fileID: 784835955}
   - 114: {fileID: 784835956}
   - 114: {fileID: 784835957}
+  - 114: {fileID: 784835958}
   m_Layer: 0
   m_Name: P1_Camera
   m_TagString: Untagged
@@ -1355,9 +1356,19 @@ MonoBehaviour:
   - {fileID: 2800000, guid: bcd34b4fd75a25d4189b1841ad21412c, type: 3}
   - {fileID: 2800000, guid: ec6992a1abca07145a8e48d367a6f2cf, type: 3}
   - {fileID: 2800000, guid: 309a0ed1adfe7a7479e4674d486c5b7a, type: 3}
-  target1: {fileID: 1923815355}
-  target2: {fileID: 761421083}
-  timer: 0
+--- !u!114 &784835958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 784835949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600b7e926e16f31489b2215e67cd9a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 2800000, guid: bcd34b4fd75a25d4189b1841ad21412c, type: 3}
 --- !u!1001 &823486343
 Prefab:
   m_ObjectHideFlags: 0
@@ -1510,6 +1521,7 @@ GameObject:
   - 114: {fileID: 896633221}
   - 114: {fileID: 896633227}
   - 114: {fileID: 896633228}
+  - 114: {fileID: 896633229}
   m_Layer: 0
   m_Name: P2_Camera
   m_TagString: Untagged
@@ -1634,9 +1646,19 @@ MonoBehaviour:
   - {fileID: 2800000, guid: bcd34b4fd75a25d4189b1841ad21412c, type: 3}
   - {fileID: 2800000, guid: ec6992a1abca07145a8e48d367a6f2cf, type: 3}
   - {fileID: 2800000, guid: 309a0ed1adfe7a7479e4674d486c5b7a, type: 3}
-  target1: {fileID: 1586825317}
-  target2: {fileID: 761421083}
-  timer: 0
+--- !u!114 &896633229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 896633220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600b7e926e16f31489b2215e67cd9a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 2800000, guid: bcd34b4fd75a25d4189b1841ad21412c, type: 3}
 --- !u!1001 &903110001
 Prefab:
   m_ObjectHideFlags: 0

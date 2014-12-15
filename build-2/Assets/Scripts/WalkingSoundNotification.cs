@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
-public class SoundNotificationController : MonoBehaviour {
+//TODO: This is pretty much SoundNotificationController.cs... This is the only way I can get it to work atm :(
+public class WalkingSoundNotification : MonoBehaviour {
 
 	private Pilot ps;
 	
@@ -46,16 +46,17 @@ public class SoundNotificationController : MonoBehaviour {
 				sounds.RemoveAt(i);
 			}
 		}
+
 	}
 
 	void OnGUI(){
 		// Rotate sound notification
+//		RotateSoundNotification(pivot,otherPlayer.position,icons[0]);
 		for(int i=0; i<sounds.Count; i++){
-			RotateSoundNotification(pivot,sounds[i].position,icons[3]);
+//		if(sounds.Count > 0){
+//			RotateSoundNotification(pivot,sounds[i].position,icons[3]);
 		}
-		for(int i=0; i<10; i++){
-			GUI.Label(new Rect(0,i*10,100,100), i.ToString());
-		}
+		RotateSoundNotification(pivot,otherPlayer.position,icons[0]);
 	}
 
 	/// <summary>
