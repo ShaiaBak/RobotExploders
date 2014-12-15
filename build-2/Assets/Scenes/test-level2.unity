@@ -2389,7 +2389,7 @@ Transform:
   - {fileID: 2118423490}
   - {fileID: 1541571712}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
 --- !u!114 &308898114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9484,7 +9484,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &1317708368
 GameObject:
   m_ObjectHideFlags: 0
@@ -10389,8 +10389,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a58de64a9b7194883957adb5c5387d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 1028021425}
+  player2: {fileID: 308898112}
+  pilotScript1: {fileID: 0}
+  pilotScript2: {fileID: 0}
   projectilePrefab: {fileID: 100000, guid: 77c7698d156d40841b9d340807d5af3f, type: 2}
   golemProjectile: {fileID: 100000, guid: 45c8b91a0c25f5346b681e43f8e1daab, type: 2}
 --- !u!114 &1416605857
@@ -12546,7 +12548,7 @@ Transform:
   - {fileID: 1108924761}
   - {fileID: 103854728}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!23 &1724124744
 Renderer:
   m_ObjectHideFlags: 0
@@ -12946,7 +12948,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c83b37f63824c634e963e40dafa62212, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c83b37f63824c634e963e40dafa62212, type: 2}

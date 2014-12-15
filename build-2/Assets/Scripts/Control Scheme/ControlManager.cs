@@ -65,5 +65,30 @@ public class ControlManager : MonoBehaviour {
 				ps2.currentGolem.GetComponent<Golem>().controls = ks2;
 			}
 		}
+		else if(Input.GetButtonDown("p1_joy1")){
+			print ("Player1 now has P1 Joypad controls");
+			print ("Player2 now has P2 Joypad controls");
+			Destroy(P1.GetComponent<ControlScheme>());
+			Destroy(P2.GetComponent<ControlScheme>());
+			// Set the controls
+			JoypadScheme js1 = P1.AddComponent<JoypadScheme>();
+			JoypadScheme js2 = P2.AddComponent<JoypadScheme>();
+			js1.SetPlayerNumberControlScheme(1);
+			js2.SetPlayerNumberControlScheme(2);
+			P1Controls = js1;
+			P2Controls = js2;
+			// Set the reference for pilot
+			Pilot ps1 = P1.GetComponent<Pilot>();
+			ps1.controls = js1;
+			Pilot ps2 = P2.GetComponent<Pilot>();
+			ps2.controls = js2;
+			// Set the reference for golem
+			if(ps1.currentGolem != null){
+				ps1.currentGolem.GetComponent<Golem>().controls = js1;
+			}
+			if(ps2.currentGolem != null){
+				ps2.currentGolem.GetComponent<Golem>().controls = js2;
+			}
+		}
 	}
 }

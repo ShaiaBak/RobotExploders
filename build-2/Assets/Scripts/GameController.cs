@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 		}
 		// no 1 wins. game broke		
 		if (p1.tag == "Dead" && p2.tag == "Dead") {
-			Application.LoadLevel ("no1wins");
+			Application.LoadLevel ("You Both are just terrible");
 			gameOver = true;
 		}
 	}
