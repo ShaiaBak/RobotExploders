@@ -1204,14 +1204,18 @@ MonoBehaviour:
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
+  jumpPress: 0
+  jumpRelease: 0
   grounded: 0
   doubleJump: 1
+  flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
   diveScaleX: .100000001
   diveScaleY: .300000012
   diveDistanceScale: 10
+  divingCrash: 0
 --- !u!1 &784835949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,14 +2311,18 @@ MonoBehaviour:
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
+  jumpPress: 0
+  jumpRelease: 0
   grounded: 0
   doubleJump: 1
+  flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
   diveScaleX: .100000001
   diveScaleY: .300000012
   diveDistanceScale: 10
+  divingCrash: 0
 --- !u!114 &1133893447
 MonoBehaviour:
   m_ObjectHideFlags: 0
