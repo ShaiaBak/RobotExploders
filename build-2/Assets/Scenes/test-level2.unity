@@ -5945,11 +5945,11 @@ Prefab:
         type: 0}
     - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: jumpForce
-      value: 400
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: maxSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: facingRight
@@ -7862,7 +7862,7 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   smooth: 4
-  zoomIn: 5
+  zoomIn: 7
   zoomOut: 2.25
 --- !u!81 &1082299955
 AudioListener:
@@ -9174,7 +9174,7 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   smooth: 5
-  zoomIn: 5
+  zoomIn: 7
   zoomOut: 2.25
 --- !u!81 &1267469711
 AudioListener:
@@ -11182,20 +11182,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
-  maxSpeed: 4
+  maxSpeed: 5
   facingRight: 0
-  jumpForce: 400
+  jumpForce: 450
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
+  jumpPress: 0
+  jumpRelease: 0
   grounded: 0
   doubleJump: 1
+  flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
   diveScaleX: .100000001
   diveScaleY: .300000012
   diveDistanceScale: 10
+  divingCrash: 0
 --- !u!114 &1515994326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11666,11 +11670,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: jumpForce
-      value: 400
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: maxSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
@@ -14801,20 +14805,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 0}
-  maxSpeed: 4
+  maxSpeed: 5
   facingRight: 1
-  jumpForce: 400
+  jumpForce: 450
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
+  jumpPress: 0
+  jumpRelease: 0
   grounded: 0
   doubleJump: 1
+  flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
   diveScaleX: .100000001
   diveScaleY: .300000012
   diveDistanceScale: 10
+  divingCrash: 0
 --- !u!114 &2060071005
 MonoBehaviour:
   m_ObjectHideFlags: 0
