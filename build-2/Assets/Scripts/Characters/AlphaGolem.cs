@@ -116,7 +116,8 @@ public class AlphaGolem : Golem {
 		}
 
 		//After dive arc, go down
-		if (counter >= Mathf.PI/(2*diveDistanceScale) && onGround || roofHit) {
+		//If you hit the a roof before the arc is completed, go straight down
+		if (counter >= Mathf.PI/(2*diveDistanceScale) && onGround || (roofHit && diveEnabled)) {
 			counter = 0;
 			divingCrash = true;
 			StartCoroutine(DiveLostProj());
