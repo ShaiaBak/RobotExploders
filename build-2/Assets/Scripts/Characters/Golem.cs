@@ -36,20 +36,23 @@ public class Golem : MonoBehaviour {
 
 	private float colliderSize;
 	public Transform groundCheck;
+	public Transform roofCheck;
 	private Vector2 gCheck1;
 	private Vector2 gCheck2;
 	private int i;
 	private Transform direction;
-	
+	public bool roofHit = false;
 	void Start () {
 		//anim = GetComponent<Animator>();
 
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
+		roofCheck = this.transform.FindChild("RoofCheck");
+
 		direction = this.transform.FindChild("Direction");
 
 		//FOR BOX COLLIDER
-		//colliderSize = gameObject.GetComponent<BoxCollider2D>().size.x;
+		colliderSize = gameObject.GetComponent<BoxCollider2D>().size.x;
 
 	}
 	
@@ -78,19 +81,23 @@ public class Golem : MonoBehaviour {
 		//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
 		//the unit will be considered on the ground, grounded = true
 		LayerMask whatIsGround = 1 << LayerMask.NameToLayer("Environment");
-
+		LayerMask whatIsRoof = 1 << LayerMask.NameToLayer("Environment");
 		//FOR BOX COLLIDER
-		/*
+
 		Vector2 gCheck1 = new Vector2(groundCheck.position.x - colliderSize, groundCheck.position.y+0.05f);
 		Vector2 gCheck2 = new Vector2(groundCheck.position.x + colliderSize, groundCheck.position.y-0.05f);
 		grounded = Physics2D.OverlapArea (gCheck1, gCheck2, whatIsGround);
-		*/
-		float groundRadius = 0.1f;
-		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+
+		//FOR CIRCLE COLLIDER
+		//float groundRadius = 0.1f;
+		//grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
 		//anim.SetBool ("Ground", grounded);
 
-
+		roofHit = Physics2D.OverlapCircle (roofCheck.position, 0.2f, whatIsRoof);
+		if (roofHit) {
+			Debug.Log("HIT");
+		}
 
 		if (enableControl) {
 			

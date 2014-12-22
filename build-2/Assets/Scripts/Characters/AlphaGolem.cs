@@ -59,6 +59,7 @@ public class AlphaGolem : Golem {
 		// Make the projectile shoot to the direction of DIR for DUR sec with a movespeed of MS, damage of DMG
 		p.SetParameters(isPiercing, ms, dur, dir, dmg, 0, 0, 0);
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);
+
 	}
 	
 	// Fires 3 projectiles NE, E, SE in quick succession to imitate a downward slash (if facing right)
@@ -115,7 +116,7 @@ public class AlphaGolem : Golem {
 		}
 
 		//After dive arc, go down
-		if (counter >= Mathf.PI/(2*diveDistanceScale) && onGround) {
+		if (counter >= Mathf.PI/(2*diveDistanceScale) && onGround || roofHit) {
 			counter = 0;
 			divingCrash = true;
 			StartCoroutine(DiveLostProj());
