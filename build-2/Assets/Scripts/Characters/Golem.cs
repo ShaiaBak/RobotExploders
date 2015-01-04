@@ -7,7 +7,7 @@ public class Golem : MonoBehaviour {
 
 	public float maxSpeed = 2f; 			//Arbitrary speed value
 	public bool facingRight = true;
-	public float jumpForce = 150;			//Arbitrary jump value
+	public float jumpForce = 800f;			//Arbitrary jump value
 	public bool enableControl = true;
 	public GameObject currentPilot;
 
@@ -22,17 +22,17 @@ public class Golem : MonoBehaviour {
 	private float moveV = 0f;
 	public bool jumpPress;					//When the Jump button is pressed
 	public bool jumpRelease;				//When the Jump button is released
+	public bool jumpHeld;					//When the Jump button is held
 	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
 	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
-	public bool flyingMode = false;		//True = Flying is active
+	public bool flyingMode = false;			//True = Flying is active
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
-	
-	private float exitTimer = 0;
-	public float timeToExit = .5f;
+	private float exitTimer = 0;			
+	public float timeToExit = .5f;			
 
 	private float colliderSize;
 	public Transform groundCheck;
@@ -64,6 +64,7 @@ public class Golem : MonoBehaviour {
 			moveV = Input.GetAxis (controls.vertical);
 			jumpPress = Input.GetButtonDown (controls.jump);
 			jumpRelease = Input.GetButtonUp (controls.jump);
+			jumpHeld = Input.GetButton (controls.jump);
 			enterGolemPress = Input.GetButton (controls.enter);
 			// Handles special attacks
 			HandleAttack();
@@ -93,16 +94,14 @@ public class Golem : MonoBehaviour {
 		//grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
 		//anim.SetBool ("Ground", grounded);
-
+		/*
 		roofHit = Physics2D.OverlapCircle (roofCheck.position, 0.2f, whatIsRoof);
 		if (roofHit) {
 			Debug.Log("HIT");
 		}
-
+		*/
 		if (enableControl) {
-			
-
-			
+		
 			//When the vertical speed is not zero, change to the jumping/falling animation
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
 			
@@ -113,17 +112,18 @@ public class Golem : MonoBehaviour {
 			CheckFlying();
 
 			DirectionCheck();
-			
+			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		} else {
 			moveH = 0f; 
 		}
 		CheckExiting();
+		Debug.Log(jumpForce);
 	}
 
 	protected virtual void HandleAttack(){
 		// Stub for subclass
 	}
-
+	/*
 	private void CheckJumping(){
 		//When player is on the ground, second jump is available
 		if (grounded) {
@@ -134,6 +134,7 @@ public class Golem : MonoBehaviour {
 			}
 			//if second jump is available and the jump button is pressed
 			//enter flying mode, turn off gravity and reset the timer
+		
 		} else if (doubleJump && jumpPress) {
 			doubleJump = false;
 			flyingMode = true;
@@ -141,7 +142,6 @@ public class Golem : MonoBehaviour {
 			flyingModeTimer = flyingModeDuration;
 		}
 	}
-	
 	private void CheckFlying(){
 		//When flying, reduce timer by the time it took to complete the last frame
 		if (flyingMode) {
@@ -161,7 +161,46 @@ public class Golem : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		}
 	}
-	
+	*/
+
+	// VERSION 2
+	private void CheckJumping(){
+		//When player is on the ground, second jump is available
+		if (grounded) {
+			doubleJump = true;
+			//When jump button is pressed, add a force upwards
+			if (jumpPress) {
+				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+			}
+			//if second jump is available and the jump button is pressed
+			//enter flying mode, turn off gravity and reset the timer
+		} else if (doubleJump) {
+			doubleJump = false;
+			flyingMode = true;
+			flyingModeTimer = flyingModeDuration;
+		}
+	}
+
+	private void CheckFlying(){
+		//When flying, reduce timer by the time it took to complete the last frame
+		if (flyingMode && jumpHeld) {
+			flyingModeTimer -= Time.deltaTime;
+			rigidbody2D.AddForce (new Vector2 (0, jumpForce/25f));
+		}
+		//When timer is equal to or less than zero or when the jump button is released
+		//Disable flying mode and restore the gravity setting
+		if (flyingModeTimer <= 0 || grounded) {
+			flyingMode = false;
+		}
+		// If the player has activated "Flying Mode", the player can move freely in the X and Y
+		// If not, the player can only move in the X
+		/*
+		if (flyingMode){
+			rigidbody2D.AddForce (new Vector2 (0, jumpForce/25f));
+		} else {
+		}*/
+	}
+	// END OF VERSION 2
 	//Exits the golem when held for .5 seconds
 	private void CheckExiting(){
 		//Find a nearby golem

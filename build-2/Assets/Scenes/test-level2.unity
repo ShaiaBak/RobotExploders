@@ -5963,6 +5963,10 @@ Prefab:
       propertyPath: m_Size.y
       value: .899999976
       objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_RootGameObject: {fileID: 1515994323}
@@ -11226,6 +11230,7 @@ MonoBehaviour:
   facingDirection: {x: 0, y: 0}
   jumpPress: 0
   jumpRelease: 0
+  jumpHeld: 0
   grounded: 0
   doubleJump: 1
   flyingMode: 0
@@ -11276,7 +11281,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1.5
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -14947,6 +14952,7 @@ MonoBehaviour:
   facingDirection: {x: 0, y: 0}
   jumpPress: 0
   jumpRelease: 0
+  jumpHeld: 0
   grounded: 0
   doubleJump: 1
   flyingMode: 0
@@ -14997,7 +15003,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1.5
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
