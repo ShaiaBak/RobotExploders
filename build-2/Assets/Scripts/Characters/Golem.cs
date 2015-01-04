@@ -117,13 +117,12 @@ public class Golem : MonoBehaviour {
 			moveH = 0f; 
 		}
 		CheckExiting();
-		Debug.Log(jumpForce);
 	}
 
 	protected virtual void HandleAttack(){
 		// Stub for subclass
 	}
-	/*
+	/* OLD OLD OLD
 	private void CheckJumping(){
 		//When player is on the ground, second jump is available
 		if (grounded) {
@@ -161,9 +160,10 @@ public class Golem : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		}
 	}
+	// OLD OLD OLD 
 	*/
 
-	// VERSION 2
+	// START OF VERSION 2
 	private void CheckJumping(){
 		//When player is on the ground, second jump is available
 		if (grounded) {

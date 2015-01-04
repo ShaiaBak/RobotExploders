@@ -8,7 +8,7 @@ public class Pilot : MonoBehaviour {
 	public bool isP1 = true; 
 	public float maxSpeed = 3f; 			//Arbitrary speed value
 	public bool facingRight = true;
-	public float jumpForce = 250;			//Arbitrary jump value
+	public float jumpForce = 350f;			//Arbitrary jump value
 	public bool enableControl = true;
 	public GameObject currentGolem;
 	public CameraController cameraScript;	// The CameraControl script attached to the camera that's following the pilot. It's set in CameraController
@@ -20,6 +20,7 @@ public class Pilot : MonoBehaviour {
 	private float moveV = 0f;
 	private bool jumpPress;					//When the Jump button is pressed
 	private bool jumpRelease;				//When the Jump button is released
+	private bool jumpHeld;					//When the Jump button is held
 	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
 	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
@@ -51,6 +52,7 @@ public class Pilot : MonoBehaviour {
 			moveV = Input.GetAxis (controls.vertical);
 			jumpPress = Input.GetButtonDown (controls.jump);
 			jumpRelease = Input.GetButtonUp (controls.jump);
+			jumpHeld = Input.GetButton (controls.jump);
 			enterGolemPress = Input.GetButton (controls.enter);
 		}
 
@@ -77,13 +79,14 @@ public class Pilot : MonoBehaviour {
 			CheckFlying();
 			CheckEntering();
 			DirectionCheck();
-			
+			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		} else {
 			moveH = 0f; 
 		}
 
 	}
 
+	// START OF VERSION 2
 	private void CheckJumping(){
 		//When player is on the ground, second jump is available
 		if (grounded) {
@@ -92,33 +95,25 @@ public class Pilot : MonoBehaviour {
 			if (jumpPress) {
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 			}
-		//if second jump is available and the jump button is pressed
-		//enter flying mode, turn off gravity and reset the timer
-		} else if (doubleJump && jumpPress) {
+			//if second jump is available and the jump button is pressed
+			//enter flying mode, turn off gravity and reset the timer
+		} else if (doubleJump) {
 			doubleJump = false;
 			flyingMode = true;
-			rigidbody2D.gravityScale = 0;
 			flyingModeTimer = flyingModeDuration;
 		}
 	}
-
+	
 	private void CheckFlying(){
 		//When flying, reduce timer by the time it took to complete the last frame
-		if (flyingMode) {
+		if (flyingMode && jumpHeld) {
 			flyingModeTimer -= Time.deltaTime;
+			rigidbody2D.AddForce (new Vector2 (0, jumpForce/20f));
 		}
 		//When timer is equal to or less than zero or when the jump button is released
 		//Disable flying mode and restore the gravity setting
-		if (flyingModeTimer <= 0 || jumpRelease) {
+		if (flyingModeTimer <= 0 || grounded) {
 			flyingMode = false;
-			rigidbody2D.gravityScale = 1;
-		}
-		// If the player has activated "Flying Mode", the player can move freely in the X and Y
-		// If not, the player can only move in the X
-		if (flyingMode){
-			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, moveV * maxSpeed);
-		} else {
-			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
 		}
 	}
 

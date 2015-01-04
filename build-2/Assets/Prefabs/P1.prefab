@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -69,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_LocalPosition: {x: -42.9937744, y: 1.38962531, z: 0}
+  m_LocalScale: {x: .150000006, y: .150000006, z: 1}
   m_Children:
   - {fileID: 400000}
   - {fileID: 400004}
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: .99999994, y: -.175777674, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -129,9 +129,10 @@ MonoBehaviour:
   isP1: 1
   maxSpeed: 3
   facingRight: 1
-  jumpForce: 250
+  jumpForce: 350
   enableControl: 1
   currentGolem: {fileID: 0}
+  cameraScript: {fileID: 0}
   grounded: 0
   doubleJump: 1
   timeToEnter: .5
@@ -170,7 +171,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 2691776803
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a7e9419b50f78714da9eeb47a12c793a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea2c52e7c506afa4d9a280f662a97725, type: 3}
   m_Color: {r: .117241383, g: 0, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
