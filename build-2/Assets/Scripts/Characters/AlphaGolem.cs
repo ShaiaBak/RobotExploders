@@ -94,7 +94,7 @@ public class AlphaGolem : Golem {
 		yield return new WaitForSeconds(0.05f);
 
 	}
-
+	/* OLD OLD OLD
 	private void diveJump(Vector2 dir, bool onGround) {
 		// TODO: Add in direction of Golem for the dive
 		// TODO: golem needs to move straight down while in air: check the grounded variable of the golem similar to the jump function
@@ -112,7 +112,6 @@ public class AlphaGolem : Golem {
 			} else {
 				transform.position = new Vector2 (transform.position.x-diveScaleX, transform.position.y + Mathf.Cos(counter*diveDistanceScale)*diveScaleY);
 			}
-
 		}
 
 		//After dive arc, go down
@@ -133,7 +132,7 @@ public class AlphaGolem : Golem {
 		}
 
 		//Landing on the ground
-		if (grounded && divingCrash /*&& !onGround*/) {
+		if (grounded && divingCrash ) {
 			divingCrash = false;
 			flyingMode = false;
 			jumpRelease = false;
@@ -144,5 +143,24 @@ public class AlphaGolem : Golem {
 
 	void FixedUpdate(){
 		diveJump(GetFacingDirection(), startFromGround);
+	}
+	*/
+
+	//
+	private void diveJump() {
+		if (!grounded) { 
+			StartCoroutine(DiveLostProj());
+		} else {
+			Shoot(true,25,1f,new Vector2 (1,0),1);
+			Shoot(true,25,1f,new Vector2 (-1,0),1);
+			diveEnabled = false;
+			enableControl = true;
+		}
+	}
+
+	void FixedUpdate() {
+		if (diveEnabled){
+			diveJump();
+		}
 	}
 }
