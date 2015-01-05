@@ -169,22 +169,10 @@ public class AlphaGolem : Golem {
 	}
 	*/
 	#endregion
-	//
-	private void diveJump() {
-		if (!grounded) { 
-			StartCoroutine(DiveLostProj());
-		} else {
-			Shoot(true,25,1f,new Vector2 (1,0),1);
-			Shoot(true,25,1f,new Vector2 (-1,0),1);
-			diveEnabled = false;
-			enableControl = true;
-		}
-	}
-
+	
 	void FixedUpdate() {
 		if (diveEnabled && grounded){
 			StartCoroutine(DiveLostProj2());
-		
 		}
 	}
 }
