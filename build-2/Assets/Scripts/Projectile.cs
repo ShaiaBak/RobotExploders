@@ -21,7 +21,14 @@ public class Projectile : MonoBehaviour {
 	
 	// FixedUpdate is called once per fixed framerate frame
 	void FixedUpdate () {
-		rigidbody2D.velocity = direction * moveSpeed;
+
+		//Used for Alpha dive, if the projectile becomes a child of the golem,
+		//follow the golems feet
+		if (transform.parent != null){ 
+			transform.position = new Vector2 (transform.parent.position.x,transform.parent.position.y-1.2f);
+		} else {
+			rigidbody2D.velocity = direction * moveSpeed; 
+		}
 		timeSpentAlive += Time.deltaTime;
 		if(timeSpentAlive > timeUntilDeath){
 			RemoveMe();

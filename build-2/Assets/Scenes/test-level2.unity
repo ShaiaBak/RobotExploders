@@ -240,7 +240,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
 --- !u!1 &18154754
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
 --- !u!1001 &18598138
 Prefab:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: isShoo
@@ -803,7 +803,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: isShoo
@@ -2969,7 +2969,7 @@ Transform:
   m_LocalScale: {x: 30, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
 --- !u!1 &377403615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6700,7 +6700,7 @@ Transform:
   - {fileID: 1657937096}
   - {fileID: 1086588115}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
 --- !u!1 &906681598
 GameObject:
   m_ObjectHideFlags: 0
@@ -9383,33 +9383,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
---- !u!1 &1301695648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
-  m_PrefabInternal: {fileID: 1584877544}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1301695649}
-  m_Layer: 0
-  m_Name: RoofCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1301695649
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
-  m_PrefabInternal: {fileID: 1584877544}
-  m_GameObject: {fileID: 1301695648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: .5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2060071003}
-  m_RootOrder: 2
 --- !u!1 &1311778280
 GameObject:
   m_ObjectHideFlags: 0
@@ -10170,8 +10143,8 @@ Transform:
   m_LocalPosition: {x: -10.5600004, y: 6, z: 0}
   m_LocalScale: {x: 80, y: 27, z: 5}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1956252642}
+  m_RootOrder: 0
 --- !u!1 &1390484371
 GameObject:
   m_ObjectHideFlags: 0
@@ -10671,7 +10644,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
 --- !u!1 &1460864969
 GameObject:
   m_ObjectHideFlags: 0
@@ -11024,7 +10997,7 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!1 &1512117286
 GameObject:
   m_ObjectHideFlags: 0
@@ -11119,7 +11092,6 @@ Transform:
   m_Children:
   - {fileID: 2145993841}
   - {fileID: 2141645676}
-  - {fileID: 1749354477}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &1515994325
@@ -11149,13 +11121,7 @@ MonoBehaviour:
   flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
-  roofCheck: {fileID: 0}
-  roofHit: 0
   projectilePrefab: {fileID: 0}
-  diveScaleX: .100000001
-  diveScaleY: .300000012
-  diveDistanceScale: 10
-  divingCrash: 0
 --- !u!114 &1515994326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11807,7 +11773,7 @@ Transform:
   m_LocalScale: {x: 74.9300003, y: 11.8999996, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
 --- !u!1 &1620372262
 GameObject:
   m_ObjectHideFlags: 0
@@ -11914,7 +11880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
 --- !u!1 &1646953338
 GameObject:
   m_ObjectHideFlags: 0
@@ -12856,33 +12822,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
---- !u!1 &1749354476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
-  m_PrefabInternal: {fileID: 715189129}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1749354477}
-  m_Layer: 0
-  m_Name: RoofCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1749354477
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
-  m_PrefabInternal: {fileID: 715189129}
-  m_GameObject: {fileID: 1749354476}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: .5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1515994324}
-  m_RootOrder: 2
 --- !u!1 &1774277246
 GameObject:
   m_ObjectHideFlags: 0
@@ -13944,7 +13883,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: isShoo
@@ -14079,6 +14018,82 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
+--- !u!1 &1956252637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1956252642}
+  - 61: {fileID: 1956252641}
+  - 61: {fileID: 1956252640}
+  - 61: {fileID: 1956252639}
+  - 61: {fileID: 1956252638}
+  m_Layer: 0
+  m_Name: GameBoundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1956252638
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956252637}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 80, y: 1}
+  m_Center: {x: -10.5600004, y: -7.92000008}
+--- !u!61 &1956252639
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956252637}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 80, y: 1}
+  m_Center: {x: -10.5600004, y: 19.8999996}
+--- !u!61 &1956252640
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956252637}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 1.8560859, y: 27}
+  m_Center: {x: 30.2999992, y: 6}
+--- !u!61 &1956252641
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956252637}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 1.8560859, y: 27}
+  m_Center: {x: -51.4000015, y: 6}
+--- !u!4 &1956252642
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956252637}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1378683899}
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
 --- !u!1 &1964928520
 GameObject:
   m_ObjectHideFlags: 0
@@ -14612,7 +14627,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 23282a53d258822418fe4e14c07a382f, type: 2}
       propertyPath: isShoo
@@ -14841,7 +14856,6 @@ Transform:
   m_Children:
   - {fileID: 1129246229}
   - {fileID: 528712321}
-  - {fileID: 1301695649}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &2060071004
@@ -14871,13 +14885,7 @@ MonoBehaviour:
   flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
-  roofCheck: {fileID: 0}
-  roofHit: 0
   projectilePrefab: {fileID: 0}
-  diveScaleX: .100000001
-  diveScaleY: .300000012
-  diveDistanceScale: 10
-  divingCrash: 0
 --- !u!114 &2060071005
 MonoBehaviour:
   m_ObjectHideFlags: 0

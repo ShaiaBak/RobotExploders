@@ -7,12 +7,14 @@ public class AlphaGolem : Golem {
 	private float cooldownTimer = 0f;
 	private float cooldownEnd = .5f;
 	private bool diveEnabled = false;
+	/* OLD DIVE ATTACK VARIABLES
 	private float counter = 0f;
 	public float diveScaleX = 0.1f;
 	public float diveScaleY = 0.3f;
 	public float diveDistanceScale = 10;
 	private bool startFromGround = false;
 	public bool divingCrash = false;
+	*/
 	void Awake(){
 		projectilePrefab = Resources.golemProjectile;
 	}
@@ -21,9 +23,16 @@ public class AlphaGolem : Golem {
 		// Non-piercing
 		if(Input.GetButton(controls.fireA) && CheckAnimationCooldown()){
 			//Shoot(false,3,2,GetFacingDirection(),1);
-			startFromGround = grounded;
-			diveEnabled = true;
-			enableControl= false;
+			//startFromGround = grounded;
+			//diveEnabled = true;
+			//enableControl= false;
+
+			if (!grounded){
+				StartCoroutine(DiveLostProj());
+				diveEnabled = true;
+			}  else {
+				StartCoroutine(DiveLostProj2());
+			}
 		}
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown()){
@@ -50,7 +59,7 @@ public class AlphaGolem : Golem {
 
 	private void Shoot(bool isPiercing, float ms, float dur, Vector2 dir, int dmg){
 		// Set position for creating the projectile
-		//Vector2 pos = new Vector2(transform.position.x+.4f, transform.position.y);
+		//Vector2 pos = new Vector2(transform.position.x, transform.position.y+1f);
 		Vector2 pos = transform.position;
 		
 		GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
@@ -88,13 +97,27 @@ public class AlphaGolem : Golem {
 	private IEnumerator DiveLostProj(){
 
 		rigidbody2D.AddForce(new Vector2 (0,-20f),ForceMode2D.Impulse);
-		//Shoots projectile to simulate melee attack
-		Shoot(false,25,1f,new Vector2 (0,-1),1);
+		//Set position for creating the projectile
+		Vector2 pos = new Vector2(transform.position.x, transform.position.y-1f);
+		
+		GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
+		Projectile p = proj.GetComponent<Projectile>();
+		//Set the parent of the projectile to be the golem
+		p.transform.parent = this.transform;
+		// Make the projectile shoot to the direction of DIR for DUR sec with a movespeed of MS, damage of DMG
+		p.SetParameters(false, 0.1f, 100f, new Vector2(0,0) ,1, 0, 0, 0);
+		Physics2D.IgnoreCollision(collider2D, p.collider2D);
+		yield return new WaitForSeconds(0.05f);
+	}
+	private IEnumerator DiveLostProj2(){
+		diveEnabled = false;
+		Shoot(true,25,1f,new Vector2 (1,0),1);
+		Shoot(true,25,1f,new Vector2 (-1,0),1);
 
 		yield return new WaitForSeconds(0.05f);
-
 	}
-	/* OLD OLD OLD
+	#region
+	/* OLD DIVE ATTACK
 	private void diveJump(Vector2 dir, bool onGround) {
 		// TODO: Add in direction of Golem for the dive
 		// TODO: golem needs to move straight down while in air: check the grounded variable of the golem similar to the jump function
@@ -145,7 +168,7 @@ public class AlphaGolem : Golem {
 		diveJump(GetFacingDirection(), startFromGround);
 	}
 	*/
-
+	#endregion
 	//
 	private void diveJump() {
 		if (!grounded) { 
@@ -159,8 +182,9 @@ public class AlphaGolem : Golem {
 	}
 
 	void FixedUpdate() {
-		if (diveEnabled){
-			diveJump();
+		if (diveEnabled && grounded){
+			StartCoroutine(DiveLostProj2());
+		
 		}
 	}
 }

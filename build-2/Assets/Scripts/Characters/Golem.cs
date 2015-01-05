@@ -36,18 +36,17 @@ public class Golem : MonoBehaviour {
 
 	private float colliderSize;
 	public Transform groundCheck;
-	public Transform roofCheck;
+	//public Transform roofCheck;
 	private Vector2 gCheck1;
 	private Vector2 gCheck2;
 	private int i;
 	private Transform direction;
-	public bool roofHit = false;
+	//public bool roofHit = false;
 	void Start () {
 		//anim = GetComponent<Animator>();
 
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
-		roofCheck = this.transform.FindChild("RoofCheck");
 
 		direction = this.transform.FindChild("Direction");
 
@@ -82,7 +81,6 @@ public class Golem : MonoBehaviour {
 		//If the "groundCheck" overlaps with anything that is tagged "whatIsGround"
 		//the unit will be considered on the ground, grounded = true
 		LayerMask whatIsGround = 1 << LayerMask.NameToLayer("Environment");
-		LayerMask whatIsRoof = 1 << LayerMask.NameToLayer("Environment");
 		//FOR BOX COLLIDER
 
 		Vector2 gCheck1 = new Vector2(groundCheck.position.x - colliderSize, groundCheck.position.y+0.05f);
