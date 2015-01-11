@@ -28,10 +28,10 @@ public class AlphaGolem : Golem {
 			//enableControl= false;
 
 			if (!grounded){
-				StartCoroutine(DiveLostProj());
+				StartCoroutine(AlphaDiveProj());
 				diveEnabled = true;
 			}  else {
-				StartCoroutine(DiveLostProj2());
+				StartCoroutine(AlphaDiveLandingProj());
 			}
 		}
 		// Piercing 
@@ -60,7 +60,10 @@ public class AlphaGolem : Golem {
 	private void Shoot(bool isPiercing, float ms, float dur, Vector2 dir, int dmg){
 		// Set position for creating the projectile
 		//Vector2 pos = new Vector2(transform.position.x, transform.position.y+1f);
-		Vector2 pos = transform.position;
+		//Debug.Log(dir);
+
+		//Shoots infront of the golem
+		Vector2 pos = new Vector2( transform.position.x + dir.x, transform.position.y + dir.y);
 		
 		GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
 		Projectile p = proj.GetComponent<Projectile>();
@@ -94,7 +97,7 @@ public class AlphaGolem : Golem {
 	}
 
 
-	private IEnumerator DiveLostProj(){
+	private IEnumerator AlphaDiveProj(){
 
 		rigidbody2D.AddForce(new Vector2 (0,-20f),ForceMode2D.Impulse);
 		//Set position for creating the projectile
@@ -109,7 +112,7 @@ public class AlphaGolem : Golem {
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);
 		yield return new WaitForSeconds(0.05f);
 	}
-	private IEnumerator DiveLostProj2(){
+	private IEnumerator AlphaDiveLandingProj(){
 		diveEnabled = false;
 		Shoot(true,25,1f,new Vector2 (1,0),1);
 		Shoot(true,25,1f,new Vector2 (-1,0),1);
@@ -172,7 +175,7 @@ public class AlphaGolem : Golem {
 	
 	void FixedUpdate() {
 		if (diveEnabled && grounded){
-			StartCoroutine(DiveLostProj2());
+			StartCoroutine(AlphaDiveLandingProj());
 		}
 	}
 }

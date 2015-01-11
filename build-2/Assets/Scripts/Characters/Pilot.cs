@@ -126,7 +126,7 @@ public class Pilot : MonoBehaviour {
 				//Check if button is held long enough
 				enterTimer = enterTimer + Time.deltaTime;
 				if(enterTimer >= timeToEnter){
-					print ("enter");
+					//print ("enter");
 					enterTimer = 0;
 					EnterGolem(nearbyGolem.gameObject);
 				}

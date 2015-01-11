@@ -20,9 +20,9 @@ public class Golem : MonoBehaviour {
 	//--------Input Variables--------//
 	private float moveH = 0f;
 	private float moveV = 0f;
-	public bool jumpPress;					//When the Jump button is pressed
-	public bool jumpRelease;				//When the Jump button is released
-	public bool jumpHeld;					//When the Jump button is held
+	private bool jumpPress;					//When the Jump button is pressed
+	private bool jumpRelease;				//When the Jump button is released
+	private bool jumpHeld;					//When the Jump button is held
 	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
 	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
