@@ -8302,7 +8302,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.00999999, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!1 &1160439945
 GameObject:
@@ -11113,15 +11113,13 @@ MonoBehaviour:
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
-  jumpPress: 0
-  jumpRelease: 0
-  jumpHeld: 0
   grounded: 0
   doubleJump: 1
   flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  lastAttack: 0
 --- !u!114 &1515994326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14877,15 +14875,13 @@ MonoBehaviour:
   enableControl: 1
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
-  jumpPress: 0
-  jumpRelease: 0
-  jumpHeld: 0
   grounded: 0
   doubleJump: 1
   flyingMode: 0
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  lastAttack: 0
 --- !u!114 &2060071005
 MonoBehaviour:
   m_ObjectHideFlags: 0
