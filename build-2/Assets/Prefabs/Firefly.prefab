@@ -112,7 +112,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 65535
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!108 &10833288
 Light:
@@ -120,7 +120,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140766}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ef05534a46a7348bb354f9c1fc9d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mXScale: 1
-  mYScale: 3
+  xScale: 1
+  yScale: 1
   pivot: {x: 0, y: 0}
   phase: 0
 --- !u!1001 &100100000
