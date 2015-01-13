@@ -3,15 +3,14 @@ using System.Collections;
 
 public class FireFlySwarm : MonoBehaviour {
 
-	public Transform player;
-	public GameObject fireFlies;
+	public bool isFollowing = false;					//if its following something
+	public Transform player;							//the object to follow
+	public GameObject fireFlies;						//Little fireflies prefabs
 	public Vector2 margin = new Vector2(0.5f,0.5f);
 	public Vector2 smoothing = new Vector2(2.0f,2.0f);
-
-	public bool isFollowing { get; set; }
+	
 	// Use this for initialization
 	public void Start () {
-		isFollowing = false;
 		spawnFireflies();
 	}
 	
@@ -27,10 +26,14 @@ public class FireFlySwarm : MonoBehaviour {
 
 			if (Mathf.Abs( y - player.position.y ) > margin.y)
 				y = Mathf.Lerp (y, player.position.y, smoothing.y * Time.deltaTime);
-		}	
-		transform.position = new Vector2(x, y);
+			
+			transform.position = new Vector2(x, y);
+			
+
+		}
 	}
 
+	//Spawn a random number of fireflies in random positions as a child of the swarm
 	private void spawnFireflies () {
 		for (int i = 0; i < Random.Range(5,10); i++ ) {
 			GameObject f = (GameObject) Instantiate(fireFlies, transform.position, Quaternion.identity);
@@ -39,6 +42,7 @@ public class FireFlySwarm : MonoBehaviour {
 		}
 	}
 
+	//when player touches, swarm, follow the player
 	private void OnTriggerEnter2D(Collider2D other) {
 
 		if (other.collider2D.tag == "Player" || other.collider2D.tag == "Golem") {
@@ -46,4 +50,6 @@ public class FireFlySwarm : MonoBehaviour {
 			isFollowing = true;
 		}
 	}
+
+
 }
