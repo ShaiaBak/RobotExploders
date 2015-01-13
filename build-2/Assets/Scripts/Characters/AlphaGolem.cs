@@ -53,7 +53,7 @@ public class AlphaGolem : Golem {
 			lastAttack = listOfMoves.Attack3;
 		}
 		cooldownTimer += Time.deltaTime;
-		Debug.Log(lastAttack);
+		//Debug.Log(lastAttack);
 	}
 
 	// Short cooldown in between attacks/different attacks
