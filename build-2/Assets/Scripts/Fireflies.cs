@@ -35,7 +35,7 @@ public class Fireflies : MonoBehaviour {
 		if(phase < 0) {
 			phase += Mathf.PI*2;
 		}
-
+		//Mathf.Lerp(float from, float to, float t);
 		transform.localPosition = pivot + (invert ? pivotOffset : Vector2.zero);
 		xPos = locFromParent.x + transform.localPosition.x + Mathf.Sin(phase) * xScale;
 		yPos = locFromParent.y + transform.localPosition.y + Mathf.Cos(phase) * yScale * (invert ? -1 : 1);
