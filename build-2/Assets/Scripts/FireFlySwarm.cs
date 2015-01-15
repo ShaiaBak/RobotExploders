@@ -8,7 +8,8 @@ public class FireFlySwarm : MonoBehaviour {
 	public GameObject fireFlies;						//Little fireflies prefabs
 	public Vector2 margin = new Vector2(0.5f,0.5f);
 	public Vector2 smoothing = new Vector2(2.0f,2.0f);
-	
+	public float counter = 0.0f;
+	public float droppingFlyTime = 10.0f;
 	// Use this for initialization
 	public void Start () {
 		spawnFireflies();
@@ -29,7 +30,15 @@ public class FireFlySwarm : MonoBehaviour {
 			
 			transform.position = new Vector2(x, y);
 			
+			//After X amount of time (droppingFlyTime), the swarm will detach a child(single fly)
+			counter += Time.deltaTime;
+			
+			if (counter > droppingFlyTime) {
+				counter = 0;
 
+				//Calls the detach function in the child (single fly), explain in the function
+				transform.GetChild(0).gameObject.GetComponent<Fireflies>().removeFromSwarm();
+			}
 		}
 	}
 

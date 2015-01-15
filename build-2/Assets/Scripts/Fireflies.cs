@@ -7,8 +7,10 @@ public class Fireflies : MonoBehaviour {
 	public float yScale = 1.0f;
 	public Vector2 pivot;
 	private Vector2 pivotOffset;
+	public Vector2 locFromParent = Vector2.zero;
 	public float phase;
-
+	private float xPos = 0;
+	private float yPos = 0;
 	private bool invert = false;
 
 	public float counter = 0;
@@ -35,21 +37,17 @@ public class Fireflies : MonoBehaviour {
 		}
 
 		transform.localPosition = pivot + (invert ? pivotOffset : Vector2.zero);
-		transform.localPosition = new Vector2(transform.localPosition.x  + Mathf.Sin(phase) * xScale, transform.localPosition.y + Mathf.Cos(phase) * yScale * (invert ? -1 : 1));
-		//transform.position.x += Mathf.Sin(phase) * xScale;
-		//transform.position.y += Mathf.Sin(phase) * (invert ? -1 : 1)* yScale; 
-		if (transform.parent != null) {
+		xPos = locFromParent.x + transform.localPosition.x + Mathf.Sin(phase) * xScale;
+		yPos = locFromParent.y + transform.localPosition.y + Mathf.Cos(phase) * yScale * (invert ? -1 : 1);
+		transform.localPosition = new Vector2(xPos, yPos);
+	}
 
-			counter += Time.deltaTime;
-
-			if (counter > droppingFlyTime) {
-				transform
-				transform.parent = null;
-				counter = 0;
-			}
-		}
-
-
+	//Detaches from parent, this is needed because normally when the fly is removed from the swarm
+	//it will return to the origin. This function allows it to stay where it is when it is removed
+	public void removeFromSwarm() {
+		locFromParent = transform.position;
+		transform.parent = null;
+		transform.localPosition = locFromParent;
 	}
 
 }
