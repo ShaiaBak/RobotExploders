@@ -129,7 +129,7 @@ public class AlphaGolem : Golem {
 		//Set the parent of the projectile to be the golem
 		p.transform.parent = this.transform;
 		// Make the projectile shoot to the direction of DIR for DUR sec with a movespeed of MS, damage of DMG
-		p.SetParameters(false, 0.1f, 100f, new Vector2(0,0) ,1, 0, 0, 0);
+		p.SetParameters(false, 0.1f, 2f, new Vector2(0,0) ,1, 0, 0, 0);
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);
 		yield return new WaitForSeconds(0.05f);
 	}
@@ -139,6 +139,7 @@ public class AlphaGolem : Golem {
 		Shoot(true,25,1f,new Vector2 (-1,0),1);
 		//yield WaitForSeconds(5);
 		//StartCoroutine("AlphaDiveDelay");
+		rigidbody2D.velocity = Vector2.zero;
 		yield return new WaitForSeconds(1.05f);
 		enableControl = true;
 	}
