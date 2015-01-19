@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour {
 
 //	private int aoeDamage = 1;
 //	private float explosionAoE = 0f;
-//	private float knockback = 0f;
+	private float knockback = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +24,12 @@ public class Projectile : MonoBehaviour {
 
 		//Used for Alpha dive, if the projectile becomes a child of the golem,
 		//follow the golems feet
-		if (transform.parent != null){ 
+		if (transform.parent.gameObject.name == "Golem"){ 
 			transform.position = new Vector2 (transform.parent.position.x,transform.parent.position.y-1.2f);
+		} else if (transform.parent.gameObject.name == "BetaGolem"){
+			rigidbody2D.velocity = new Vector2 (direction.x * moveSpeed + transform.parent.rigidbody2D.velocity.x, direction.y * moveSpeed );
+			//rigidbody2D.velocity.x = direction.x * moveSpeed + transform.parent.rigidbody2D.velocity.x;
+			//rigidbody2D.velocity.y = direction.y * moveSpeed;
 		} else {
 			rigidbody2D.velocity = direction * moveSpeed; 
 		}
@@ -54,7 +58,7 @@ public class Projectile : MonoBehaviour {
 		directDamage = dmg;
 //		aoeDamage = aoeDmg;
 //		explosionAoE = aoe;
-//		knockback = knock;
+		knockback = knock;
 	}
 
 	// For non-piercing projectiles
@@ -71,8 +75,13 @@ public class Projectile : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		// TODO: AoE? Knockback?
 		HealthSystem hs = col.gameObject.GetComponent<HealthSystem>();
+		Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
 		if(hs != null){
 			hs.HurtHealth(directDamage, collider);
+		}
+
+		if(rb != null) {
+			rb.AddForce (new Vector2 (direction.x*1000f*knockback, direction.y*100f*knockback));
 		}
 	}
 
