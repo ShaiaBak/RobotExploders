@@ -33,7 +33,7 @@ public class BetaGolem: Golem {
 
 			//Shoot(true,10,0.02f,GetFacingDirection(),1,0);
 			
-			HammerAttack(true,15,0.1f,GetFacingDirection(),1,1);
+			HammerAttack(true,15,0.1f,GetFacingDirection(),1,4);
 
 			//SoundNotificationController.CreateSound(transform.position,0,2);
 			lastAttack = listOfMoves.Attack2;
@@ -89,7 +89,7 @@ public class BetaGolem: Golem {
 		GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
 		Projectile p = proj.GetComponent<Projectile>();
 		p.transform.parent = this.transform;
-		
+
 		p.SetParameters(isPiercing, ms, dur, new Vector2(0,-1), dmg, 0, 0, knock);
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);	
 	}

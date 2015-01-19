@@ -22,16 +22,18 @@ public class Projectile : MonoBehaviour {
 	// FixedUpdate is called once per fixed framerate frame
 	void FixedUpdate () {
 
-		//Used for Alpha dive, if the projectile becomes a child of the golem,
-		//follow the golems feet
+		
 		if (transform.parent == null) {
 			rigidbody2D.velocity = direction * moveSpeed; 
+
+		//Used for Alpha dive, if the projectile becomes a child of the golem,
+		//follow the golems feet	
 		} else if (transform.parent.gameObject.name == "Golem") { 
 			transform.position = new Vector2 (transform.parent.position.x,transform.parent.position.y-1.2f);
+
+		//Beta Hammer attack, the projectile will attack straight down in front of the golem.
 		} else if (transform.parent.gameObject.name == "BetaGolem"){
 			rigidbody2D.velocity = new Vector2 (direction.x * moveSpeed + transform.parent.rigidbody2D.velocity.x, direction.y * moveSpeed );
-			//rigidbody2D.velocity.x = direction.x * moveSpeed + transform.parent.rigidbody2D.velocity.x;
-			//rigidbody2D.velocity.y = direction.y * moveSpeed;
 		} 
 
 		timeSpentAlive += Time.deltaTime;
@@ -66,8 +68,13 @@ public class Projectile : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col) {
 		// TODO: AoE? Knockback?
 		HealthSystem hs = col.gameObject.GetComponent<HealthSystem>();
+		Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
 		if(hs != null){
 			hs.HurtHealth(directDamage, collider);
+		}
+
+		if(rb != null) {
+			rb.AddForce (new Vector2 (direction.x*1000f*knockback, direction.y*100f*knockback));
 		}
 		RemoveMe();
 	}
