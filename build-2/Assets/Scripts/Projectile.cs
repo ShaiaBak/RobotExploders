@@ -24,15 +24,16 @@ public class Projectile : MonoBehaviour {
 
 		//Used for Alpha dive, if the projectile becomes a child of the golem,
 		//follow the golems feet
-		if (transform.parent.gameObject.name == "Golem"){ 
+		if (transform.parent == null) {
+			rigidbody2D.velocity = direction * moveSpeed; 
+		} else if (transform.parent.gameObject.name == "Golem") { 
 			transform.position = new Vector2 (transform.parent.position.x,transform.parent.position.y-1.2f);
 		} else if (transform.parent.gameObject.name == "BetaGolem"){
 			rigidbody2D.velocity = new Vector2 (direction.x * moveSpeed + transform.parent.rigidbody2D.velocity.x, direction.y * moveSpeed );
 			//rigidbody2D.velocity.x = direction.x * moveSpeed + transform.parent.rigidbody2D.velocity.x;
 			//rigidbody2D.velocity.y = direction.y * moveSpeed;
-		} else {
-			rigidbody2D.velocity = direction * moveSpeed; 
-		}
+		} 
+
 		timeSpentAlive += Time.deltaTime;
 		if(timeSpentAlive > timeUntilDeath){
 			RemoveMe();
