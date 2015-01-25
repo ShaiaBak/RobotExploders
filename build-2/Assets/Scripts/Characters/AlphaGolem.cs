@@ -4,11 +4,12 @@ using System.Collections;
 public class AlphaGolem : Golem {
 
 	public GameObject projectilePrefab;
+	[SerializeField]
 	private float cooldownTimer = 0f;
 	private float cooldownEnd = .5f;
 	private bool diveEnabled = false;
-	public enum listOfMoves {nothing, Attack1, Attack2, Attack3};
-	public listOfMoves lastAttack;
+	private enum listOfMoves {nothing, Attack1, Attack2, Attack3};
+	private listOfMoves lastAttack;
 	/* OLD DIVE ATTACK VARIABLES
 	private float counter = 0f;
 	public float diveScaleX = 0.1f;
@@ -43,14 +44,16 @@ public class AlphaGolem : Golem {
 		// Piercing 
 		if(Input.GetButton(controls.fireB) && CheckAnimationCooldown(lastAttack)){
 			Shoot(true,3,2,GetFacingDirection(),1);
-			SoundNotificationController.CreateSound(transform.position,0,2);
 			lastAttack = listOfMoves.Attack2;
+			SoundNotificationController.CreateSound(transform.position,0,2);
+			
 		}
 		// Special 
 		if(Input.GetButton(controls.fireC) && CheckAnimationCooldown(lastAttack)){
 			StartCoroutine(Melee(GetFacingDirection()));
-			SoundNotificationController.CreateSound(transform.position,0,2);
 			lastAttack = listOfMoves.Attack3;
+			SoundNotificationController.CreateSound(transform.position,0,2);
+			
 		}
 		cooldownTimer += Time.deltaTime;
 		//Debug.Log(lastAttack);
@@ -59,18 +62,18 @@ public class AlphaGolem : Golem {
 	// Short cooldown in between attacks/different attacks
 	private bool CheckAnimationCooldown(listOfMoves prevAttack){
 		// Check cooldown period
-
+		
 		// Different attacks have different cooldowns 
 		switch (prevAttack) {
 			case listOfMoves.Attack1:
 				cooldownEnd = 1.5f;
 				break;
 			default:
-				cooldownEnd = 0.5f;
+				cooldownEnd = 0.4f;
 				break;
 			}
 		
-
+		
 		if(cooldownTimer >= cooldownEnd){
 			cooldownTimer = 0;
 			return true;
