@@ -5516,6 +5516,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8ff731f606d0d164aa4e8661c4f073bb, type: 2}
+    - target: {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_RootGameObject: {fileID: 1515994323}
@@ -11188,6 +11192,7 @@ GameObject:
   - 61: {fileID: 1515994327}
   - 114: {fileID: 1515994326}
   - 114: {fileID: 1515994325}
+  - 60: {fileID: 1515994330}
   m_Layer: 13
   m_Name: Golem
   m_TagString: Golem
@@ -11258,7 +11263,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 715189129}
   m_GameObject: {fileID: 1515994323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: .699999988, y: .899999976}
@@ -11302,6 +11307,54 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cffefe438b63f69499335bfc9598e014, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!60 &1515994330
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1515994323}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: -.007444683, y: -.497047603}
+      - {x: .0542229116, y: -.440076798}
+      - {x: .219999999, y: -.330000013}
+      - {x: .25999999, y: -.219999999}
+      - {x: .200000003, y: -.0700000003}
+      - {x: .0900000036, y: .00999999978}
+      - {x: .119999997, y: .0799999982}
+      - {x: .150000006, y: -.0399999991}
+      - {x: .230000004, y: -.0900000036}
+      - {x: .25, y: -.150000006}
+      - {x: .283771336, y: -.37947914}
+      - {x: .318707943, y: -.296104282}
+      - {x: .32662645, y: -.115062438}
+      - {x: .270000011, y: .0700000003}
+      - {x: .200000003, y: .140000001}
+      - {x: .340000004, y: .239999995}
+      - {x: .349999994, y: .270000011}
+      - {x: .349999994, y: .280000001}
+      - {x: .270000011, y: .370000005}
+      - {x: .00999999978, y: .460000008}
+      - {x: -.0399999991, y: .5}
+      - {x: -.170000002, y: .5}
+      - {x: -.300000012, y: .239999995}
+      - {x: -.349999994, y: .230000004}
+      - {x: -.353249013, y: .120395988}
+      - {x: -.330000013, y: -.0900000036}
+      - {x: -.294811875, y: -.208312526}
+      - {x: -.271437794, y: -.303374976}
+      - {x: -.169852421, y: -.460496843}
+      - {x: -.119950145, y: -.470596194}
+    - - {x: -.25, y: .100000001}
+      - {x: -.150000006, y: .0900000036}
+      - {x: -.129999995, y: .0900000036}
+      - {x: -.140000001, y: .0700000003}
+      - {x: -.109999999, y: .0500000007}
+      - {x: -.129999995, y: .0799999982}
+      - {x: -.140000001, y: .0799999982}
 --- !u!1 &1525952917
 GameObject:
   m_ObjectHideFlags: 0
@@ -11723,6 +11776,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8ff731f606d0d164aa4e8661c4f073bb, type: 2}
+    - target: {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_RootGameObject: {fileID: 2060071002}
@@ -15060,6 +15117,7 @@ GameObject:
   - 61: {fileID: 2060071006}
   - 114: {fileID: 2060071005}
   - 114: {fileID: 2060071004}
+  - 60: {fileID: 2060071009}
   m_Layer: 13
   m_Name: Golem
   m_TagString: Golem
@@ -15130,7 +15188,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1584877544}
   m_GameObject: {fileID: 2060071002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: .699999988, y: .899999976}
@@ -15174,6 +15232,63 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b11d4474f8a52b747904017db3e1a4a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!60 &2060071009
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060071002}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: .159999996, y: -.389999986}
+      - {x: .219999999, y: -.5}
+      - {x: .289999992, y: -.5}
+      - {x: .289999992, y: -.239999995}
+      - {x: .209999993, y: -.0799999982}
+      - {x: .170000002, y: .0299999993}
+      - {x: .300000012, y: -.159999996}
+      - {x: .360000014, y: -.140000001}
+      - {x: .360000014, y: 0}
+      - {x: .25, y: .119999997}
+      - {x: .209999993, y: .280000001}
+      - {x: .349999994, y: .300000012}
+      - {x: .360000014, y: .310000002}
+      - {x: .360000014, y: .340000004}
+      - {x: .289999992, y: .449999988}
+      - {x: .180000007, y: .5}
+      - {x: -.100000001, y: .5}
+      - {x: -.170000002, y: .430000007}
+      - {x: -.280000001, y: .449999988}
+      - {x: -.319999993, y: .400000006}
+      - {x: -.310000002, y: .319999993}
+      - {x: -.25999999, y: .209999993}
+      - {x: -.310000002, y: .209999993}
+      - {x: -.340000004, y: .180000007}
+      - {x: -.389999986, y: .0399999991}
+      - {x: -.360000014, y: -.0799999982}
+      - {x: -.230000004, y: -.409999996}
+      - {x: -.189999998, y: -.5}
+      - {x: -.100000001, y: -.5}
+      - {x: .0199999996, y: -.25999999}
+      - {x: .0399999991, y: -.170000002}
+      - {x: .150000006, y: -.289999992}
+    - - {x: -.159999996, y: -.270000011}
+      - {x: -.159999996, y: -.239999995}
+      - {x: -.189999998, y: .0700000003}
+      - {x: -.159999996, y: .100000001}
+      - {x: -.159999996, y: .119999997}
+      - {x: -.170000002, y: .170000002}
+      - {x: -.180000007, y: .159999996}
+      - {x: -.180000007, y: .0799999982}
+      - {x: -.129999995, y: -.0299999993}
+      - {x: -.150000006, y: -.219999999}
+      - {x: -.129999995, y: -.270000011}
+      - {x: -.159999996, y: -.300000012}
+      - {x: -.150000006, y: -.319999993}
+      - {x: -.140000001, y: -.310000002}
 --- !u!1 &2097773850
 GameObject:
   m_ObjectHideFlags: 0
