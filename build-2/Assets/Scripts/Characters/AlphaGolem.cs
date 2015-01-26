@@ -125,7 +125,7 @@ public class AlphaGolem : Golem {
 
 		rigidbody2D.AddForce(new Vector2 (0,-20f),ForceMode2D.Impulse);
 		//Set position for creating the projectile
-		Vector2 pos = new Vector2(transform.position.x, transform.position.y-1f);
+		Vector2 pos = new Vector2(transform.position.x, transform.position.y-1.25f);
 		
 		GameObject proj = (GameObject) Instantiate(projectilePrefab, pos, Quaternion.identity);
 		Projectile p = proj.GetComponent<Projectile>();
