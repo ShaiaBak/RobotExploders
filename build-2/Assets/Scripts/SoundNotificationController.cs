@@ -17,11 +17,13 @@ public class SoundNotificationController : MonoBehaviour {
 		public Vector2 position;
 		public int magnitude;
 		public float duration;
+		public Color colour;
 
-		public Sound(Vector2 pos, int mag, float dur){
+		public Sound(Vector2 pos, int mag, float dur, Color col){
 			position = pos;
 			magnitude = mag;
 			duration = dur + Time.time;
+			colour = col;
 		}
 	}
 
@@ -29,6 +31,7 @@ public class SoundNotificationController : MonoBehaviour {
 		// Grab the Pilot script defined in the Camera Controller component
 		ps = GetComponent<CameraController>().player.GetComponent<Pilot>();
 		sounds = new List<Sound>();
+		// Set the pivot points
 		if(ps.isP1){
 			pivot = new Vector2(Screen.width/4,Screen.height/2);
 		}else{
@@ -41,7 +44,7 @@ public class SoundNotificationController : MonoBehaviour {
 		timer += Time.deltaTime;
 		for(int i=0; i<sounds.Count; i++){
 			if(Time.time >= sounds[i].duration){
-				sounds.RemoveAt(i);
+				RemoveSound(i);
 			}
 		}
 	}
@@ -50,8 +53,16 @@ public class SoundNotificationController : MonoBehaviour {
 		// Show and rotate sound notifications far away enough from the player
 		for(int i=0; i<sounds.Count; i++){
 			if(Vector2.Distance(transform.position,sounds[i].position) > camera.orthographicSize+.75f){
-				RotateSoundNotification(pivot,sounds[i].position,icons[3]);
+				RotateSoundNotification(pivot,sounds[i].position,icons[3],sounds[i].colour);
 			}
+		}
+	}
+
+	private void RemoveSound(int index){
+		Sound s = sounds[index];
+		s.colour = new Color(1,1,1,s.colour.a-.01f);
+		if(s.colour.a <= 0){
+			sounds.RemoveAt(index);
 		}
 	}
 
@@ -62,14 +73,18 @@ public class SoundNotificationController : MonoBehaviour {
 	/// <param name="magnitude">Magnitude.</param>
 	/// <param name="duration">Duration.</param>
 	public static void CreateSound(Vector2 position, int magnitude, float duration){
-		sounds.Add(new Sound(position,magnitude,duration));
+		sounds.Add(new Sound(position,magnitude,duration,Color.white));
 	}
 
 	// Rotate sound notification
 	// GUIUtility.RotateAroundPivot rotates any GUI created after that line
-	private void RotateSoundNotification(Vector2 pivot, Vector2 target, Texture2D icon){
+	private void RotateSoundNotification(Vector2 pivot, Vector2 target, Texture2D icon, Color newColor){
+		// Prepare for rotating
 		GUIUtility.RotateAroundPivot(rotAngle, pivot);
+		// Convert the pivot point location from world to screen point
 		Vector3 cameraScreenPoint = ps.cameraScript.camera.WorldToScreenPoint(transform.position);
+		// Prepare for opacity
+		GUI.color = newColor;
 		GUI.DrawTexture(new Rect(cameraScreenPoint.x - icon.width/2,
 		                         cameraScreenPoint.y - Screen.height/2,
 		                         icon.width,icon.height),icon);
@@ -79,5 +94,7 @@ public class SoundNotificationController : MonoBehaviour {
 		rotAngle = 180+Quaternion.LookRotation(lookToTargetDirection, Vector3.forward).eulerAngles.z;
 		// Reset the GUI.matrix to stop rotating other GUI elements
 		GUI.matrix = Matrix4x4.identity;
+		// Reset the GUI.color
+		GUI.color = Color.white;
 	}
 }
