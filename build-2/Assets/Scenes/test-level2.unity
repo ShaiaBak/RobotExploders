@@ -5518,9 +5518,26 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 8ff731f606d0d164aa4e8661c4f073bb, type: 2}
     - target: {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.73000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .0199999996
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 113737224cb6b2848b0b81acf0d3cb99, type: 2}
   m_RootGameObject: {fileID: 1515994323}
   m_IsPrefabParent: 0
@@ -8867,6 +8884,7 @@ GameObject:
   - 4: {fileID: 1236056657}
   - 212: {fileID: 1236056656}
   - 61: {fileID: 1236056658}
+  - 95: {fileID: 1236056659}
   m_Layer: 8
   m_Name: CaveWalls
   m_TagString: Untagged
@@ -8919,6 +8937,21 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
+--- !u!95 &1236056659
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236056655}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed54b53d075fb794bb973f587b28585a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1236371258
 GameObject:
   m_ObjectHideFlags: 0
@@ -11189,12 +11222,13 @@ GameObject:
   - 4: {fileID: 1515994324}
   - 212: {fileID: 1515994329}
   - 50: {fileID: 1515994328}
-  - 61: {fileID: 1515994327}
   - 114: {fileID: 1515994326}
   - 114: {fileID: 1515994325}
+  - 95: {fileID: 1515994331}
   - 60: {fileID: 1515994330}
+  - 61: {fileID: 1515994327}
   m_Layer: 13
-  m_Name: Golem
+  m_Name: AlphaGolem
   m_TagString: Golem
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -11208,7 +11242,7 @@ Transform:
   m_GameObject: {fileID: 1515994323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.7101288, y: 2.1568017, z: 0}
-  m_LocalScale: {x: -1.89999998, y: 1.89999998, z: 1}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 2145993841}
   - {fileID: 2141645676}
@@ -11239,7 +11273,7 @@ MonoBehaviour:
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  lastAttack: 0
+  cooldownTimer: 0
 --- !u!114 &1515994326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11259,15 +11293,14 @@ MonoBehaviour:
 --- !u!61 &1515994327
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 113737224cb6b2848b0b81acf0d3cb99,
-    type: 2}
-  m_PrefabInternal: {fileID: 715189129}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1515994323}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .699999988, y: .899999976}
-  m_Center: {x: .0599999987, y: 0}
+  m_Size: {x: 1.62, y: 2.96000004}
+  m_Center: {x: 0, y: -.109999999}
 --- !u!50 &1515994328
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -11305,7 +11338,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cffefe438b63f69499335bfc9598e014, type: 3}
+  m_Sprite: {fileID: 21300020, guid: ddba2a2bcda0b324b8ead9c5e0460250, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!60 &1515994330
 PolygonCollider2D:
@@ -11313,7 +11346,7 @@ PolygonCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1515994323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
   m_IsTrigger: 0
   m_Poly:
@@ -11348,13 +11381,25 @@ PolygonCollider2D:
       - {x: -.271437794, y: -.303374976}
       - {x: -.169852421, y: -.460496843}
       - {x: -.119950145, y: -.470596194}
-    - - {x: -.25, y: .100000001}
-      - {x: -.150000006, y: .0900000036}
+    - - {x: -.224310234, y: -.0541374572}
       - {x: -.129999995, y: .0900000036}
-      - {x: -.140000001, y: .0700000003}
       - {x: -.109999999, y: .0500000007}
-      - {x: -.129999995, y: .0799999982}
-      - {x: -.140000001, y: .0799999982}
+--- !u!95 &1515994331
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9512090, guid: 113737224cb6b2848b0b81acf0d3cb99,
+    type: 2}
+  m_PrefabInternal: {fileID: 715189129}
+  m_GameObject: {fileID: 1515994323}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48fcc35c0b6f9df4582d7b85bbca09ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1525952917
 GameObject:
   m_ObjectHideFlags: 0
@@ -12702,7 +12747,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724124742}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 25.6000004, y: 1}
   m_Center: {x: 17.7000008, y: .300000012}
@@ -12713,7 +12758,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724124742}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 4.05999994}
   m_Center: {x: 6.44999981, y: -1.95000005}
@@ -12735,7 +12780,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724124742}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 4.05999994}
   m_Center: {x: -29.5799999, y: -1.95000005}
@@ -15117,9 +15162,10 @@ GameObject:
   - 61: {fileID: 2060071006}
   - 114: {fileID: 2060071005}
   - 114: {fileID: 2060071004}
+  - 95: {fileID: 2060071010}
   - 60: {fileID: 2060071009}
   m_Layer: 13
-  m_Name: Golem
+  m_Name: AlphaGolem
   m_TagString: Golem
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -15164,7 +15210,7 @@ MonoBehaviour:
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  lastAttack: 0
+  cooldownTimer: 0
 --- !u!114 &2060071005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15289,6 +15335,22 @@ PolygonCollider2D:
       - {x: -.159999996, y: -.300000012}
       - {x: -.150000006, y: -.319999993}
       - {x: -.140000001, y: -.310000002}
+--- !u!95 &2060071010
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9512090, guid: 113737224cb6b2848b0b81acf0d3cb99,
+    type: 2}
+  m_PrefabInternal: {fileID: 1584877544}
+  m_GameObject: {fileID: 2060071002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48fcc35c0b6f9df4582d7b85bbca09ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2097773850
 GameObject:
   m_ObjectHideFlags: 0
@@ -15675,7 +15737,7 @@ Transform:
   m_PrefabInternal: {fileID: 715189129}
   m_GameObject: {fileID: 2145993840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.5, z: 0}
+  m_LocalPosition: {x: .0199999996, y: -1.73000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1515994324}

@@ -15,7 +15,7 @@ public class Golem : MonoBehaviour {
 	[SerializeField]
 	private Vector2 facingDirection;
 
-	//private Animator anim;
+	private Animator anim;
 	
 	//--------Input Variables--------//
 	private float moveH = 0f;
@@ -43,7 +43,7 @@ public class Golem : MonoBehaviour {
 	private Transform direction;
 	//public bool roofHit = false;
 	void Start () {
-		//anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
 
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
@@ -91,7 +91,7 @@ public class Golem : MonoBehaviour {
 		//float groundRadius = 0.1f;
 		//grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
-		//anim.SetBool ("Ground", grounded);
+		anim.SetBool ("Grounded", grounded);
 		/*
 		roofHit = Physics2D.OverlapCircle (roofCheck.position, 0.2f, whatIsRoof);
 		if (roofHit) {
@@ -104,13 +104,14 @@ public class Golem : MonoBehaviour {
 			//anim.SetFloat ("speedV", rigidbody2D.velocity.y);
 			
 			//When the horizontal speed is not zero, change to the walking animation
-			//anim.SetFloat ("speedH", Mathf.Abs (moveH));
+			anim.SetFloat ("speedH", Mathf.Abs (moveH));
 
 			CheckJumping();
 			CheckFlying();
 
 			DirectionCheck();
 			rigidbody2D.velocity = new Vector2 (moveH * maxSpeed, rigidbody2D.velocity.y);
+
 		} else {
 			moveH = 0f; 
 		}
