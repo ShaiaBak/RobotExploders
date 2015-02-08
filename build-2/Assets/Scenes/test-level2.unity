@@ -11239,7 +11239,7 @@ MonoBehaviour:
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  lastAttack: 0
+  cooldownTimer: 0
 --- !u!114 &1515994326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11314,7 +11314,7 @@ PolygonCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1515994323}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: d57560f4237c6374ea83b1e6ca60dd20, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
@@ -15164,7 +15164,7 @@ MonoBehaviour:
   timeToExit: .5
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  lastAttack: 0
+  cooldownTimer: 0
 --- !u!114 &2060071005
 MonoBehaviour:
   m_ObjectHideFlags: 0
