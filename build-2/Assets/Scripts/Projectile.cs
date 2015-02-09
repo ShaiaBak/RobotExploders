@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour {
 
 		//Used for Alpha dive, if the projectile becomes a child of the golem,
 		//follow the golems feet	
-		} else if (transform.parent.gameObject.name == "Golem") { 
+		} else if (transform.parent.gameObject.name == "AlphaGolem") { 
 			Debug.Log("Test");
 			rigidbody2D.velocity = new Vector2(transform.parent.rigidbody2D.velocity.x, transform.parent.rigidbody2D.velocity.y);
 			//transform.position = new Vector2 (transform.parent.position.x,transform.parent.position.y-1.2f);
