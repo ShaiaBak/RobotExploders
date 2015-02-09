@@ -32,6 +32,7 @@ public class AlphaGolem : Golem {
 			//enableControl= false;
 
 			if (!grounded){
+				flyingMode = false;
 				StartCoroutine(AlphaDiveProj());
 				diveEnabled = true;
 			}  else {
@@ -95,6 +96,7 @@ public class AlphaGolem : Golem {
 		// Make the projectile shoot to the direction of DIR for DUR sec with a movespeed of MS, damage of DMG
 		p.SetParameters(isPiercing, ms, dur, dir, dmg, 0, 0, 0);
 		Physics2D.IgnoreCollision(collider2D, p.collider2D);
+		Debug.Log(collider2D);
 
 	}
 	
@@ -123,7 +125,7 @@ public class AlphaGolem : Golem {
 
 	private IEnumerator AlphaDiveProj() {
 
-		rigidbody2D.AddForce(new Vector2 (0,-20f),ForceMode2D.Impulse);
+		rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x,-20.0f);
 		//Set position for creating the projectile
 		Vector2 pos = new Vector2(transform.position.x, transform.position.y-1.25f);
 		
@@ -143,6 +145,7 @@ public class AlphaGolem : Golem {
 		//yield WaitForSeconds(5);
 		//StartCoroutine("AlphaDiveDelay");
 		rigidbody2D.velocity = Vector2.zero;
+		anim.SetFloat ("speedH",0);
 		yield return new WaitForSeconds(1.05f);
 		enableControl = true;
 	}

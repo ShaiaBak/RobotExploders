@@ -15,7 +15,7 @@ public class Golem : MonoBehaviour {
 	[SerializeField]
 	private Vector2 facingDirection;
 
-	private Animator anim;
+	public Animator anim;
 	
 	//--------Input Variables--------//
 	private float moveH = 0f;
@@ -83,13 +83,13 @@ public class Golem : MonoBehaviour {
 		LayerMask whatIsGround = 1 << LayerMask.NameToLayer("Environment");
 		//FOR BOX COLLIDER
 
-		Vector2 gCheck1 = new Vector2(groundCheck.position.x - colliderSize, groundCheck.position.y+0.05f);
-		Vector2 gCheck2 = new Vector2(groundCheck.position.x + colliderSize, groundCheck.position.y-0.05f);
-		grounded = Physics2D.OverlapArea (gCheck1, gCheck2, whatIsGround);
+		//Vector2 gCheck1 = new Vector2(groundCheck.position.x - colliderSize, groundCheck.position.y+0.05f);
+		//Vector2 gCheck2 = new Vector2(groundCheck.position.x + colliderSize, groundCheck.position.y-0.05f);
+		//grounded = Physics2D.OverlapArea (gCheck1, gCheck2, whatIsGround);
 
 		//FOR CIRCLE COLLIDER
-		//float groundRadius = 0.1f;
-		//grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+		float groundRadius = 0.1f;
+		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
 		anim.SetBool ("Grounded", grounded);
 		/*
