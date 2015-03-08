@@ -216,9 +216,9 @@ public class Golem : MonoBehaviour {
 			}
 			
 		} else {
-			exitTimer = 0;
-			//exitTimer = Mathf.Floor(exitTimer - Time.deltaTime);
-			//Debug.Log(exitTimer);
+			// exitTimer = 0;
+			exitTimer = Mathf.Lerp(exitTimer, 0, Time.time);
+			// Debug.Log(exitTimer);
 		}
 	}
 	
