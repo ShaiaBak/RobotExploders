@@ -2148,6 +2148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090fe0ddb3c1eb942b1ae88338c535f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentClass: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!212 &265160025
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12016,10 +12018,13 @@ MonoBehaviour:
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
   anim: {fileID: 0}
+  enterGolemPress: 0
+  enterGolemRelease: 0
   grounded: 0
   doubleJump: 1
   flyingMode: 0
   timeToExit: .5
+  enterTimerFromPilot: 0
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
   cooldownTimer: 0
@@ -15979,10 +15984,13 @@ MonoBehaviour:
   currentPilot: {fileID: 0}
   facingDirection: {x: 0, y: 0}
   anim: {fileID: 0}
+  enterGolemPress: 0
+  enterGolemRelease: 0
   grounded: 0
   doubleJump: 1
   flyingMode: 0
   timeToExit: .5
+  enterTimerFromPilot: 0
   groundCheck: {fileID: 0}
   projectilePrefab: {fileID: 0}
   cooldownTimer: 0

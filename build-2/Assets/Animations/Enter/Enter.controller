@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: Enter
   serializedVersion: 2
   m_AnimatorParameters:
-  - m_Name: enterGolemPress
+  - m_Name: enterTime
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
