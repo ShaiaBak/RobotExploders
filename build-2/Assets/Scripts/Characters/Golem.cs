@@ -23,8 +23,8 @@ public class Golem : MonoBehaviour {
 	private bool jumpPress;					//When the Jump button is pressed
 	private bool jumpRelease;				//When the Jump button is released
 	private bool jumpHeld;					//When the Jump button is held
-	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
-	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
+	public bool enterGolemPress;			//Input for enter or exiting the golem is pressed
+	public bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
