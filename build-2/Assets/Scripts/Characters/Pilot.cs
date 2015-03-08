@@ -118,20 +118,24 @@ public class Pilot : MonoBehaviour {
 	}
 
 	//Checks whether the pilot is entering a golem and enter it if the button is held for .5 seconds
-	private void CheckEntering(){
+	public void CheckEntering(){
 		//Find a nearby golem
 		if(enterGolemPress){
 			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
+			
 			if(nearbyGolem != null && nearbyGolem.GetComponent<Golem>().currentPilot == null){
 				//Check if button is held long enough
 				enterTimer = enterTimer + Time.deltaTime;
+
+				nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
 				if(enterTimer >= timeToEnter){
 					//print ("enter");
 					enterTimer = 0;
+
 					EnterGolem(nearbyGolem.gameObject);
 				}
 			}
-		}else{
+		} else {
 			enterTimer = 0;
 		}
 	}

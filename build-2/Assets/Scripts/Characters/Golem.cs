@@ -33,6 +33,8 @@ public class Golem : MonoBehaviour {
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 	private float exitTimer = 0;			
 	public float timeToExit = .5f;			
+	public float enterTimerFromPilot = 0;
+
 
 	private float colliderSize;
 	public Transform groundCheck;
@@ -56,6 +58,7 @@ public class Golem : MonoBehaviour {
 	}
 	
 	void Update(){
+		Debug.Log(enterTimerFromPilot);
 		// Gets dynamic control scheme
 		// TODO: don't grab controls every frame; grab them in control selection screen
 		if(controls != null){
@@ -203,17 +206,19 @@ public class Golem : MonoBehaviour {
 	//Exits the golem when held for .5 seconds
 	private void CheckExiting(){
 		//Find a nearby golem
-		if(enterGolemPress){
+		if( enterGolemPress ){
 			//Check if button is held long enough
 			exitTimer = exitTimer + Time.deltaTime;
 			if(exitTimer >= timeToExit){
-				print ("exit");
+				//print ("exit");
 				exitTimer = 0;
 				ExitGolem();
 			}
 			
-		}else{
+		} else {
 			exitTimer = 0;
+			//exitTimer = Mathf.Floor(exitTimer - Time.deltaTime);
+			//Debug.Log(exitTimer);
 		}
 	}
 	
