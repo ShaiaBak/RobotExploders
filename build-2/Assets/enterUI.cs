@@ -13,6 +13,6 @@ public class enterUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		anim.SetBool ("enterPress", parentClass.enterGolemPress);
-		anim.SetBool ("finishEnter", parentClass.enterGolemPress);
+		// anim.SetFloat ("finishEnter", parentClass.enterGolemPress);
 	}
 }
