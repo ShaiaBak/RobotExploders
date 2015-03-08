@@ -131,12 +131,16 @@ public class Pilot : MonoBehaviour {
 				if(enterTimer >= timeToEnter){
 					//print ("enter");
 					enterTimer = 0;
-
+					nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
 					EnterGolem(nearbyGolem.gameObject);
 				}
 			}
-		} else {
-			enterTimer = 0;
+		} else if (enterTimer >= 0.01f) {
+
+			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
+			// enterTimer = 0;
+			enterTimer = Mathf.Lerp(enterTimer, 0, Time.time);
+			nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
 		}
 	}
 	
