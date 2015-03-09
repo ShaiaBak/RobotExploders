@@ -171,11 +171,12 @@ public class Golem : MonoBehaviour {
 	private void CheckJumping(){
 		//When player is on the ground, second jump is available
 		if (grounded) {
+			anim.SetBool("Jumped", jumpPress);
 			doubleJump = true;
 			//When jump button is pressed, add a force upwards
 			if (jumpPress) {
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-				anim.SetBool("Jumped", jumpPress);
+				
 			}
 			//if second jump is available and the jump button is pressed
 			//enter flying mode, turn off gravity and reset the timer
