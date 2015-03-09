@@ -32,7 +32,9 @@ public class Golem : MonoBehaviour {
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 	private float exitTimer = 0;			
-	public float timeToExit = .5f;			
+	public float timeToExit = .5f;
+
+	public bool pilotNearby = false;		
 	public float enterTimerFromPilot = 0;
 
 
@@ -58,7 +60,7 @@ public class Golem : MonoBehaviour {
 	}
 	
 	void Update(){
-		Debug.Log(enterTimerFromPilot);
+		//Debug.Log(enterTimerFromPilot);
 		// Gets dynamic control scheme
 		// TODO: don't grab controls every frame; grab them in control selection screen
 		if(controls != null){
@@ -173,6 +175,7 @@ public class Golem : MonoBehaviour {
 			//When jump button is pressed, add a force upwards
 			if (jumpPress) {
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+				anim.SetBool("Jumped", jumpPress);
 			}
 			//if second jump is available and the jump button is pressed
 			//enter flying mode, turn off gravity and reset the timer

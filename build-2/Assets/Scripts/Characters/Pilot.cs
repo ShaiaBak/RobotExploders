@@ -120,7 +120,8 @@ public class Pilot : MonoBehaviour {
 	//Checks whether the pilot is entering a golem and enter it if the button is held for .5 seconds
 	public void CheckEntering(){
 		//Find a nearby golem
-		if(enterGolemPress){
+		if(enterGolemPress) {
+
 			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
 			
 			if(nearbyGolem != null && nearbyGolem.GetComponent<Golem>().currentPilot == null){
@@ -139,11 +140,18 @@ public class Pilot : MonoBehaviour {
 
 			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
 			// enterTimer = 0;
-			enterTimer = Mathf.Lerp(enterTimer, 0, Time.time);
+			enterTimer = Mathf.Lerp(enterTimer, 0, 0.15f);
 			nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
 		}
 	}
-	
+	// public void OnTriggerEnter2D(Collider2D other) {
+	// 	if (other.collider2D.tag == "entryUI") {
+	// 		Debug.Log("Entry UI");
+	// 		other.collider2D.GetComponent<Golem>().pilotNearby = true;
+	// 	} 
+	// }
+
+
 	// Enters the golem and transfers control scheme to it
 	private void EnterGolem(GameObject golem){
 		currentGolem = golem;
@@ -160,7 +168,7 @@ public class Pilot : MonoBehaviour {
 			Flip();
 
 		}
-
+		currentGolem.transform.FindChild("Enter-UI").GetComponent<Animator>().SetBool ("Pilot Nearby", false);
 		//Disable the pilot
 		enabled = false;
 		enableControl = false;
