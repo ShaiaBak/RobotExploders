@@ -22,7 +22,9 @@ public class Pilot : MonoBehaviour {
 	private bool jumpRelease;				//When the Jump button is released
 	private bool jumpHeld;					//When the Jump button is held
 	private bool enterGolemPress;			//Input for enter or exiting the golem is pressed
-	private bool enterGolemRelease;			//Input for enter or exiting the golem is released
+	private bool enterGolemHeld;
+	private bool entering = false;
+	// private bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
@@ -30,16 +32,21 @@ public class Pilot : MonoBehaviour {
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
 
-	private float enterTimer = 0;
-	public float timeToEnter = .5f;
+	public float enterTimer = 0;
+	public float timeToEnter = .5f;			//timeToEnter must match the blendtree time
 
 	public Transform groundCheck;
 	private int i;
 	private Transform direction;
+
+	
+
 	
 	void Start () {
 		//anim = GetComponent<Animator>();
 		//Find the child, GroundCheck, of the object and assign it as the ground check
+
+		
 		groundCheck = this.transform.FindChild("GroundCheck");
 		direction = this.transform.FindChild("Direction");
 	}
@@ -53,7 +60,8 @@ public class Pilot : MonoBehaviour {
 			jumpPress = Input.GetButtonDown (controls.jump);
 			jumpRelease = Input.GetButtonUp (controls.jump);
 			jumpHeld = Input.GetButton (controls.jump);
-			enterGolemPress = Input.GetButton (controls.enter);
+			enterGolemPress = Input.GetButtonDown (controls.enter);
+			enterGolemHeld = Input.GetButton (controls.enter);
 		}
 
 		//enableControl is only used for potential ideas later. If true you have normal movement
@@ -118,39 +126,38 @@ public class Pilot : MonoBehaviour {
 	}
 
 	//Checks whether the pilot is entering a golem and enter it if the button is held for .5 seconds
+	//When enter key is PRESSED, it latches entering to be true
 	public void CheckEntering(){
 		//Find a nearby golem
-		if(enterGolemPress) {
+		
+
+		if(enterGolemPress || entering) {
 
 			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
 			
-			if(nearbyGolem != null && nearbyGolem.GetComponent<Golem>().currentPilot == null){
+			if(nearbyGolem != null && nearbyGolem.GetComponent<Golem>().currentPilot == null && enterGolemHeld){
+				entering = true;
+
 				//Check if button is held long enough
 				enterTimer = enterTimer + Time.deltaTime;
 
-				nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
+				// nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
 				if(enterTimer >= timeToEnter){
 					//print ("enter");
 					enterTimer = 0;
-					nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
+					entering = false;
+					// nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
 					EnterGolem(nearbyGolem.gameObject);
 				}
+			} else {
+				entering = false;
 			}
-		} else if (enterTimer >= 0.01f) {
 
-			Collider2D nearbyGolem = Physics2D.OverlapCircle(transform.position, .25f, 1 << LayerMask.NameToLayer("Deactivated"));
-			// enterTimer = 0;
-			enterTimer = Mathf.Lerp(enterTimer, 0, 0.15f);
-			nearbyGolem.GetComponent<Golem>().enterTimerFromPilot = enterTimer;
+		} else {
+				entering = false;
+				enterTimer = Mathf.Lerp(enterTimer, 0, 0.15f);
 		}
 	}
-	// public void OnTriggerEnter2D(Collider2D other) {
-	// 	if (other.collider2D.tag == "entryUI") {
-	// 		Debug.Log("Entry UI");
-	// 		other.collider2D.GetComponent<Golem>().pilotNearby = true;
-	// 	} 
-	// }
-
 
 	// Enters the golem and transfers control scheme to it
 	private void EnterGolem(GameObject golem){
@@ -164,11 +171,27 @@ public class Pilot : MonoBehaviour {
 		transform.parent = golem.transform;
 //		currentGolem.rigidbody2D.isKinematic = false;
 		// Sets pilot facing to golem's facing
-		if(facingRight != gs.facingRight){
+
+		// enterGolemPress = false;
+
+
+		if (facingRight != gs.facingRight){
 			Flip();
 
 		}
-		currentGolem.transform.FindChild("Enter-UI").GetComponent<Animator>().SetBool ("Pilot Nearby", false);
+		// currentGolem.transform.FindChild("Enter-UI")).GetType().ToString();
+		// Debug.Log(currentGolem.transform.FindChild("Enter-UI").GetType().ToString());
+		Transform eUI = currentGolem.transform.FindChild("Enter-UI");
+
+		// gameObject enterUI = currentGolem.transform.FindChild("Enter-UI");
+		// enterUI.pilotNearby = false;
+		eUI.GetComponent<enterUI>().pilotNearby = false;
+		eUI.GetComponent<Animator>().SetBool ("Pilot Nearby", false);
+
+		// Vertically flips the entry UI, an asthetic change just for exiting
+		eUI.GetComponent<enterUI>().flipVertical();
+		
+
 		//Disable the pilot
 		enabled = false;
 		enableControl = false;
