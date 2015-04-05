@@ -24,18 +24,20 @@ public class Golem : MonoBehaviour {
 	private bool jumpRelease;				//When the Jump button is released
 	private bool jumpHeld;					//When the Jump button is held
 	public bool enterGolemPress;			//Input for enter or exiting the golem is pressed
-	public bool enterGolemRelease;			//Input for enter or exiting the golem is released
+	public bool enterGolemHeld;			//Input for enter or exiting the golem is pressed
+	// public bool enterGolemRelease;			//Input for enter or exiting the golem is released
 	
 	public bool grounded = false;			//checks if object on the ground
 	public bool doubleJump = true;			//True = Doublejump is available
 	public bool flyingMode = false;			//True = Flying is active
 	private float flyingModeTimer = 0;		//The Timer for flying mode
 	private float flyingModeDuration = 2;	//Total Duration of the flight
-	private float exitTimer = 0;			
-	public float timeToExit = .5f;
+	public float exitTimer = 0;			
+	public float timeToExit = .5f;			//timeToExit must match the blendtree time
+	private bool exiting = false;
 
-	public bool pilotNearby = false;		
-	public float enterTimerFromPilot = 0;
+	// public bool pilotNearby = false;		
+	// public float enterTimerFromPilot = 0;
 
 
 	private float colliderSize;
@@ -46,9 +48,13 @@ public class Golem : MonoBehaviour {
 	private int i;
 	private Transform direction;
 	//public bool roofHit = false;
+
+	private Transform eUI;
+
+
 	void Start () {
 		anim = GetComponent<Animator>();
-
+		eUI = this.transform.FindChild("Enter-UI");
 		//Find the child, GroundCheck, of the object and assign it as the ground check
 		groundCheck = this.transform.FindChild("GroundCheck");
 
@@ -69,7 +75,8 @@ public class Golem : MonoBehaviour {
 			jumpPress = Input.GetButtonDown (controls.jump);
 			jumpRelease = Input.GetButtonUp (controls.jump);
 			jumpHeld = Input.GetButton (controls.jump);
-			enterGolemPress = Input.GetButton (controls.enter);
+			enterGolemPress = Input.GetButtonDown (controls.enter);
+			enterGolemHeld = Input.GetButton (controls.enter);
 			// Handles special attacks
 			HandleAttack();
 		}else{
@@ -208,20 +215,26 @@ public class Golem : MonoBehaviour {
 	}
 	// END OF VERSION 2
 	//Exits the golem when held for .5 seconds
-	private void CheckExiting(){
+	private void CheckExiting() {
 		//Find a nearby golem
-		if( enterGolemPress ){
+		if( enterGolemPress || exiting ){
 			//Check if button is held long enough
-			exitTimer = exitTimer + Time.deltaTime;
-			if(exitTimer >= timeToExit){
-				//print ("exit");
-				exitTimer = 0;
-				ExitGolem();
+			if (enterGolemHeld) {
+				exiting = true;
+				exitTimer = exitTimer + Time.deltaTime;
+				if(exitTimer >= timeToExit) {
+					//print ("exit");
+					exitTimer = 0;
+					exiting = false;
+					ExitGolem();
+				}
+			} else {
+				exiting = false;
 			}
-			
 		} else {
 			// exitTimer = 0;
 			exitTimer = Mathf.Lerp(exitTimer, 0, Time.time);
+			exiting = false;
 			// Debug.Log(exitTimer);
 		}
 	}
@@ -239,6 +252,12 @@ public class Golem : MonoBehaviour {
 		currentPilot.transform.parent = null;
 //		currentPilot.GetComponent<TempShootingScript>().enabled = true;
 
+
+		// Vertically flips the entry UI, an asthetic change just for exiting
+		eUI.GetComponent<enterUI>().flipVertical();
+
+
+
 		// Reset golem variables
 		gameObject.layer = LayerMask.NameToLayer("Deactivated");
 		currentPilot = null;
@@ -250,6 +269,14 @@ public class Golem : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	
+
+		//Flips the Enter UI (child) as well so the UI stays
+		//consistently the same
+		Vector3 childScale = eUI.transform.localScale;
+        childScale.x  *= -1;
+        eUI.transform.localScale= childScale;
+
 	}
 	
 	private void DirectionCheck() {

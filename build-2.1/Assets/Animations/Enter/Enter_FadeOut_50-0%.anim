@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Enter_Idle
+  m_Name: Enter_FadeOut_50-0%
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -61,9 +61,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
+        value: .5
+        inSlope: -1.25
+        outSlope: -1.25
+        tangentMode: 10
+      - time: .400000006
         value: 0
-        inSlope: 59.9999962
-        outSlope: 59.9999962
+        inSlope: -1.25
+        outSlope: -1.25
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -79,7 +84,7 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 25
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -121,7 +126,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .0166666675
+    m_StopTime: .400000006
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -182,9 +187,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
+        value: .5
+        inSlope: -1.25
+        outSlope: -1.25
+        tangentMode: 10
+      - time: .400000006
         value: 0
-        inSlope: 59.9999962
-        outSlope: 59.9999962
+        inSlope: -1.25
+        outSlope: -1.25
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
