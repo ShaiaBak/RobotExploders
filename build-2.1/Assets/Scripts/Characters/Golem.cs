@@ -69,6 +69,7 @@ public class Golem : MonoBehaviour {
 		//Debug.Log(enterTimerFromPilot);
 		// Gets dynamic control scheme
 		// TODO: don't grab controls every frame; grab them in control selection screen
+		// Debug.LogWarning(anim.gravityWeight);
 		if(controls != null){
 			moveH = Input.GetAxis (controls.horizontal);
 			moveV = Input.GetAxis (controls.vertical);
