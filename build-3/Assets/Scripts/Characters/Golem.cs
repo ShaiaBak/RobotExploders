@@ -199,7 +199,7 @@ public class Golem : MonoBehaviour {
 		//When flying, reduce timer by the time it took to complete the last frame
 		if (flyingMode && jumpHeld) {
 			flyingModeTimer -= Time.deltaTime;
-			GetComponent<Rigidbody2D>().AddForce (new Vector2 (0, jumpForce/15f));
+			GetComponent<Rigidbody2D>().AddForce (new Vector2 (0, jumpForce/25f));
 		}
 		//When timer is equal to or less than zero or when the jump button is released
 		//Disable flying mode and restore the gravity setting
