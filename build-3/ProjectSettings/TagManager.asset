@@ -29,7 +29,7 @@ TagManager:
   - Pilots
   - Projectile
   - background
-  - 
+  - foreground
   - 
   - 
   - 
@@ -48,9 +48,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 4156701837
+    locked: 0
   - name: Golems
     uniqueID: 646813565
     locked: 0
   - name: Pilots
     uniqueID: 2691776803
+    locked: 0
+  - name: foreground
+    uniqueID: 1994602039
     locked: 0
